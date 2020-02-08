@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/string-to-integer-atoi/
+
 class atoi {
     public int myAtoi(String str) {      
         int i=0;
