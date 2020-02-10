@@ -1,14 +1,12 @@
-class Solution {
+class LongestPalindrome {
 
-    https://leetcode.com/problems/longest-palindromic-substring/
+//     https://leetcode.com/problems/longest-palindromic-substring/
     
-    In fact, we could solve it in O(n^2)O(n 
-2
- ) time using only constant space.
+//     In fact, we could solve it in O(n^2) time using only constant space.
 
-We observe that a palindrome mirrors around its center. Therefore, a palindrome can be expanded from its center, and there are only 2n - 12n−1 such centers.
+// We observe that a palindrome mirrors around its center. Therefore, a palindrome can be expanded from its center, and there are only 2n−1 such centers.
 
-You might be asking why there are 2n - 12n−1 but not nn centers? The reason is the center of a palindrome can be in between two letters. Such palindromes have even number of letters (such as "abba") and its center are between the two 'b's.
+// You might be asking why there are 2n−1 but not n centers? The reason is the center of a palindrome can be in between two letters. Such palindromes have even number of letters (such as "abba") and its center are between the two 'b's.
     
     public String longestPalindrome(String s) {
         if (s == null || s.length() < 1) return "";
