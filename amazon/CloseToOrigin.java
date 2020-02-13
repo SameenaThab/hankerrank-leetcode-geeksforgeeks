@@ -1,3 +1,4 @@
+//https://leetcode.com/explore/interview/card/amazon/79/sorting-and-searching/2996/
 class CloseToOrigin {
     public int[][] kClosest(int[][] points, int K) {
         Arrays.sort(points,new Comparator<int[]>(){

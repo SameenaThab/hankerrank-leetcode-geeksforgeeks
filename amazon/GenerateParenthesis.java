@@ -1,3 +1,5 @@
+
+//https://leetcode.com/explore/interview/card/amazon/84/recursion/2988/
 class GenerateParenthesis {
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList();
