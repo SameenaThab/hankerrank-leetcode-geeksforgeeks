@@ -1,0 +1,751 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Medium;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 STIXGeneral-Regular;
+\f3\froman\fcharset0 Times-Italic;\f4\fnil\fcharset0 Menlo-Regular;\f5\froman\fcharset0 TimesNewRomanPSMT;
+\f6\ftech\fcharset77 Symbol;\f7\fnil\fcharset0 HelveticaNeue-Bold;\f8\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;\red242\green242\blue242;
+\red14\green115\blue192;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c100000\c100000\c100000;\cssrgb\c96078\c96078\c96078;
+\cssrgb\c0\c53333\c80000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid202\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}}
+\margl1440\margr1440\vieww11180\viewh13720\viewkind0
+\deftab720
+\pard\pardeftab720\sl380\sa200\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Approach 1: Recursive Approach\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\fs28 \cf2 To solve this problem, we need to understand "What is the use of median". In statistics, the median is used for:\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\fs35 \cf2 Dividing a set into two equal length subsets, that one subset is always greater than the other.\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 If we understand the use of median for dividing, we are very close to the answer.\
+First let's cut\'a0
+\f2\fs33\fsmilli16940 A 
+\f1\fs28 into two parts at a random position\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 :\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f4\fs26 \cf2 \cb4           left_A             |        right_A\
+    A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\fs28 \cf2 \cb3 Since\'a0
+\f5\fs33\fsmilli16940 A
+\f1\fs28 \'a0has\'a0
+\f3\i\fs33\fsmilli16940 m
+\f1\i0\fs28 \'a0elements, so there are\'a0
+\f3\i\fs33\fsmilli16940 m
+\f5\i0 +1
+\f1\fs28 \'a0kinds of cutting (
+\f3\i\fs33\fsmilli16940 i
+\f5\i0 =0
+\f6 \uc0\u8764 
+\f3\i m
+\f1\i0\fs28 ).\
+And we know:\
+\pard\pardeftab720\sl500\sa200\partightenfactor0
+
+\f5\fs42\fsmilli21175 \cf2 len(left_A)=
+\f3\i i
+\f5\i0 , len(right_A)=
+\f3\i m
+\f5\i0 \uc0\u8722 
+\f3\i i
+\f1\i0\fs35 .\cb1 \
+\pard\pardeftab720\sl440\partightenfactor0
+\cf2 \cb3 Note: when\'a0
+\f3\i\fs42\fsmilli21175 i
+\f5\i0 =0
+\f1\fs35 ,\'a0
+\f5\fs42\fsmilli21175 left_A
+\f1\fs35 \'a0is empty, and when\'a0
+\f3\i\fs42\fsmilli21175 i
+\f5\i0 =
+\f3\i m
+\f1\i0\fs35 ,\'a0
+\f5\fs42\fsmilli21175 right_A
+\f1\fs35 \'a0is empty.\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 With the same way, cut\'a0
+\f5\fs33\fsmilli16940 B
+\f1\fs28 \'a0into two parts at a random position\'a0
+\f3\i\fs33\fsmilli16940 j
+\f1\i0\fs28 :
+\f4\fs26 \cb4 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2           left_B             |        right_B\
+    B[0], B[1], ..., B[j-1]  |  B[j], B[j+1], ..., B[n-1]\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\fs28 \cf2 \cb3 Put\'a0
+\f5\fs33\fsmilli16940 left_A
+\f1\fs28 \'a0and\'a0
+\f5\fs33\fsmilli16940 left_B
+\f1\fs28 \'a0into one set, and put\'a0
+\f5\fs33\fsmilli16940 right_A
+\f1\fs28 \'a0and\'a0
+\f5\fs33\fsmilli16940 right_B
+\f1\fs28 \'a0into another set. Let's name them\'a0
+\f5\fs33\fsmilli16940 left_part
+\f1\fs28 \'a0and\'a0
+\f5\fs33\fsmilli16940 right_part
+\f1\fs28 :\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f4\fs26 \cf2 \cb4           left_part          |        right_part\
+    A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]\
+    B[0], B[1], ..., B[j-1]  |  B[j], B[j+1], ..., B[n-1]\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\fs28 \cf2 \cb3 If we can ensure:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl640\partightenfactor0
+\ls1\ilvl0
+\f2\fs42\fsmilli21175 \cf2 \kerning1\expnd0\expndtw0 {\listtext	1.	}
+\f5 \expnd0\expndtw0\kerning0
+len(left_part)=len(right_part)
+\f1\fs35 \cb1 \
+\ls1\ilvl0
+\f2\fs42\fsmilli21175 \cb3 \kerning1\expnd0\expndtw0 {\listtext	2.	}
+\f5 \expnd0\expndtw0\kerning0
+max(left_part)\uc0\u8804 min(right_part)
+\f1\fs35 \cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 then we divide all elements in\'a0
+\f5\fs33\fsmilli16940 \{A,B\}
+\f1\fs28 \'a0into two parts with equal length, and one part is always greater than the other. \
+Then\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f5\fs33\fsmilli16940 \cf2 median= (
+\fs23\fsmilli11858 max(left_part)+min(right_part))/2
+\fs33\fsmilli16940 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\fs28 \cf2 To ensure these two conditions, we just need to ensure:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl640\partightenfactor0
+\ls2\ilvl0
+\f2\fs42\fsmilli21175 \cf2 \kerning1\expnd0\expndtw0 {\listtext	1.	}
+\f3\i \expnd0\expndtw0\kerning0
+i
+\f5\i0 +
+\f3\i j
+\f5\i0 =
+\f3\i m
+\f5\i0 \uc0\u8722 
+\f3\i i
+\f5\i0 +
+\f3\i n
+\f5\i0 \uc0\u8722 
+\f3\i j
+\f1\i0\fs35 \'a0(or:\'a0
+\f3\i\fs42\fsmilli21175 m
+\f5\i0 \uc0\u8722 
+\f3\i i
+\f5\i0 +
+\f3\i n
+\f5\i0 \uc0\u8722 
+\f3\i j
+\f5\i0 +1
+\f1\fs35 )\cb1 \uc0\u8232 \cb3 if\'a0
+\f3\i\fs42\fsmilli21175 n
+\f5\i0 \uc0\u8805 
+\f3\i m
+\f1\i0\fs35 , we just need to set:\'a0
+\f3\i\fs42\fsmilli21175 i
+\f5\i0 =0
+\f6 \uc0\u8764 
+\f3\i m
+\f5\i0 , 
+\f3\i j
+\f5\i0 = (m+n+1)/2\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl640\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs35 \'a0and 
+\f5\fs42\fsmilli21175 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ]\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clmgf \clvertalb \clshdrawnil \clwWidth1060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clmrg \clvertalb \clshdrawnil \clwWidth1060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\tx720\pardeftab720\sl340\qc\partightenfactor0
+\cf2 \cb1 \cell 
+\pard\intbl\itap1\cell \lastrow\row
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\fs28 \cf2 \cb3 ps.1 For simplicity, I presume\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1],B[
+\f3\i j
+\f5\i0 \uc0\u8722 1],A[
+\f3\i i
+\f5\i0 ],B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 \'a0are always valid even if\'a0\
+\pard\pardeftab720\sl400\sa200\partightenfactor0
+
+\f3\i\fs33\fsmilli16940 \cf2 i
+\f5\i0 =0
+\f1\fs28 ,\'a0
+\f3\i\fs33\fsmilli16940 i
+\f5\i0 =
+\f3\i m
+\f1\i0\fs28 ,\'a0
+\f3\i\fs33\fsmilli16940 j
+\f5\i0 =0
+\f1\fs28 , or 
+\f3\i\fs33\fsmilli16940 j
+\f5\i0 =
+\f3\i n
+\f1\i0\fs28 . I will talk about how to deal with these edge values at last.\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 ps.2 Why\'a0
+\f3\i\fs33\fsmilli16940 n
+\f5\i0 \uc0\u8805 
+\f3\i m
+\f1\i0\fs28 ? Because I have to make sure\'a0
+\f3\i\fs33\fsmilli16940 j
+\f1\i0\fs28 \'a0is non-negative since\'a0
+\f5\fs33\fsmilli16940 0\uc0\u8804 
+\f3\i i
+\f5\i0 \uc0\u8804 
+\f3\i m
+\f1\i0\fs28 \'a0and\'a0\
+\pard\pardeftab720\sl400\sa200\partightenfactor0
+
+\f3\i\fs33\fsmilli16940 \cf2 j
+\f5\i0  = (m+n+1)/2 - i. 
+\f3\i n
+\f5\i0 <
+\f3\i m
+\f1\i0\fs28 , then\'a0
+\f3\i\fs33\fsmilli16940 j
+\f1\i0\fs28 \'a0may be negative, that will lead to wrong result.\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 So, all we need to do is:\
+\pard\pardeftab720\sl440\sa200\partightenfactor0
+
+\fs35 \cf2 Searching\'a0
+\f3\i\fs42\fsmilli21175 i
+\f1\i0\fs35 \'a0in\'a0
+\f5\fs42\fsmilli21175 [0,
+\f3\i m
+\f5\i0 ]
+\f1\fs35 , to find an object\'a0
+\f3\i\fs42\fsmilli21175 i
+\f1\i0\fs35 \'a0such that:\cb1 \
+\pard\pardeftab720\sl500\partightenfactor0
+
+\f5\fs42\fsmilli21175 \cf2 \cb3 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs35 \'a0and\'a0
+\f5\fs42\fsmilli21175 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ],
+\f1\fs35 \'a0where\'a0
+\f3\i\fs42\fsmilli21175 j
+\f5\i0 = (m+n+1)/2-i\
+
+\f1\fs35 \cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 And we can do a binary search following steps described below:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\sa200\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+Set\'a0
+\f5\fs33\fsmilli16940 imin=0
+\f1\fs28 ,\'a0
+\f5\fs33\fsmilli16940 imax=
+\f3\i m
+\f1\i0\fs28 , then start searching in\'a0
+\f5\fs33\fsmilli16940 [imin,imax]
+\f1\fs28 \cb1 \uc0\u8232 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+Set 
+\f3\i\fs33\fsmilli16940 i=(imin+imax)/2, j = ((m+n+1)/2)-i
+\f1\i0\fs28 \cb1 \uc0\u8232 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 {\listtext	11.	}\expnd0\expndtw0\kerning0
+Now we have\'a0
+\f5\fs33\fsmilli16940 len(left_part)=len(right_part)
+\f1\fs28 . And there are only 3 situations that we may encounter:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl520\partightenfactor0
+\ls3\ilvl1
+\f2\fs33\fsmilli16940 \cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}
+\f5 \expnd0\expndtw0\kerning0
+B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \'a0and\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 \cb1 \uc0\u8232 \cb3 Means we have found the object\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 , so stop searching.\cb1 \uc0\u8232 \
+\ls3\ilvl1
+\f2\fs33\fsmilli16940 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}
+\f5 \expnd0\expndtw0\kerning0
+B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]>A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \cb1 \uc0\u8232 \cb3 Means\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \'a0is too small. We must adjust\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 \'a0to get 
+\f5\fs33\fsmilli16940 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 .\cb1 \uc0\u8232 \cb3 Can we increase 
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 ?\cb1 \uc0\u8232 \cb3 \'a0\'a0\'a0\'a0\'a0\'a0Yes. Because when\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 \'a0is increased,\'a0
+\f3\i\fs33\fsmilli16940 j
+\f1\i0\fs28 \'a0will be decreased.\cb1 \uc0\u8232 \cb3 \'a0\'a0\'a0\'a0\'a0\'a0So\'a0
+\f5\fs33\fsmilli16940 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]
+\f1\fs28 \'a0is decreased and\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \'a0is increased, and\'a0
+\f5\fs33\fsmilli16940 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \'a0may\cb1 \uc0\u8232 \cb3 \'a0\'a0\'a0\'a0\'a0\'a0be satisfied.\cb1 \uc0\u8232 \cb3 Can we decrease\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 ?\cb1 \uc0\u8232 \cb3 \'a0\'a0\'a0\'a0\'a0\'a0No! Because when\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 \'a0is decreased,\'a0
+\f3\i\fs33\fsmilli16940 j
+\f1\i0\fs28 \'a0will be increased.\cb1 \uc0\u8232 \cb3 \'a0\'a0\'a0\'a0\'a0\'a0So 
+\f5\fs33\fsmilli16940 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]
+\f1\fs28 \'a0is increased and\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \'a0is decreased, and\'a0
+\f5\fs33\fsmilli16940 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \'a0will\cb1 \uc0\u8232 \cb3 \'a0\'a0\'a0\'a0\'a0\'a0be never satisfied.\cb1 \uc0\u8232 \cb3 So we must increase\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 . That is, we must adjust the searching range to 
+\f5\fs33\fsmilli16940 [
+\f3\i i
+\f5\i0 +1,imax]
+\f1\fs28 .\cb1 \uc0\u8232 \cb3 So, set\'a0
+\f5\fs33\fsmilli16940 imin=
+\f3\i i
+\f5\i0 +1
+\f1\fs28 , and goto 2.\cb1 \uc0\u8232 \
+\ls3\ilvl1
+\f2\fs33\fsmilli16940 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}
+\f5 \expnd0\expndtw0\kerning0
+A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]>B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 :\cb1 \uc0\u8232 \cb3 Means 
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]
+\f1\fs28 \'a0is too big. And we must decrease\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 \'a0to get\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 .\cb1 \uc0\u8232 \cb3 That is, we must adjust the searching range to\'a0
+\f5\fs33\fsmilli16940 [imin,
+\f3\i i
+\f5\i0 \uc0\u8722 1]
+\f1\fs28 .\cb1 \uc0\u8232 \cb3 So, set\'a0
+\f5\fs33\fsmilli16940 imax=
+\f3\i i
+\f5\i0 \uc0\u8722 1
+\f1\fs28 , and goto 2.\cb1 \uc0\u8232 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 \cb3 When the object\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 \'a0is found, the median is:\
+\pard\pardeftab720\sl500\partightenfactor0
+
+\f5\fs42\fsmilli21175 \cf2 max(A[
+\f3\i i
+\f5\i0 \uc0\u8722 1],B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]),
+\f1\fs35 \'a0when\'a0
+\f3\i\fs42\fsmilli21175 m
+\f5\i0 +
+\f3\i n
+\f1\i0\fs35 \'a0is odd\
+( max(A[i-1]),B[j-1])+min(A[I],B[j]) )/2, 
+\f3\i\fs42\fsmilli21175 m
+\f5\i0 +
+\f3\i n
+\f1\i0\fs35 \'a0is even\
+\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 Now let's consider the edges values\'a0
+\f3\i\fs33\fsmilli16940 i
+\f5\i0 =0,
+\f3\i i
+\f5\i0 =
+\f3\i m
+\f5\i0 ,
+\f3\i j
+\f5\i0 =0,
+\f3\i j
+\f5\i0 =
+\f3\i n
+\f1\i0\fs28 \'a0where\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1],B[
+\f3\i j
+\f5\i0 \uc0\u8722 1],A[
+\f3\i i
+\f5\i0 ],B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 \'a0may not exist. Actually this situation is easier than you think.\
+\
+What we need to do is ensuring that\'a0
+\f5\fs33\fsmilli16940 max(left_part)\uc0\u8804 min(right_part)
+\f1\fs28 . So, if\'a0
+\f3\i\fs33\fsmilli16940 i
+\f1\i0\fs28 \'a0and\'a0
+\f3\i\fs33\fsmilli16940 j
+\f1\i0\fs28 \'a0are not edges values (means\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1],B[
+\f3\i j
+\f5\i0 \uc0\u8722 1],A[
+\f3\i i
+\f5\i0 ],B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 \'a0all exist), then we must check both\'a0\
+\pard\pardeftab720\sl400\sa200\partightenfactor0
+
+\f5\fs33\fsmilli16940 \cf2 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ]
+\f1\fs28 \'a0and\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 . But if some of\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1],B[
+\f3\i j
+\f5\i0 \uc0\u8722 1],A[
+\f3\i i
+\f5\i0 ],B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 \'a0don't exist, then we don't need to check one (or both) of these two conditions. For example, if\'a0
+\f3\i\fs33\fsmilli16940 i
+\f5\i0 =0
+\f1\fs28 , then\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]
+\f1\fs28 \'a0doesn't exist, then we don't need to check\'a0
+\f5\fs33\fsmilli16940 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ]
+\f1\fs28 . So, what we need to do is:\
+\pard\pardeftab720\sl440\sa200\partightenfactor0
+
+\fs35 \cf2 Searching\'a0
+\f3\i\fs42\fsmilli21175 i
+\f1\i0\fs35 \'a0in\'a0
+\f5\fs42\fsmilli21175 [0,
+\f3\i m
+\f5\i0 ]
+\f1\fs35 , to find an object 
+\f3\i\fs42\fsmilli21175 i
+\f1\i0\fs35 \'a0such that:\cb1 \
+\pard\pardeftab720\sl500\partightenfactor0
+
+\f5\fs42\fsmilli21175 \cf2 \cb3 (
+\f3\i j
+\f5\i0 =0
+\f1\fs35 \'a0or\'a0
+\f3\i\fs42\fsmilli21175 i
+\f5\i0 =
+\f3\i m
+\f1\i0\fs35 \'a0or\'a0
+\f5\fs42\fsmilli21175 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ])
+\f1\fs35 \'a0and\cb1 \
+
+\f5\fs42\fsmilli21175 \cb3 (
+\f3\i i
+\f5\i0 =0
+\f1\fs35 \'a0or\'a0
+\f3\i\fs42\fsmilli21175 j
+\f5\i0 =
+\f3\i n
+\f1\i0\fs35 \'a0or\'a0
+\f5\fs42\fsmilli21175 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ]),
+\f1\fs35 \'a0where\'a0
+\f3\i\fs42\fsmilli21175 j
+\f5\i0 =(m+n+1)/2\uc0\u8722 
+\f3\i i
+\f1\i0\fs35 \cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 And in a searching loop, we will encounter only three situations:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl640\partightenfactor0
+\ls4\ilvl0
+\f2\fs42\fsmilli21175 \cf2 \kerning1\expnd0\expndtw0 {\listtext	1.	}1.
+\f5 \expnd0\expndtw0\kerning0
+(
+\f3\i j
+\f5\i0 =0
+\f1\fs35 \'a0or\'a0
+\f3\i\fs42\fsmilli21175 i
+\f5\i0 =
+\f3\i m
+\f1\i0\fs35 \'a0or 
+\f5\fs42\fsmilli21175 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]\u8804 A[
+\f3\i i
+\f5\i0 ])
+\f1\fs35 \'a0and\cb1 \uc0\u8232 
+\f5\fs42\fsmilli21175 \cb3 (
+\f3\i i
+\f5\i0 =0
+\f1\fs35 \'a0or\'a0
+\f3\i\fs42\fsmilli21175 j
+\f5\i0 =
+\f3\i n
+\f1\i0\fs35 \'a0or\'a0
+\f5\fs42\fsmilli21175 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]\u8804 B[
+\f3\i j
+\f5\i0 ])
+\f1\fs35 \cb1 \uc0\u8232 \cb3 Means 
+\f3\i\fs42\fsmilli21175 i
+\f1\i0\fs35 \'a0is perfect, we can stop searching.\cb1 \
+\ls4\ilvl0
+\f2\fs42\fsmilli21175 \cb3 \kerning1\expnd0\expndtw0 {\listtext	2.	}
+\f3\i \expnd0\expndtw0\kerning0
+j
+\f5\i0 >0
+\f1\fs35 \'a0and\'a0
+\f3\i\fs42\fsmilli21175 i
+\f5\i0 <
+\f3\i m
+\f1\i0\fs35 \'a0and\'a0
+\f5\fs42\fsmilli21175 B[
+\f3\i j
+\f5\i0 \uc0\u8722 1]>A[
+\f3\i i
+\f5\i0 ]
+\f1\fs35 \cb1 \uc0\u8232 \cb3 Means 
+\f3\i\fs42\fsmilli21175 i
+\f1\i0\fs35 \'a0is too small, we must increase it.\cb1 \
+\ls4\ilvl0
+\f2\fs42\fsmilli21175 \cb3 \kerning1\expnd0\expndtw0 {\listtext	3.	}
+\f3\i \expnd0\expndtw0\kerning0
+i
+\f5\i0 >0
+\f1\fs35 \'a0and\'a0
+\f3\i\fs42\fsmilli21175 j
+\f5\i0 <
+\f3\i n
+\f1\i0\fs35 \'a0and\'a0
+\f5\fs42\fsmilli21175 A[
+\f3\i i
+\f5\i0 \uc0\u8722 1]>B[
+\f3\i j
+\f5\i0 ]
+\f1\fs35 \cb1 \uc0\u8232 \cb3 Means\'a0
+\f3\i\fs42\fsmilli21175 i
+\f1\i0\fs35 \'a0is too big, we must decrease it.\
+\pard\tx720\pardeftab720\sl640\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 Thanks to\'a0{\field{\*\fldinst{HYPERLINK "https://leetcode.com/Quentin.chen"}}{\fldrslt \cf5 @Quentin.chen}}\'a0for pointing out that:\'a0\
+\pard\pardeftab720\sl400\sa200\partightenfactor0
+
+\f3\i\fs33\fsmilli16940 \cf2 i
+\f5\i0 <
+\f3\i m
+\f2\i0 \uc0\u10233 
+\f3\i j
+\f5\i0 >0
+\f1\fs28 \'a0and\'a0
+\f3\i\fs33\fsmilli16940 i
+\f5\i0 >0
+\f2 \uc0\u10233 
+\f3\i j
+\f5\i0 <
+\f3\i n
+\f1\i0\fs28 . Because:\
+\pard\pardeftab720\sl500\sa200\partightenfactor0
+
+\f3\i\fs42\fsmilli21175 \cf2 m
+\f5\i0 \uc0\u8804 
+\f3\i n
+\f5\i0 ,
+\f3\i i
+\f5\i0 <
+\f3\i m
+\f2\i0  \
+=> 
+\f3\i j
+\f5\i0  = (m+n+1)/2 - i > (m+n+1)/2 - m >= (2m+1)/2 - m >= 0\
+\pard\pardeftab720\sl500\partightenfactor0
+
+\f3\i \cf2 m
+\f5\i0 \uc0\u8804 
+\f3\i n
+\f5\i0 ,
+\f3\i i
+\f5\i0 >0\
+\pard\pardeftab720\sl500\partightenfactor0
+
+\f2 \cf2 => 
+\f3\i j
+\f5\i0  = (m+n+1)/2 - i<(m+n+1)/2 <= (2n+1)/2 <= n\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\fs28 \cf2 So in situation 2. and 3. , we don't need to check whether\'a0
+\f3\i\fs33\fsmilli16940 j
+\f5\i0 >0
+\f1\fs28 \'a0and whether 
+\f3\i\fs33\fsmilli16940 j
+\f5\i0 <
+\f3\i n
+\f1\i0\fs28 .\
+\pard\pardeftab720\sl340\sa200\partightenfactor0
+
+\f7\b \cf2 Complexity Analysis
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\sa200\partightenfactor0
+\ls5\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Time complexity:\'a0
+\f3\i\fs33\fsmilli16940 O
+\f8\i0 (
+\f5 log
+\f8 (
+\f5 min(
+\f3\i m
+\f5\i0 ,
+\f3\i n
+\f5\i0 )
+\f8 ))
+\f1\fs28 .\cb1 \uc0\u8232 \cb3 At first, the searching range is\'a0
+\f5\fs33\fsmilli16940 [0,
+\f3\i m
+\f5\i0 ]
+\f1\fs28 . And the length of this searching range will be reduced by half after each loop. So, we only need\'a0
+\f5\fs33\fsmilli16940 log(
+\f3\i m
+\f5\i0 )
+\f1\fs28 \'a0loops. Since we do constant operations in each loop, so the time complexity is 
+\f3\i\fs33\fsmilli16940 O
+\f8\i0 (
+\f5 log(
+\f3\i m
+\f5\i0 )
+\f8 )
+\f1\fs28 . Since\'a0
+\f3\i\fs33\fsmilli16940 m
+\f5\i0 \uc0\u8804 
+\f3\i n
+\f1\i0\fs28 , so the time complexity is 
+\f3\i\fs33\fsmilli16940 O
+\f8\i0 (
+\f5 log
+\f8 (
+\f5 min(
+\f3\i m
+\f5\i0 ,
+\f3\i n
+\f5\i0 )
+\f8 ))
+\f1\fs28 .\cb1 \uc0\u8232 \
+\ls5\ilvl0\cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Space complexity:\'a0
+\f3\i\fs33\fsmilli16940 O
+\f5\i0 (1)
+\f1\fs28 .\cb1  \cb3 We only need constant memory to store\'a0
+\f5\fs33\fsmilli16940 9
+\f1\fs28 \'a0local variables, so the space complexity is\'a0
+\f3\i\fs33\fsmilli16940 O
+\f5\i0 (1)
+\f1\fs28 .\cb1 \uc0\u8232 \
+}
