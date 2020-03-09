@@ -2,20 +2,54 @@
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\margl1440\margr1440\vieww21120\viewh9420\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs24 \cf0 First mile- puts seed of analytics in company. I started making reports of every newly signed up agent. Before there was small db of individual agents and now we have huge . I recognized the use of analytics here\
 \
-Special case. Could  have dealt with one fi clause. But I thought this would be a bandage fix. And in near future more such special case can rise. So I create different api for special case, there by eliminating front end logic. Made it reusable so that any new special cases can come in and tell front their requirements.\
+Disagreed to reuse a existing method to check if unsubscribed. Since it needs partner param, And it calls all unwanted queries about city unsubscription and all.\
+\
+Created no response schedule reminder for renter to inform landlord has not responded.\
+\
+apply_now failed application alert email. Since this is our main source of income. I wanted the every failed apply now to be notified to tech team with reason. We made many changes based on this later on.\
+\
+Special case. Could  have dealt with one if clause. But I thought this would be a bandage fix. And in near future more such special case can rise. So I create different api for special case, there by eliminating front end logic. Made it reusable so that any new special cases can come in and tell front their requirements.\
 \
 Filter impure data coming from syndicated partners, so that we do not lose customers due to failed application. So I filtered leads and let renter know before process proceed and kind of steer the customer towards new agent with same zip code . There by no lose of customer and help agents make money.\
 \
-Email output - disagreed with manager.\
+Unsubscription through email- disagreed with manager.\
+\
+Removed unnecessary listing to applications (one to many) relation to improve performance\
+\
+Used React components so that in future new co branded page can be easily created by reusable code\
+\
 \
 I tried to test the whole workflow time to time. I recognized some renters were being ignored by new landlords. So created a threshold of how long to wait for landlords response.\
 \
 Good coding practices. Unit tests. Check every possible test case. Pull requests for any NPE.\
+\
+\
+\
+Who was your most difficult customer?\
+Our Marketing Team needs some special feature developed time to time on our platform. They are not always certain on their requirements. At times they make a request and change their mind after seeing the end product. We have a feature called apply now which can our users can unsubscribe. They initially wanted at bottom of the email as link. But after creating the whole feature, they changed their mind to make the unsubscription on admin level. From that day my manger was very keen on getting requirements.\
+\
+Q1.Give example of when you did not meet clients expectations?\
+Q2.Tell the story of the last time had to apologize.\
+I am mostly a back end engineer but I have been doing full stack work recently . For my very first front end task, I did not create good presentation layer. I took help of my other front end engineer colleagues and learned from them and made the presentation suitable as their needs.\
+\
+Tell us a time when you had to leave a task unfinished?\
+We are developing a task where LL delegates responsibility of reviewing renter\'92s application to third person. Initially it was a two confirmation where reviewer will accept the request and then LL will confirm it . But then our stakeholders wanted it be a one way confirmation where reviewer has final say and he gets the authority. It is a easy to implement but I did not finish this change as it they were the was proposed before vacation and I did not want this to be in production without a them understanding the risk of giving the 3rd person so much authority.\
+\
+Time with unclear responsibilities?\
+As part of new partner integration we were creating a new user role on the platform and this used had to be notified and new emails and reminders had to be set so this task was not clear whether I need to create new notifications for the user or change the existing notifications for the other roles. So I made sure during the scrum meetings on meeting them know that I am working on this task so that there is no overlap. Recently we had big partner integration.the tasks not completely fleshed out and also not assigned. We had a  general understanding of what to is the changes to be made. So one of the task was just notifications. So it meant to unschedule \
+\
+\
+Tell me about a time when you gave simple solution to a complex problem./Tell me about a time when you invented something\
+\
+There was a scenario where we used third party API called smart move which helps us bringing credit score and rap sheets for the user .TransUnion needs complete landlord information and some time we don\'92t receive this. Information from our  partners in this scenario the applications were failing .we started filtering a listing with incomplete landlord information and matching interested renters with agents who can find them listings with similar features.\
+\
+\
+\
 \
 \
 \
