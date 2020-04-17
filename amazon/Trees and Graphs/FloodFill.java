@@ -5,11 +5,11 @@ class FloodFill {
         image[sr][sc] = newColor;
         Set<String> visited = new HashSet<String>();
         visited.add(sr+" "+sc);
-        helper(image,sr,sc,newColor,oldColor,visited);
+        helper(image,sr,sc,newColor,oldColor);
         return image;
     }
     
-    public void helper(int[][] image,int sr,int sc,int newColor,int oldColor,Set<String> visited) {
+    public void helper(int[][] image,int sr,int sc,int newColor,int oldColor) {
         int m = image.length;
         int n = image[0].length;
         //System.out.println("sr: "+sr+" sc: "+sc);
@@ -18,11 +18,12 @@ class FloodFill {
         for(int i=0;i<4;i++) {
             int row = sr+adjr[i];
             int col = sc+adjc[i];
-            if(row>=0 && row<m && col>=0 && col<n && image[row][col] == oldColor && !visited.contains(row+" "+col)) {
-                visited.add(row+" "+col);
+            //System.out.println("row: "+row+" col: "+col);
+            if(row>=0 && row<m && col>=0 && col<n && image[row][col] == oldColor && image[row][col] != newColor) {
+                //visited.add(row+" "+col);
                 image[row][col] = newColor;
                 //System.out.println("row: "+row+" col: "+col);
-                helper(image,row,col,newColor,oldColor,visited);
+                helper(image,row,col,newColor,oldColor);
             }
         }
     }
