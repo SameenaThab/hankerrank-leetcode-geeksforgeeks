@@ -1,5 +1,5 @@
 import java.util.*;
-
+// https://www.hackerrank.com/challenges/ctci-ransom-note/problem
 public class Ransom_Note {
     Map<String, Integer> magazineMap;
     Map<String, Integer> noteMap;

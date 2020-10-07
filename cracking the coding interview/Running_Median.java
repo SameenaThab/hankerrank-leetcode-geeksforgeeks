@@ -1,4 +1,6 @@
 /*
+https://www.hackerrank.com/challenges/ctci-find-the-running-median/problem
+
 The median of a dataset of integers is the midpoint value of the dataset for which an equal number of integers are less than and greater than the value. To find the median, you must first sort your dataset of integers in non-decreasing order, then:
 
 If your dataset contains an odd number of elements, the median is the middle element of the sorted sample. In the sorted dataset {1,2,3} ,2 is the median.
@@ -14,68 +16,77 @@ import java.util.regex.*;
 
 public class Running_Median {
     
-    public static double[] getMedians(int[] a)
-    {
-        PriorityQueue<Integer> minheap=new PriorityQueue<Integer>(1000,new Comparator<Integer>()
-                                                {
-                                                    public int compare(Integer a,Integer b)
-                                                    {
-                                                        return b-a;
-                                                    }
-                                                });
-        PriorityQueue<Integer> maxheap=new PriorityQueue<Integer>();
-        double[] medians=new double[a.length];
-        for(int i=0;i<a.length;i++)
-        {
-            addNumber(a[i],minheap,maxheap);
-            rebalance(minheap,maxheap);
-            medians[i]=findmedian(minheap,maxheap);
-        }
-      return medians;
-    }
-    
-    public static void addNumber(int i,PriorityQueue<Integer> minheap,PriorityQueue<Integer> maxheap)
-    {
-            if(minheap.size()==0 || i<minheap.peek())
-                minheap.add(i);
-            else
-                maxheap.add(i);
-    }
-    
-    public static void rebalance(PriorityQueue<Integer> minheap,PriorityQueue<Integer> maxheap)
-    {
-        PriorityQueue<Integer> biggerheap=minheap.size()>maxheap.size()?minheap:maxheap;
-        PriorityQueue<Integer> smallerheap=minheap.size()>maxheap.size()?maxheap:minheap;
+    private static final Scanner scanner = new Scanner(System.in);
 
-        if(biggerheap.size()-smallerheap.size()>=2)
-        {
-            smallerheap.add(biggerheap.poll());
+    private static PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(100000);
+
+    private static PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(100000,new Comparator<Integer>() {
+        public int compare(Integer a,Integer b) {
+            return b-a;
+        }
+    });
+
+    public static void addItem(int num) {
+        //First and all small number in maxHeap
+        if(maxHeap.size() == 0 || num<maxHeap.peek()) {
+            maxHeap.add(num);
+        } else {
+            //all Larger number in minHeap
+            minHeap.add(num);
+        }
+
+    }
+
+    //Goal is to maintain smaller numbers in maxHeap so that top of maxHeap is largest small number
+    //  and all other larger number in minHeap so that top of minHeap is smallest large number.
+    // together both tops form median
+    public static void rebalance() {
+        PriorityQueue<Integer> bigHeap;
+        PriorityQueue<Integer> smallHeap;
+        if(maxHeap.size() < minHeap.size()) {
+            smallHeap = maxHeap;
+            bigHeap = minHeap;
+        } else {
+            smallHeap = minHeap;
+            bigHeap = maxHeap;
+        } 
+        while(bigHeap.size()-smallHeap.size()>=2) {
+            smallHeap.add(bigHeap.poll());
         }
     }
-    
-    public static double findmedian(PriorityQueue<Integer> minheap,PriorityQueue<Integer> maxheap)
-    {
-        PriorityQueue<Integer> biggerheap=minheap.size()>maxheap.size()?minheap:maxheap;
-        PriorityQueue<Integer> smallerheap=minheap.size()>maxheap.size()?maxheap:minheap;
-        if(biggerheap.size()==smallerheap.size())
-            return (double)((biggerheap.peek()+smallerheap.peek())/2.0);
-        else
-            return biggerheap.peek();
+
+    public static double  median() {
+        PriorityQueue<Integer> bigHeap;
+        PriorityQueue<Integer> smallHeap;
+        if(maxHeap.size() < minHeap.size()) {
+            smallHeap = maxHeap;
+            bigHeap = minHeap;
+        } else {
+            smallHeap = minHeap;
+            bigHeap = maxHeap;
+        } 
+        if(smallHeap.size() == bigHeap.size()) {
+            return (double)(smallHeap.peek()+bigHeap.peek())/2.0;
+        } else {
+            return (double)bigHeap.peek();
+        }
     }
+
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
+        int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
         int[] a = new int[n];
-        Arrays.fill(a,Integer.MAX_VALUE);
-        for(int i=0; i < n; i++){
-            a[i] = in.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int aItem = scanner.nextInt();
+            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+            a[i] = aItem;
+            addItem(a[i]);
+            rebalance();
+            System.out.println(median());        
         }
-        double[] meds=getMedians(a);
-        for(double d:meds)
-        {
-            System.out.println(d);
-        }
-        
+        scanner.close();
     }
 }

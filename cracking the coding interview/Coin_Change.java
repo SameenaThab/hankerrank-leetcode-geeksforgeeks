@@ -1,6 +1,7 @@
 /*
 Given a number of dollars, n, and a list of dollar values for m distinct coins, C={c0,c1,c2,.....cm-1}, find and print the number of different ways you can make change for  dollars if each coin is available in an infinite quantity.
 */
+// https://www.hackerrank.com/challenges/ctci-coin-change/problem
 import java.io.*;
 import java.util.*;
 import java.text.*;
@@ -23,9 +24,10 @@ public class Coin_Change {
             return 0;
         while(rem<=money)
         {
+            // keep removing coins[index] from the money until money becomes  greater than equal to 0
             int temp=money-rem;
            count+=makeChangeHelper(coins,temp,index+1);
-               rem+=coins[index];
+            rem+=coins[index];
         }
         
         return count;

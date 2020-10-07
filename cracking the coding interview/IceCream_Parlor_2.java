@@ -1,3 +1,4 @@
+// https://www.hackerrank.com/challenges/ctci-ice-cream-parlor/problem
 /*
 Each time Sunny and Johnny take a trip to the Ice Cream Parlor, they pool together money dollars for ice cream. 
 On any given day, the parlor offers a line of n flavors. 

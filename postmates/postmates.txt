@@ -1,0 +1,55 @@
+1) mergingLetters
+2) equallyRearranging
+3) diagonalsArranging
+4) coolFeature 
+
+Median of 2 sorted arrays
+
+
+Graphs, Binary Trees
+
+
+1. Given a list of 2 tuples sort by second value
+2. Given a dictionary and a value, give list of all keys which have that value. In case of nesting, the keys should be separated by a dot.
+   {'a' : 'apple',
+     'b' : 'bobb',
+     'c' : {
+         'd' : 'dog'
+       },
+      'e' : 'dog'
+     }
+  I/P -> 'dog'
+  O/P -> ['e', 'c.d']
+3. Given a sorted list of unix epoch timestamps which correspond to user logins, find if user logged… 
+
+Questions:
+
+OA questions
+
+given a positive integer, return the difference between product of all digits and sum of all digits
+given pattern p, a binary string, and a string s, which contains only lowercase english letter. Return the total number of substring of s that match the pattern p if and only if for each 0 in p, the corresponding letter in s is a vowel, and for each 1 in p, the corresponding letter in s is a consonance
+given two string s1, s2, determine if two string are similar. Two string is considered as similar if they can be obtained from the other string through following operation 1) swapping any 2 symbols in string. 2) swap the occurrances of any two symbols
+Given two integer array a, b, and query, which is an array of queries. There are two types of queries.
+query is of the form [0, i, x], you need to update b to the value of x,
+if query is of form [1, x], find the total number of pairs of indices i and j such that a + b[j] = x.
+Perform all given queries and return an array of the result of all the queries of the second type.
+Onsite:
+
+Design KeyValueStore with (1) transactions and (2) nested transactions.
+Implement begin(), put(k, v), get(k), commit(), rollback() methods.
+Nested transaction is when you can have multiple begin/commit/rollback one inside other.
+You are given deliveries as a tuple {start_time, end_time, capacity} then you need return {time, total_capacity} tuple for each timestamp(start/end) given in the input
+Manager chat about your past expeience, why postmates, your future goals.
+Design whatsapp
+One - one chat
+Group chat
+Text/Multi-media messages
+Sent/Delivered/Read status
+Online/offline status
+End to end Encryption.
+Users poll for messages from server so no push notifications and server shouldn't store any messages.
+
+
+
+https://leetcode.com/discuss/interview-question/705494/postmates-sde-ii-onsite-interview-june-2020
+ Bug Bash, Front-end problem, API problem, System Design

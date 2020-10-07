@@ -1,3 +1,5 @@
+https://www.hackerrank.com/challenges/ctci-balanced-brackets/problem
+
 import java.io.*;
 import java.util.*;
 import java.text.*;
@@ -29,18 +31,12 @@ public class Balanced_Brackets {
     
     public static boolean isOpen(char c)
     {
-        if(c=='(' || c=='['||c=='{')
-            return true;
-        else
-            return false;
+        return c=='(' || c=='['||c=='{';
     }
     
     public static boolean areSame(char c1,char c2)
     {
-        if((c1=='(' && c2 ==')') || (c1=='[' && c2 ==']') || (c1=='{' && c2 =='}'))
-            return true;
-        else
-            return false;
+        return (c1=='(' && c2 ==')') || (c1=='[' && c2 ==']') || (c1=='{' && c2 =='}');
     }
   
     public static void main(String[] args) {

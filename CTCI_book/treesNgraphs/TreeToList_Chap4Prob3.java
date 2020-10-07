@@ -2,6 +2,9 @@ import java.util.*;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
+
+import sun.misc.Queue;
+
 import java.io.*;
 
 class Node {
@@ -17,22 +20,37 @@ class Node {
  }
 public class  TreeToList_Chap4Prob3{
 
-	static LinkedList<LinkedList<Node>> treeToList(Node root)
-	{
+	// static LinkedList<LinkedList<Node>> treeToList(Node root)
+	// {
+	// 	LinkedList<LinkedList<Node>> lists=new LinkedList<LinkedList<Node>>();
+	// 	lists.add(new LinkedList<Node>());
+	// 	lists.get(0).add(root);
+	// 	LinkedList<Node> current=lists.get(0);
+	// 	while(current.size()!=0)
+	// 	{
+	// 		LinkedList<Node> temp=new LinkedList();
+	// 		for(Node n:current)
+	// 		{
+	// 			if(n.left!=null) temp.add(n.left);
+	// 			if(n.right!=null) temp.add(n.right);
+	// 		}
+	// 		current=temp;
+	// 		lists.add(temp);
+	// 	}
+	// 	return lists;
+	// }
+
+	static LinkedList<LinkedList<Node>> treeToList(Node root) {
 		LinkedList<LinkedList<Node>> lists=new LinkedList<LinkedList<Node>>();
-		lists.add(new LinkedList<Node>());
-		lists.get(0).add(root);
-		LinkedList<Node> current=lists.get(0);
-		while(current.size()!=0)
-		{
-			LinkedList<Node> temp=new LinkedList();
-			for(Node n:current)
-			{
-				if(n.left!=null) temp.add(n.left);
-				if(n.right!=null) temp.add(n.right);
+		Queue queue = new Queue<Node>();
+		queue.add(root);
+		queue.add(null);
+		while(!queue.isEmpty()){
+			List<Node> list = new LinkedList<Node>();
+			while(queue.peek() != null){
+				list.add(queue.dequeue());
 			}
-			current=temp;
-			lists.add(temp);
+			list.add(list);
 		}
 		return lists;
 	}

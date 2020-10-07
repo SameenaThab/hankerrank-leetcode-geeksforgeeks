@@ -26,6 +26,27 @@ public class ArrayLeftRotation {
         return a;
     }
     
+    // with extra space
+    static int[] rotLeft(int[] a, int d) {
+
+        int n = a.length;
+        d = d%n;
+        int[] b = new int[n];
+        if(d == 0)
+            return a;
+        System.out.println("d: "+d);
+        if(d!=0) {
+            for(int i=0;i<n;i++) {
+                int pos = i-d<0?i-d+n:i-d;
+                System.out.println("i: "+i+" "+"pos: "+pos);
+                System.out.println("before b[pos]: "+b[pos]);
+                b[pos] = a[i];
+                System.out.println("after b[pos]: "+b[pos]);
+            }
+        }
+        return b;
+    }
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
