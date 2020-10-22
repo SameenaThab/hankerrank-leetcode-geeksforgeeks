@@ -22,6 +22,8 @@ Graphs, Binary Trees
   O/P -> ['e', 'c.d']
 3. Given a sorted list of unix epoch timestamps which correspond to user logins, find if user logged… 
 
+https://leetcode.com/discuss/interview-question/542850/Postmates-or-Senior-Software-Engg-or-SF-HQ-or-Mar-2020-Reject
+
 Questions:
 
 OA questions
@@ -50,6 +52,6 @@ End to end Encryption.
 Users poll for messages from server so no push notifications and server shouldn't store any messages.
 
 
-
+https://leetcode.com/discuss/interview-question/836859/Postmates-or-OA-or-Experienced
 https://leetcode.com/discuss/interview-question/705494/postmates-sde-ii-onsite-interview-june-2020
  Bug Bash, Front-end problem, API problem, System Design
