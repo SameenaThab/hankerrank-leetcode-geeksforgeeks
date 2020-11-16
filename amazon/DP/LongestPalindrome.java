@@ -12,7 +12,9 @@ class LongestPalindrome {
         if (s == null || s.length() < 1) return "";
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
+            //odd
             int len1 = expandAroundCenter(s, i, i);
+            //even
             int len2 = expandAroundCenter(s, i, i + 1);
             int len = Math.max(len1, len2);
             if (len > end - start) {
