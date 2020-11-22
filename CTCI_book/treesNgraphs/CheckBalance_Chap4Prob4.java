@@ -31,20 +31,28 @@ public class  CheckBalance_Chap4Prob4{
 			return true;
 		else
 			return Math.abs(height(root.left)-height(root.right))<=1;
-	}
+    }
         
+
     public static void main(String[] args) {
-              Node root=new Node(4);
-              Node left=new Node(2);
-              left.left=new Node(1);
-              left.right=new Node(3);
-              root.left=left;
-              Node right=new Node(6);
-              right.left=new Node(5);
-              Node last_but_one=new Node(7);
-              last_but_one.right=new Node(9);
-              right.right=last_but_one;
-              root.right=right;
-              System.out.println(checkBalance(root));
+        /*
+            4
+        2           6
+    1       3     5     7
+                            9
+
+        */
+            Node root=new Node(4);
+            Node left=new Node(2);
+            // left.left=new Node(1);
+            // left.right=new Node(3);
+            root.left=left;
+            Node right=new Node(6);
+            right.left=new Node(5);
+            Node last_but_one=new Node(7);
+            last_but_one.right=new Node(9);
+            right.right=last_but_one;
+            root.right=right;
+            System.out.println("checkBalance: "+checkBalance(root));
         }
 }

@@ -17,50 +17,54 @@ class Node {
       this.parent=null;
     }
  }
-public class  Successor_Chap4Prob6{
+public class  Successor_Chap4Prob6{        
+  public static void main(String[] args) {
+    /*
+          4
+      2       6
+    1   3   5   7
+    */
+    Node root=new Node(4);
+    Node left=new Node(2);
+    Node leftschild1=new Node(1);
+    left.left=leftschild1;
+    leftschild1.parent=left;
+    Node leftschild2=new Node(3);
+    left.right=leftschild2;
+    leftschild2.parent=left;
+    root.left=left;
+    left.parent=root;
+    Node right=new Node(6);
+    Node rightsleft=new Node(5);
+    right.left=rightsleft;
+    rightsleft.parent=right;
+    Node rightsright=new Node(7);
+    right.right=rightsright;
+    rightsright.parent=right;
+    root.right=right;
+    right.parent=root;
+    Node result2 = inOrderTraversal(left);
+    System.out.println(result2==null?null:result2.data);
+  }
 
-  static Node successor(Node node)
-  {
-    if(node.parent==null)
-      return leftMost(node.right);
-    Node q=node;
-    Node x=q.parent;
-    while(x!=null && x.left!=q)
-    {
-      q=x;
-      x=x.parent;
+  static Node inOrderTraversal(Node n) {
+    if(n.right != null)
+      return leftMostNode(n.right);
+    else {
+      while(n.parent != null && n.data>n.parent.data)//right subTree or root
+      {
+        n=n.parent;
+      }
+      if(n.parent == null)
+        return null;
+      return n.parent;
     }
-    return x;
   }
 
-  static Node leftMost(Node node)
-  {
-    while(node.left!=null)
-      node=node.left;
-    return node;
+  static Node leftMostNode(Node n) {
+    while(n.left != null)
+      n=n.left;
+    return n;
   }
 
-        
-    public static void main(String[] args) {
-              Node root=new Node(4);
-              Node left=new Node(2);
-              Node leftschild1=new Node(1);
-              left.left=leftschild1;
-              leftschild1.parent=left;
-              Node leftschild2=new Node(3);
-              left.right=leftschild2;
-              leftschild2.parent=left;
-              root.left=left;
-              left.parent=root;
-              Node right=new Node(6);
-              Node rightsleft=new Node(5);
-              right.left=rightsleft;
-              rightsleft.parent=right;
-              Node rightsright=new Node(7);
-              right.right=rightsright;
-              rightsright.parent=right;
-              root.right=right;
-              right.parent=root;
-              System.out.println(successor(leftschild2).data);
-        }
 }

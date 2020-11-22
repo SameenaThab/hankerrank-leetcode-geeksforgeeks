@@ -19,19 +19,6 @@ public class MinimalTree_C4Q2 {
     int[] arr;
     int n;
 
-    TreeNode buildMinimalBST(int[] arr,int left,int right) {
-        if(right<left) {
-            return null;
-        }
-        else {
-           int mid = (left+right)/2;
-           TreeNode root =  new TreeNode(arr[mid]);
-           root.left = buildMinimalBST(arr,left,mid-1);
-           root.right = buildMinimalBST(arr,mid+1,right);
-           return root;
-        }
-    }
-
     void preOrder(TreeNode root) {
         if(root != null) {
             System.out.print(root.value);
@@ -48,6 +35,16 @@ public class MinimalTree_C4Q2 {
             System.out.print(" ");
             inOrder(root.right);
         }
+    }
+
+    TreeNode buildMinimalBST2(int[] arr,int l,int r) {
+        if(r<l)
+            return null;
+        int mid = (l+r)/2;
+        TreeNode root = new TreeNode(arr[mid]);
+        root.left = buildMinimalBST2(arr,l,mid-1);
+        root.right = buildMinimalBST2(arr,mid+1,r);
+        return root;
     }
     
         
@@ -78,8 +75,9 @@ public class MinimalTree_C4Q2 {
         
         sol.n = n;
         sol.arr = arr;
-        TreeNode root = sol.buildMinimalBST(arr, 0, n-1);
+        TreeNode root = sol.buildMinimalBST2(arr, 0, n-1);
         // sol.preOrder(root);
+        System.out.println("Inorder traversal: ");
         sol.inOrder(root);
         scanner.close();
     }
