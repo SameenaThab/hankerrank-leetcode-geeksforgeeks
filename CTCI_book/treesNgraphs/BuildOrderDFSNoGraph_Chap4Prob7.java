@@ -6,7 +6,7 @@ import java.io.*;
 
 public class  BuildOrderDFSNoGraph_Chap4Prob7 {  
 
-    Map<String,List<String>> dependencies;
+    Map<String,List<String>> parentChild;
 
     List<String> projects;
 
@@ -21,7 +21,8 @@ public class  BuildOrderDFSNoGraph_Chap4Prob7 {
                 add("f");
             }
         };   
-        Map<String,List<String>> dependencies = new HashMap<String, List<String>>() {{
+        // dependency matrix a->{b,c} => b and c are dependent on a
+        Map<String,List<String>> parentChild = new HashMap<String, List<String>>() {{
             put("f", new ArrayList<String>());
             put("e", new ArrayList<String>());
             put("a", new ArrayList<String>( 
@@ -37,7 +38,7 @@ public class  BuildOrderDFSNoGraph_Chap4Prob7 {
         }};
 
         BuildOrderDFSNoGraph_Chap4Prob7 sol = new BuildOrderDFSNoGraph_Chap4Prob7();
-        sol.dependencies = dependencies;
+        sol.parentChild = parentChild;
         sol.projects = projects;
         try {
             List<String> result = sol.buildOrder();
@@ -55,19 +56,19 @@ public class  BuildOrderDFSNoGraph_Chap4Prob7 {
         Set<String> processing = new HashSet<String>();
         for(String st:projects) {
             if(!visited.contains(st))
-                dfs(st,result,visited,processing,dependencies); 
+                dfs(st,result,visited,processing,parentChild); 
         }
         return result;
     }
 
-    void dfs(String project,List<String> result,Set<String> visited, Set<String> processing, Map<String,List<String>> dependencies) throws 
+    void dfs(String project,List<String> result,Set<String> visited, Set<String> processing, Map<String,List<String>> parentChild) throws 
     Exception {
         processing.add(project);
-        for(String st:dependencies.get(project)){
+        for(String st:parentChild.get(project)){
             if(processing.contains(st))
                 throw new Exception("Not possible to build order");
             if(!visited.contains(st)) {
-                dfs(st,result,visited,processing,dependencies);
+                dfs(st,result,visited,processing,parentChild);
             }
         }
         visited.add(project);
