@@ -3,7 +3,6 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 import java.io.*;
-import java.lang.reflect.Array;
 
 public class  CoinCount_Chap8Prob11 {
     int[] coins;
