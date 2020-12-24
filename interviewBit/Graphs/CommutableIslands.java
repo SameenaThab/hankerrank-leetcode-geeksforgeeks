@@ -82,7 +82,7 @@ B :
         for(ArrayList<Integer> bridge : bridges) {
             int u = bridge.get(0)-1;
             int v = bridge.get(1)-1;
-            if(findParent(u)!= findParent(v)) { // same parents no cycle
+            if(findParent(u)!= findParent(v)) { // different parents no cycle
                 union(u,v);
                 count+=bridge.get(2);
                 edges+=1;
