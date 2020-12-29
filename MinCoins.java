@@ -5,7 +5,8 @@ class MinCoins {
         MinCoins sol = new MinCoins();
         int amount = 0;
         int[] coins = new int[]{1};
-        System.out.println(sol.coinChange(coins,amount));
+        System.out.println(Integer.parseInt("-200"));
+        // System.out.println(sol.coinChange(coins,amount));
         // int[][] dp = new int[amount+1][4];
         // System.out.println(sol.makeChangeMem(amount,0,dp));
     }

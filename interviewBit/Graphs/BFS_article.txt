@@ -1,0 +1,30 @@
+https://www.freecodecamp.org/news/exploring-the-applications-and-limits-of-breadth-first-search-to-the-shortest-paths-in-a-weighted-1e7b28b3307/
+
+
+Basically the summary of the article is BFS is good for finding the shortest path but not cheapest path.
+
+
+So for a weighted graph where BFS will end up finding the costly path
+
+Example:
+
+0 -- 1--2 --0 src:0 ,dest:2
+
+cost(0,1) is 100
+cost(0,2) is 500
+cost(2,1) is 100
+
+Cheapest path 0-1-2 = 200
+Shortest path is 0-2 = 500
+
+We can use BFS to find cheapest path where we keep updating the mincost array . 
+Initially mincost[src] = 0 and mincost[all others] = infinity
+mincost[neighbor] = Math.min(minCost[neighbor], minCost[popped element]+weight[popped element, neighbor]
+
+But every time we find a mincost for a neighbor we add its neighbors back to queue to update its neighbors.
+
+SO BFS is not good idea, never know when if we can stop finding and updating  mincost
+
+But when number of hops is strictly constrained then we can use BFS. So find cheapest cost and also with in k hops. Then we can stop updating mincost hops exceed k.
+
+BFS for min hops performs better than DFS (In article it said Dynamic programming, but I am assuming recursive DFS)
