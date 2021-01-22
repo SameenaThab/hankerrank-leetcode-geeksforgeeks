@@ -31,6 +31,7 @@ public class CombinationSum {
         //     return;
         // }
         for(int i=index;i<list.size();i++) {
+            //continue on duplicate elements
             if(i!=list.size()-1 && list.get(i) == list.get(i+1))
                 continue;
             // optimization no need to continue if remaing becomes < 0 loop ends

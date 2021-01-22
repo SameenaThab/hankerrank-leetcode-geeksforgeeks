@@ -17,20 +17,19 @@ class Node {
  }
 public class  CheckBalance_Chap4Prob4{
 
-	static int height(Node root)
-	{
-		if(root==null)
-			return 0;
-		else
-			return 1+Math.max(height(root.left),height(root.right));
-	}
-
-	static boolean checkBalance(Node root)
+	static int checkBalance(Node root)
 	{
 		if(null == root)
-			return true;
-		else
-			return Math.abs(height(root.left)-height(root.right))<=1;
+			return 0;
+        int leftHeight = checkBalance(root.left);
+        if(leftHeight == Integer.MIN_VALUE) // whwen left tree not balanced
+            return Integer.MIN_VALUE;
+        int rightHeight = checkBalance(root.right);
+        if(rightHeight == Integer.MIN_VALUE) // when right tree not balanced
+            return Integer.MIN_VALUE; 
+        if(Math.abs(leftHeight-rightHeight) > 1)
+            return Integer.MIN_VALUE; // tree not balanced
+        return Math.max(leftHeight,rightHeight)+1;
     }
         
 
@@ -44,8 +43,8 @@ public class  CheckBalance_Chap4Prob4{
         */
             Node root=new Node(4);
             Node left=new Node(2);
-            // left.left=new Node(1);
-            // left.right=new Node(3);
+            left.left=new Node(1);
+            left.right=new Node(3);
             root.left=left;
             Node right=new Node(6);
             right.left=new Node(5);
@@ -53,6 +52,7 @@ public class  CheckBalance_Chap4Prob4{
             last_but_one.right=new Node(9);
             right.right=last_but_one;
             root.right=right;
-            System.out.println("checkBalance: "+checkBalance(root));
+            boolean result = checkBalance(root)==Integer.MIN_VALUE? false:true;
+            System.out.println("checkBalance: "+result);
         }
 }

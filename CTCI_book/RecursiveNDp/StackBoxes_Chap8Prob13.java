@@ -80,8 +80,8 @@ public class  StackBoxes_Chap8Prob13 {
         heights[h1,h2,h3,h4]
         Math.max(
             if we select bottom as h1 -> h1+MaxHeight{h2,h3,h4};
-                -> bottom as h2 -> h2+MaxHeight{h2,h3,h4}
-                -> bottom as h3 -> h3+MaxHeight{h3,h4}
+                -> bottom as h2 -> h2+MaxHeight{h3,h4}
+                -> bottom as h3 -> h3+MaxHeight{h4}
             if we select bottom as h2 -> h2+MaxHeight{h1,h2,h3};
             .
             .

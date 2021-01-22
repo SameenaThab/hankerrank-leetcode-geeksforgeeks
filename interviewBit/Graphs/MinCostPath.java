@@ -36,7 +36,9 @@ public class MinCostPath {
         // System.out.println(sol.solve(1,1,matrix));
         ArrayList<String> matrix = new ArrayList<String>(Arrays.asList("RRRRD", "DLLLL", "RRRRD", "DLLLL", "RRRRR"));
         System.out.println(sol.solve(5,5,matrix));
+        // System.out.println("dfs solution: "+sol.solveDFS(5,5,matrix));
     }
+
 
     class Cell {
         int row;
@@ -81,7 +83,7 @@ public class MinCostPath {
                 int path=dir.equals(r,c+1)?currDist:currDist+1;
                 if(dist[r][c+1] == -1 || dist[r][c+1] > path) {
                     dist[r][c+1] = path;
-                    queue.add(new Cell(r,c+1));
+                    queue.add(new Cell(r,c+1));  // updating only when new distance is smaller than recorded before
                 }
 
             }
@@ -130,5 +132,72 @@ public class MinCostPath {
     boolean valid(int r,int c) {
         // System.out.println("valid: "+(r>=0 && r<m && c>=0 && c<n));
         return (r>=0 && r<m && c>=0 && c<n);
+    }
+
+// DFS work in progress
+    // int solveDFS(int m, int n, ArrayList<String> matrix) {
+    //     this.m=m;
+    //     this.n=n;
+    //     this.matrix=matrix;
+    //     int[][] dist = new int[m][n];
+    //     for(int i=0;i<m;i++) {
+    //         Arrays.fill(dist[i],-1);
+    //     }
+    //     dfs(0,0,matrix,dist,0);
+    //     return dist[m-1][n-1];
+    // }
+
+    // boolean dfs(int i,int j, ArrayList<String> matrix,int[][] dist,int count) {
+    //     if(i==m-1 && j==n-1) {
+    //         dist[i][j] = count;
+    //         return true;
+    //     }
+    //     int currDist = dist[i][j];
+    //     char direction = matrix.get(i).charAt(j);
+    //     int nexti;
+    //     int nextj;
+    //     if(direction == 'R') {
+    //         nexti=i;
+    //         nextj=j+1;
+    //     } else if(direction == 'L') {
+    //         nexti=i;
+    //         nextj=j-1;
+    //     } else if(direction == 'U') {
+    //         nexti=i-1;
+    //         nextj=j;
+    //     } else {
+    //         nexti=i+1;
+    //         nextj=j;            
+    //     }
+    //     if(valid(i,j+1)) {
+    //         // System.out.println("here");
+    //         int path=(nexti==i && nextj==j+1)?count:count+1;
+    //         if(dist[i][j+1] == -1 || dist[i][j+1] > path) {
+    //             dist[i][j+1] = path;
+    //             dfs(i,j+1,matrix,dist,path); // updating only when new distance is smaller than recorded before
+    //         }
+
+    //     }
+    //     if(valid(i,j-1)) {
+    //         int path=(nexti==i && nextj==j-1)?count:count+1;
+    //         if(dist[i][j-1] == -1 || dist[i][j-1] > path) {
+    //             dist[i][j-1] = path;
+    //             dfs(i,j-1,matrix,dist,path); // updating only when new distance is smaller than recorded before
+    //         }
+    //     }
+    //     if(valid(i+1,j)) {
+    //         int path=(nexti==i+1 && nextj==j)?currDist:currDist+1;
+    //         if(dist[i+1][j] == -1 || dist[i+1][j] > path) {
+    //             dist[i+1][j] = path;
+    //             dfs(i+1,j,matrix,dist,path); // updating only when new distance is smaller than recorded before
+    //         }
+    //     }
+    //     if(valid(i-1,j)) {
+    //         int path=(nexti==i-1 && nextj==j)?currDist:currDist+1;
+    //         if(dist[i-1][j] == -1 || dist[i-1][j] > path) {
+    //             dist[i-1][j] = path;
+    //             dfs(i-1,j,matrix,dist,path); // updating only when new distance is smaller than recorded before
+    //         }
+    //     }
     }
 }

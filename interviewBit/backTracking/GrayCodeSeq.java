@@ -35,14 +35,14 @@ public class GrayCodeSeq {
     Note that last element of G(n) and first element of R(n) is same. So the above sequence is valid.
 
     Example G(2) to G(3) :
-    0 00
-    0 01
-    0 11
-    0 10
-    1 10
-    1 11
-    1 01
-    1 00
+    0 00    0
+    0 01    1
+    0 11    3
+    0 10    2
+    1 10    6
+    1 11    7
+    1 01    5
+    1 00    8
     */
     public ArrayList<Integer> grayCodeOptimal(int a) {
         ArrayList<Integer> result = new ArrayList<Integer>();

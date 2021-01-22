@@ -83,7 +83,9 @@ B :
             int u = bridge.get(0)-1;
             int v = bridge.get(1)-1;
             if(findParent(u)!= findParent(v)) { // different parents no cycle
-                union(u,v);
+            // if(parentNonRecursive(u)!= parentNonRecursive(v)) { 
+                unionbest(u,v);
+                // unionWithOutChildren(u,v);
                 count+=bridge.get(2);
                 edges+=1;
             }
@@ -94,7 +96,7 @@ B :
         return count;
     }
 
-    void union(int u,int v) {
+    void unionbest(int u,int v) {
         int parent1 = findParent(u);
         int parent2 = findParent(v);
         // updates parents 
@@ -107,6 +109,29 @@ B :
             u = parent[u];
         }
         return parent[u];
+    }
+
+    private void unionWithOutChildren(int u, int v) {
+        int parentU = parentNonRecursive(u);
+        int parentV = parentNonRecursive(v);
+        if(parentU==u && parentU==v){
+            parent[u] = parentU;
+            parent[v] = parentU;
+        }
+        else if(parentU==u)
+            parent[parentU]=parentV;
+        else if(parentV==v)
+            parent[parentV]=parentU;
+        else{
+            parent[parentV]=parentU;
+        }
+    }
+
+    private int parentNonRecursive(int x) {
+        while(parent[x]!=x)
+            x= parent[x];
+        
+        return parent[x];
     }
 
 }

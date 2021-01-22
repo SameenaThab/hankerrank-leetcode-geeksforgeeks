@@ -9,7 +9,11 @@ class Pair {
     }
 }
 
-/* https://www.interviewbit.com/problems/maximal-string/ */
+/* https://www.interviewbit.com/problems/maximal-string/ 
+eg: 245
+maximum charcters first solution 542
+
+*/
 public class MaximalString {
 
     public static void main(String[] args) {
@@ -54,18 +58,20 @@ public class MaximalString {
 
     // With out backTracking this solution fails for duplicate numbers.
     /* 
-    2499 B=2 is swapped to 9429 and 9924 -> but ans is 9924 
+    2499 B=2 is swapped to 9429 and 9942 -> but ans is 9924 (2 swaps)
     */
     void generate(char[] arr,int B,int index) {
         if(B==0 || index==arr.length)
             return;
         char maxChar = arr[index];
+        int maxIndex = index;
         for(int i=index+1;i<arr.length;i++){
             if(maxChar<arr[i]) {
+                maxIndex=i;
                 maxChar=arr[i];
             }
         }
-        // System.out.println("index: "+index+" maxIndex: "+maxIndex);
+        System.out.println("index: "+index+" maxIndex: "+maxIndex);
         if(maxChar != arr[index]) {
             B--;
         }

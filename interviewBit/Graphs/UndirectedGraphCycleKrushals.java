@@ -109,10 +109,13 @@ public class UndirectedGraphCycleKrushals {
             int v = edge.get(1);
             int parentU = findParent(u);
             int parentV = findParent(v);
+            // int parentU = parentNonRecursive(u);
+            // int parentV = parentNonRecursive(v);
             System.out.println("u: "+u+" v: "+v+" parentU: "+parentU+" parentV: "+parentV);
             if(parentU == parentV)
                 return 1;
             union(u,v);
+            // unionWithOutChildren(u,v);
             System.out.println(Arrays.toString(parents));
         }
         return 0;
@@ -133,6 +136,29 @@ public class UndirectedGraphCycleKrushals {
             parents[u] = findParent(parents[u]);
         }
         return parents[u];
+    }
+
+    private void unionWithOutChildren(int u, int v) {
+        int parentU = parentNonRecursive(u);
+        int parentV = parentNonRecursive(v);
+        if(parentU==u && parentU==v){
+            parents[u] = parentU;
+            parents[v] = parentU;
+        }
+        else if(parentU==u)
+            parents[parentU]=parentV;
+        else if(parentV==v)
+            parents[parentV]=parentU;
+        else{
+            parents[parentV]=parentU;
+        }
+    }
+
+    private int parentNonRecursive(int x) {
+        while(parents[x]!=x)
+            x= parents[x];
+        
+        return parents[x];
     }
       
 }

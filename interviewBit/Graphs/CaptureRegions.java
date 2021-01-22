@@ -13,7 +13,10 @@ public class CaptureRegions {
     ArrayList<ArrayList<Character>> matrix;
 
     /*
-      A = [  [X, X, X, X],
+    We already know chunks of O which remain as O are the ones which have at least one O connected to them which is on the boundary.
+    Use BFS starting from ‘O’s on the boundary and mark them as ‘B’, then iterate over the whole board and mark ‘O’ as ‘X’ and ‘B’ as ‘O’.
+
+    A = [  [X, X, X, X],
         [X, X, X, X],
         [X, X, X, X],
         [X, O, X, X]

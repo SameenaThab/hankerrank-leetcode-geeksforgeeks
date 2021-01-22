@@ -85,7 +85,7 @@ public class PermutationSwaps {
         int parentV = parentNonRecursive(v, parents);
         if(parentU != parentV) {
             if(children[parentU]<children[parentV]) {
-                children[parentU]+=children[parentV]; // addind all children of parentU children to parentV                
+                children[parentV]+=children[parentU]; // addind all children of parentU children to parentV                
                 parents[parentU] = parentV; // making parent of parentV as parentU's parent     
             } else {
                 children[parentU]+=children[parentV]; // addind all parentV children to parentU                

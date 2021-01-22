@@ -1,3 +1,5 @@
+import java.util.*;
+
 //https://leetcode.com/problems/concatenated-words/
 
 class Trie {
@@ -6,8 +8,8 @@ class Trie {
         Map<Character,TrieNode> alphabets;
         boolean isword;
         public TrieNode() {
-            alphabets = new HashMap<Character,TrieNode>();
-            isword = false;
+            this.alphabets = new HashMap<Character,TrieNode>();
+            this.isword = false;
         }
     }
 

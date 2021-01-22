@@ -1,3 +1,5 @@
+import java.util.*;
+
 class ConcatenatedWords {
     //https://leetcode.com/problems/concatenated-words/submissions/
     TrieNode root;

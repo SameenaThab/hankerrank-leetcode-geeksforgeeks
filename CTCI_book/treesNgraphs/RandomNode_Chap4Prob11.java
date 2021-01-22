@@ -4,6 +4,18 @@ import java.math.*;
 import java.util.regex.*;
 import java.io.*;
 
+/* 
+SLow approach: Maintain a array of nodes and pck node randomly .
+Problem is when we delete a node , node in the array is also deleted
+
+For n nodes the propability of choosing N should be 1/n
+probalility of chissing left and right tress is not 50-50 bcoz tree is not balanced.
+right tree can have more nodes than left and vice versa.
+So we maintain size of node
+prob of left tree = leftsize*1/n +rightsize*1/n
+total = 1 , there all nodes have equal probability to be selected
+*/
+
 class Node {
     int data;
     int size;

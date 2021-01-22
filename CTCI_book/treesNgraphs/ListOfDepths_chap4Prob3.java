@@ -44,6 +44,33 @@ public class ListOfDepths_chap4Prob3 {
         listOfDepths(root.left,result,level+1);
         listOfDepths(root.right,result,level+1); 
     }
+
+    class Pair {
+        TreeNode node;
+        int level;
+        Pair(TreeNode node, int level) {
+            this.node = node;
+            this.level = level;
+        }
+    }
+
+    public List<List<Integer>> listOfDepthsBFS(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        while(!queue.isEmpty()) {
+            int length = queue.size();
+            List<Integer> subResult = new ArrayList<Integer>();
+            for(int i=0;i<length;i++) {
+                TreeNode currNode = queue.poll();
+                subResult.add(currNode.value);
+                if(currNode.left != null) queue.add(currNode.left);
+                if(currNode.right != null) queue.add(currNode.right);
+            }
+            result.add(subResult);
+        }
+        return result;
+    }
         
     public static void main(String[] args) {
         /*
@@ -76,6 +103,12 @@ public class ListOfDepths_chap4Prob3 {
             System.out.println();
         }
 
+
+        List<List<Integer>> result2 = sol.listOfDepthsBFS(root);
+
+        for(List<Integer> list : result2) {
+            System.out.println(list.toString());
+        }
     }
 }
 

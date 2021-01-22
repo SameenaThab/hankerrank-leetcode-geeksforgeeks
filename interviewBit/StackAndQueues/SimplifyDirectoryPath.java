@@ -54,7 +54,7 @@ public class SimplifyDirectoryPath {
         }
         StringBuilder absolutePath = new StringBuilder();
         // String absolutePath = new String();
-        for (String name : stack) {
+        for (String name : stack) { //starts from bottom
             // absolutePath+="/";
             // absolutePath+=name;
             // System.out.println(name);

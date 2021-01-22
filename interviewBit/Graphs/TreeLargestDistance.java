@@ -15,6 +15,21 @@ class Node {
     }
 }
 
+/* 
+        0
+    1   2   3
+                4
+For above tree largest distance will be for path(1-0-3-4) = 3.
+
+We know that largest distance has to pass from root.
+We will have a global  variable 'node' and we keep updating node to popped TreeNode from the queue as we do BFS
+First we call BFS on root, then node will become the last leaf node,
+In the above example bfs(0) => node = 4
+Then we do BFS on node bfs(4) , we update node = 1, as it is last leaf node.
+
+Basically we travel to the last leaf node, then traverse back to leaf node on other side
+*/
+
 public class TreeLargestDistance {
 
     int n;
@@ -36,7 +51,7 @@ public class TreeLargestDistance {
         int dist[] = new int[hm.size()];
         Queue<Integer> q = new LinkedList<Integer>();
         q.add(root);
-        dist[root] = 1;
+        dist[root] = 1; // we substract 1 from final ans
         while(!q.isEmpty()) {
             node = q.remove();
             ArrayList<Integer> temp = hm.get(node);
@@ -140,7 +155,6 @@ public class TreeLargestDistance {
 
     int height(Node root) {
         int max = 0;
-        \
         if(root == null)
             return 0;
         System.out.println("index: "+root.index);

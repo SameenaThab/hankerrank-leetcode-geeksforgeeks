@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class EvalReversePolishNotation {
+public class ReversePolishNotation {
 
     public static void main(String[] args) {
-        EvalReversePolishNotation sol = new EvalReversePolishNotation();
+        ReversePolishNotation sol = new ReversePolishNotation();
         ArrayList<String> A = new ArrayList<String>(Arrays.asList("-11","2","+"));
         // ArrayList<String> A = new ArrayList<String>(Arrays.asList("2", "1", "+", "3", "*"));
         System.out.println("Solution: "+sol.evalRPN(A));

@@ -47,6 +47,16 @@ public class  Successor_Chap4Prob6{
     System.out.println(result2==null?null:result2.data);
   }
 
+
+/* 
+inorder: left-curr-right
+for any given node is next node is leftmost node of right subtree
+But if the right subtree is null then
+case 1: given node is a leftsubtree of its parent p, then p will be the next node
+case 2: given node is a rightsubtree of its parent p
+  So the node n is full traversed, next node has to be unvisited node on the upward direction
+  We know we reach unvisited node when we go from leftNode to parent. node.data<parent.data
+*/
   static Node inOrderTraversal(Node n) {
     if(n.right != null)
       return leftMostNode(n.right);

@@ -6,7 +6,23 @@ import java.math.*;
 import java.util.regex.*;
 import java.io.*;
 
-/* https://www.interviewbit.com/problems/two-teams/ */
+/* https://www.interviewbit.com/problems/stepping-numbers/ 
+A = 10 B = 20
+start node = 0
+From 0, we can move to 1 2 3 4 5 6 7 8 9 [ these are not in our range so we don't add it ]
+now from 1, we can move to 12 and 10 
+from 2, 23 and 21
+from 3, 34 and 32
+.
+.
+.
+.
+.
+.
+and so on
+
+10 and 12 are in our range, so the answer = 2.
+*/
 
 public class SteppingNumber {
     int A,B;

@@ -71,6 +71,7 @@ public class  EightQueens_Chap8Prob12 {
     }
 
     boolean possible(int row,int col,List<Integer> columns) {
+        // we dont check for same column becz we are putting one piece in each row
         for(int row2=0;row2<row;row2++) {
             int col2 = columns.get(row2);
             if(col == col2) //same column

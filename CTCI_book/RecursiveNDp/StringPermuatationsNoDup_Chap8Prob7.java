@@ -40,7 +40,7 @@ public class  StringPermuatationsNoDup_Chap8Prob7 {
     }
 
     // a -> {a}
-    // ab -> {ab,ba} -> a*perm(b)
+    // ab -> {ab,ba} -> a*perm(b),b*perm(a)
     // abc -> {abc,acb,bac,bca,cab,cba} -> {a*perm(bc), b*perm(ab), c*perm(ca)} 
     ArrayList<String> permutations2(String st) {
         ArrayList<String> result = new ArrayList<String>();
