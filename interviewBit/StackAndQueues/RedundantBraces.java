@@ -36,7 +36,7 @@ public class RedundantBraces {
                 stack.push(ch);
             }
             if(isClosedBraces(ch)) {
-                if(isOpenBraces(stack.pop())) //must operator for non redundant
+                if(isOpenBraces(stack.pop())) //must be operator for non redundant
                     return 1; // redundant
                 stack.pop(); // remove the corresponding open brace
             }

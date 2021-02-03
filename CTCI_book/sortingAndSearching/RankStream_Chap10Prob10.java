@@ -22,7 +22,7 @@ class RankNode {
     RankNode left;
     RankNode right;
     int leftSize=0;
-    RankNode(int data) {
+    RankNode(int data) {  
         this.data = data;
     }
 

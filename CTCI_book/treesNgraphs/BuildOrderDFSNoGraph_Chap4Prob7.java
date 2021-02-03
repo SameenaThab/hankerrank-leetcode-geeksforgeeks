@@ -21,7 +21,7 @@ public class  BuildOrderDFSNoGraph_Chap4Prob7 {
                 add("f");
             }
         };   
-        // dependency matrix a->{b,c} => b and c are dependent on a
+        // dependency matrix a->{b,c} => a is dependent on b and c 
         Map<String,List<String>> parentChild = new HashMap<String, List<String>>() {{
             put("f", new ArrayList<String>());
             put("e", new ArrayList<String>());

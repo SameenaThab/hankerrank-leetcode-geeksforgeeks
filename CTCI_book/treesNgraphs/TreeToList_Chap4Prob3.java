@@ -1,9 +1,6 @@
 import java.util.*;
 import java.text.*;
 import java.math.*;
-import java.util.regex.*;
-
-import sun.misc.Queue;
 
 import java.io.*;
 
@@ -42,15 +39,18 @@ public class  TreeToList_Chap4Prob3{
 
 	static LinkedList<LinkedList<Node>> treeToList(Node root) {
 		LinkedList<LinkedList<Node>> lists=new LinkedList<LinkedList<Node>>();
-		Queue queue = new Queue<Node>();
+		Queue<Node> queue = new LinkedList<Node>();
 		queue.add(root);
-		queue.add(null);
 		while(!queue.isEmpty()){
-			List<Node> list = new LinkedList<Node>();
-			while(queue.peek() != null){
-				list.add(queue.dequeue());
+			int len = queue.size();
+			LinkedList<Node> list = new LinkedList<Node>();
+			for(int i=0;i<len;i++){
+				Node curr = queue.poll();
+				list.add(curr);
+				if(curr.left != null) queue.add(curr.left);
+				if(curr.right != null) queue.add(curr.right);
 			}
-			list.add(list);
+			lists.add(list);
 		}
 		return lists;
 	}
@@ -72,7 +72,7 @@ public class  TreeToList_Chap4Prob3{
               {
 	              for(Node n:list)
 	              {
-	              	System.out.print(n.data);
+	              	System.out.print(n.data+" ");
 	              }
 	              System.out.println();
               }

@@ -50,7 +50,7 @@ public class  Successor_Chap4Prob6{
 
 /* 
 inorder: left-curr-right
-for any given node is next node is leftmost node of right subtree
+for any given node its next node/successor is the leftmost node of right subtree
 But if the right subtree is null then
 case 1: given node is a leftsubtree of its parent p, then p will be the next node
 case 2: given node is a rightsubtree of its parent p
@@ -61,11 +61,11 @@ case 2: given node is a rightsubtree of its parent p
     if(n.right != null)
       return leftMostNode(n.right);
     else {
-      while(n.parent != null && n.data>n.parent.data)//right subTree or root
+      while(n.parent != null && n.data>n.parent.data)//right subTree or not root
       {
         n=n.parent;
       }
-      if(n.parent == null)
+      if(n.parent == null) // reached root, but be rightmost tree
         return null;
       return n.parent;
     }

@@ -26,18 +26,16 @@ public class  CheckBST_Chap4Prob5{
     return checkBST(root.left,min,root.data) && checkBST(root.right,root.data,max);
   }
 
-  static boolean checkBST2(Node root,Integer min,Integer max) {
-    if(null==root)
+  static boolean checkBST2(Node root,int min,int max) {
+    if(root == null)
       return true;
-    if(root.data<=min||root.data > max)
-      return false;
-    return checkBST(root.left,min,root.data) && checkBST(root.right,root.data,max);
+    return (root.data>min && root.data<=max) && checkBST2(root.left,min,root.data) && checkBST2(root.right,root.data,max);
   }
 
 	static boolean checkBST(Node root)
 	{
     // return checkBST(root,null,null);
-    return checkBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    return checkBST2(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
 	}
         
     public static void main(String[] args) {
@@ -56,11 +54,6 @@ public class  CheckBST_Chap4Prob5{
       System.out.println(checkBST2(root,Integer.MIN_VALUE,Integer.MAX_VALUE));
     }
 
-    static boolean checkBST2(Node root,int min,int max) {
-      if(root == null)
-        return true;
-      return (root.data>min && root.data<=max) && checkBST2(root.left,min,root.data) && checkBST2(root.right,root.data,max);
-    }
 
   
 }

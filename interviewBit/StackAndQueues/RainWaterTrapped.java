@@ -4,6 +4,9 @@ check approach 1,2 and 4
 https://leetcode.com/problems/trapping-rain-water/solution/
 for any curr histogram find left_max within range[0(included) to currentIndex(included)] and right_max within range[currentIndex(included) to n-1(included)]
 Min(left_max,right_max)-height[curr] gives water stored over the histogram
+
+Using stacks you can maintain leftmax and right max arrays and calculate water contained by Min(left_max,right_max)-height[curr]
+similar to MaxSpecialProduct.java
  */
 public class RainWaterTrapped {
 

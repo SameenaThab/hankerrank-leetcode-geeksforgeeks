@@ -1,6 +1,7 @@
 import java.util.*;
 
 /* 
+https://www.interviewbit.com/problems/simplify-directory-path/
 Input 1:
     A = "/home/"
 Output 1:
