@@ -1,0 +1,36 @@
+https://leetcode.com/problems/split-array-largest-sum/
+
+https://leetcode.com/problems/kth-largest-element-in-a-stream/
+
+https://leetcode.com/problems/brace-expansion/
+
+https://leetcode.com/problems/confusing-number-ii/
+
+https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
+
+https://leetcode.com/problems/hand-of-straights/
+
+https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+
+https://leetcode.com/problems/maximal-square/
+
+https://leetcode.com/discuss/interview-experience/849787/Google-Telephonic-Interview
+
+https://leetcode.com/problems/validate-stack-sequences/
+
+https://leetcode.com/discuss/interview-experience/778039/Google-Phone-Interview-Rejected
+
+Given an array arr[], the task is to answer stream of queries to find the maximum of all the elements in the index range arr[L…R] within O(logn) time.
+
+----- 2019 ---------
+Given two strings A and B, find the longest common prefix.
+Given two strings A and B, what's the longest prefix of A which is suffix of B.
+Given a list of strings, find number of unique prefixes of all the strings.
+Given a list of string, find the longest common substring of all strings.
+
+Take 2 strings return index of char where is not the same.
+Design jsbin.
+Given a function return a function that executed original function 1 second later.
+Given a timeline write the JavaScript to select all nodes within selection of timeline.
+Given a 2 dimensional array add the diagonals.
+How would you create google analytics script.
