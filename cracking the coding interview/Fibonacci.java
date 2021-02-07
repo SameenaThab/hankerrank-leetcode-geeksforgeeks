@@ -16,10 +16,14 @@ public class Fibonacci {
         else
             return fibonacci(b,a+b,n,i+1);
     }
+
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         scanner.close();
         System.out.println(fibonacci(n));
+
+        System.out.println(fibonacci(5));
     }
 }

@@ -6,7 +6,7 @@ import java.math.*;
 import java.util.regex.*;
 import java.io.*;
 
-/* https://www.interviewbit.com/problems/two-teams/ 
+/* https://www.interviewbit.com/problems/sum-of-fibonacci-numbers/
 
 0 1 1 2 3 5 8 13 21
 
