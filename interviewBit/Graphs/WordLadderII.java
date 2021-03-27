@@ -1,12 +1,11 @@
 import java.util.*;
-import java.util.Map.Entry;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 import java.io.*;
 
 /* https://www.youtube.com/watch?v=vZNFOBEfib4&ab_channel=happygirlzt
+First we build adjacency matrix for all word in dictionary and then do DFS
 
 hit -> {hot} -> {lot,dot} -> {log} -> {cog}
                           -> {dog} -> {cog}
@@ -67,7 +66,7 @@ public class WordLadderII {
             for(String neighbor : adjMatrix.get(src)) {
                 singlePath.add(neighbor);
                 dfs(neighbor,dest,singlePath,paths,adjMatrix);
-                singlePath.remove(neighbor);
+                singlePath.remove(neighbor); //backTRack
             }
         }
         return;
@@ -111,14 +110,14 @@ public class WordLadderII {
         while(true) {
             dict.removeAll(currSet);
             for(String curr:currSet) {
-                System.out.println("curr: "+curr);
+                // System.out.println("curr: "+curr);
                 for(int j=0;j<curr.length();j++) {
                     for(char c='a';c<='z';c++) {
                         String newString = curr.substring(0,j)+c+curr.substring(j+1);
                         if(dict.contains(newString)) {
-                            System.out.println("newString: "+newString);
+                            // System.out.println("newString: "+newString);
                             if(newString.equals(dest)){
-                                System.out.println("here here..");
+                                // System.out.println("here here..");
                                 found = true;
                             }
                             nextSet.add(newString);

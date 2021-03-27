@@ -21,15 +21,15 @@ public class Chap3Prob2 {
     	System.out.println(min());
     	pop();
     	System.out.println(min());
+    	pop();
+    	System.out.println(min());
 	}
 
 	static void push(int a)
 	{
-		if(!stmin.empty() && a<stmin.peek())
+		if(stmin.empty() || a<stmin.peek())
 			stmin.push(a);
 		st.push(a);
-		if(stmin.empty())
-			stmin.push(a);
 	}
 
 	static void pop()

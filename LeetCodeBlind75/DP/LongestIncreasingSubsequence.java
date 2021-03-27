@@ -77,8 +77,8 @@ class LongestIncreasingSubsequence {
     This method relies on the fact that the longest increasing subsequence possible upto the ith index in a given array is independent of the elements coming later on in the array. 
     Thus, if we know the length of the LIS upto i th index, 
     we can figure out the length of the LIS possible by including the (i+1)th element based on the elements with indices j such that 0≤j≤(i+1).
-    We make use of a dpdp array to store the required data. 
-    dp[i] represents the length of the longest increasing subsequence possible considering the array elements up to the ithindex only ,by necessarily including the ith element.
+    We make use of a dp array to store the required data. 
+    dp[i] represents the length of the longest increasing subsequence possible considering the array elements up to the ith index only ,by necessarily including the ith element.
     In order to find out dp[i], we need to try to append the current element(nums[i]) in every possible increasing subsequences upto the (i−1)th index(including the (i−1)th index), 
     such that the new sequence formed by adding the current element is also an increasing subsequence.
     Thus, we can easily determine dp[i] using:
@@ -101,7 +101,7 @@ class LongestIncreasingSubsequence {
                 if(nums[j]<nums[i]) {
                     sub = Math.max(sub,dp[j]);
                 }
-                dp[i] = sub+1;
+                dp[i] = sub+1; // because dp[i] includes the ith element
             }
             max = Math.max(max,dp[i]);
         }
@@ -113,7 +113,7 @@ class LongestIncreasingSubsequence {
 In this approach, we scan the array from left to right.
 We also make use of a dp array initialized with all 0's.
 This dp array is meant to store the increasing subsequence formed by including the currently encountered element.
-While traversing the numsnums array, we keep on filling the dp array with the elements encountered so far.
+While traversing the nums array, we keep on filling the dp array with the elements encountered so far.
 For the element corresponding to the jth index (nums[j]),
 we determine its correct position in the dp array(say ith index) by 
 making use of Binary Search(which can be used since the dp array is storing increasing subsequence)
@@ -144,13 +144,15 @@ Space complexity : O(n). dpdp array of size nn is used.
         int[] dp = new int[nums.length];
         int len = 0;
         for (int num : nums) {
-            //index of the search key, if it is contained in the array within the specified range; 
-            // otherwise, (-(insertion point) - 1).
+            //binarySearch returns index of the search key, if it is contained in the array within the specified range; 
+            // otherwise, (-(insertion point) - 1). for[1,2,4] binarySearch(3) returns -2-1 = -3
             int i = Arrays.binarySearch(dp, 0, len, num);
-            // System.out.println("len: "+len+" i: "+i+" num: "+num);
+            System.out.println("len: "+len+" i: "+i+" num: "+num);
             if (i < 0) {
-                i = -(i + 1);
+                i = -(i + 1); // get insertion point
             }
+
+            System.out.println("updated i: "+i);
             dp[i] = num;
             if (i == len) {
                 len++;

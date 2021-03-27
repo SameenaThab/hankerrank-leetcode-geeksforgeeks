@@ -5,7 +5,7 @@ import java.util.regex.*;
 import java.io.*;
 
 /* 
-Listy doesnot have length/size method by has elementAt method - return -1 when index out of bounds
+Listy doesnot have length/size method but has elementAt method - return -1 when index out of bounds
 Listy elements are sorted
 So we can determine the length using elementAt.
 we start with index = 1 and do multiples of 2 -> 2,4,8. This way we can determine length o(logn) times (n = 2^k => k(#times called) = logn)
@@ -48,9 +48,11 @@ public class  ListySearch_Chap10Prob4 {
             mid = (low+high)/2;
             if(listy.getElementAt(mid) == k)
                 return mid;
+            // case listy.getElementAt(mid) == -1 , wouldn't occur
+            // list.getElement(high) can be -1 but mid would not be
             else if(listy.getElementAt(mid) < k)  {
                 low = mid+1;
-            } else { // case when listy.getElementAt(mid) == -1 || listy.getElementAt(mid) > k
+            } else { // case when listy.getElementAt(mid) > k
                 high = mid-1;
             }
         }

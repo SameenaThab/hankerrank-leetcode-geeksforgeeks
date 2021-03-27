@@ -31,7 +31,7 @@ public class SmallestMultipleZerosOnes {
     Since all numbers are 0 and 1, to get to next number,
         we multiple previous state/rem with 10 to go to append 0 and 
         we multiple previous state/rem with 10 and add 1 to go to append 1
-        Number = Quotient+Divisor+reminder
+        Number = Quotient*Divisor+reminder
         Nextnumbers/branches = {(Quotient*Divisor+reminder)*10 , (Quotient*Divisor+reminder)*10+1}
         As we are dealing with smallest multiple and reminder's range -> [0,n] All the quotients will be 0's
         therefore nextnumbers/branches = {reminder*10 , reminder*10+1} Imp*: for repeated states this is not the case bcoz quotient will not be 0.

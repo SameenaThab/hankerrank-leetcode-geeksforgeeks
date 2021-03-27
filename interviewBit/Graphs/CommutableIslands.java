@@ -114,7 +114,7 @@ B :
     private void unionWithOutChildren(int u, int v) {
         int parentU = parentNonRecursive(u);
         int parentV = parentNonRecursive(v);
-        if(parentU==u && parentU==v){
+        if(parentU==u && parentV==v){
             parent[u] = parentU;
             parent[v] = parentU;
         }

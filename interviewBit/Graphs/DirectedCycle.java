@@ -73,7 +73,8 @@ public class DirectedCycle {
         for(int i=0;i<A;i++) {
             System.out.println("i: "+i);
             if(!visited[i]) {
-                if(dfs(i,visited,processing))
+                // dfs2 willnot mark visited until all adj nodes are completed
+                if(dfs2(i,visited,processing))
                     return 1;
             }
         }
@@ -92,6 +93,21 @@ public class DirectedCycle {
                 return true;
         }
         processing[node] = false;
+        return false;
+    }
+
+    public boolean dfs2(int node,boolean[] visited,boolean[] processing) {
+
+        // System.out.println("node: "+node);
+        if(processing[node])
+            return true; // cycle detected
+        processing[node] = true;
+        for(Integer edge:adjacentMap.get(node)) {
+            if(!visited[node] && dfs(edge,visited,processing))
+                return true;
+        }
+        visited[node] = true;
+        processing[node] = false; // reset for others
         return false;
     }
 }

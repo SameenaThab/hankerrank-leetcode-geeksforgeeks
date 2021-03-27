@@ -63,7 +63,7 @@ public class MinCostPath {
             Arrays.fill(dist[i],-1);
         }
         queue.add(new Cell(0,0));
-        dist[0][0] = 0;
+        dist[0][0] = 0; //acts as both visited and to keep track of distance(bcoz once visited doesnot guarantee min path)
         for(int i=0;i<m;i++) {
             System.out.println(Arrays.toString(dist[i]));
         }       

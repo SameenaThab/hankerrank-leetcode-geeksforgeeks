@@ -110,7 +110,8 @@ public class DeleteEdge {
 
     public long dfs(Integer node,Integer parent,long totalSum) {
         long sum = weights.get(node);
-        for(Integer edge:adjacentMap.get(node)) {
+        //leaf node will have only parent as adject node, therefor it will return sum as zero
+        for(Integer edge:adjacentMap.get(node)) { 
             if(edge != parent) {
                 long subtree = dfs(edge,node,totalSum);
                 sum=(sum+subtree)%MOD;

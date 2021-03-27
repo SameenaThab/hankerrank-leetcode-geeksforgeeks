@@ -91,7 +91,7 @@ public class ThreeStackSingleArray_Chap3Prob1 {
             }
         }
         else if(stack == 2) {
-            if(top2 == -1) {
+            if(top2 == 99) {
                 System.out.println("Stack "+stack+" is empty");
                 return -1;
             }
@@ -102,7 +102,7 @@ public class ThreeStackSingleArray_Chap3Prob1 {
             }
         }
         else {
-            if(top3 == -1) {
+            if(top3 == 199) {
                 System.out.println("Stack "+stack+" is empty");
                 return -1;
             }
@@ -126,7 +126,7 @@ public class ThreeStackSingleArray_Chap3Prob1 {
             }
         }
         else if(stack == 2) {
-            if(top2 == -1) {
+            if(top2 == 99) {
                 System.out.println("Stack "+stack+" is empty");
                 return -1;
             }
@@ -135,7 +135,7 @@ public class ThreeStackSingleArray_Chap3Prob1 {
             }
         }
         else {
-            if(top3 == -1) {
+            if(top3 == 199) {
                 System.out.println("Stack "+stack+" is empty");
                 return -1;
             }

@@ -13,10 +13,10 @@ traverse thru array
     else reset count to 1, new seq started
     update max and prev
 
-    Time complexity : O(nlgn)O(nlgn).
+    Time complexity : O(nlgn).
 end
 
-The main for loop does constant work nn times, so the algorithm's time complexity is dominated by the invocation of sort, which will run in O(nlgn) time for any sensible implementation.
+The main for loop does constant work n times, so the algorithm's time complexity is dominated by the invocation of sort, which will run in O(nlgn) time for any sensible implementation.
 
 Space complexity : O(1) (or O(n)).
 
@@ -50,7 +50,7 @@ class LongestConsecutive {
     /* 
     Using hashSets and no sorting
     we add all numbers to hashset, for each number, num in the set 
-        we check if num-1 exists, if exists then we have already count the streak, therfore no need to proceed
+        we check if num-1 exists, if exists then we have already count the streak or will count in future, therfore no need to proceed
             prev = num ,streak = 1
             while num+1 exists in hashset, 
                 we increment our count/Streak and update prev = num+1;
@@ -75,7 +75,7 @@ class LongestConsecutive {
         }
         int longestStreak = 0;
         for(int num:set) {
-            if(!set.contains(num-1)) { // if contains then we have already considered its streak
+            if(!set.contains(num-1)) { // if contains then we have already considered its streak or will count in future
                 int streak = 1;
                 int prev = num;
                 while(set.contains(prev+1)) {

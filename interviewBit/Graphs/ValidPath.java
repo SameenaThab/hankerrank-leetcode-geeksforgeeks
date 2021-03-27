@@ -91,7 +91,7 @@ public class ValidPath {
         // System.out.println("radius: "+Math.abs(cx-i)*Math.abs(cx-i)+Math.abs(cy-j)*Math.abs(cx-j));
         return Math.abs(cx-i)*Math.abs(cx-i)+Math.abs(cy-j)*Math.abs(cy-j) <= r*r;
     }
-
+    
     boolean inAnyCircle(int x,int y) {
         for(int i=0;i<n;i++) {
             int cx= centerX.get(i);

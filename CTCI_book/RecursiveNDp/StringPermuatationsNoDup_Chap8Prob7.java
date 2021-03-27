@@ -60,6 +60,15 @@ public class  StringPermuatationsNoDup_Chap8Prob7 {
         return result;
     }
 
+/* 
+(n! times permutation is called in its base case): 
+    Say there are 7 characters in string, each character is used to divide stirng so 7 times,
+    but once the character to divide is picked, the permutation is called another 6 times for remaining charcters and so on.. therefore n! times
+String concatenation : takes n times
+permutation is called n times before its base case: 
+    The whole for loop takes n times, Picture tree with n! leaves , leaf is attached to path of n length
+O(n)  = n^2*n! 
+*/
     //same as permutations2 but instead passing permutations down the stack, we push prefix to the stack
     void permutations3(String prefix,String remainder,ArrayList<String> result) {
         // System.out.println(prefix);

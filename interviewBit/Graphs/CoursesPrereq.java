@@ -36,7 +36,7 @@ public class CoursesPrereq {
             graph.put(B.get(i),prereq);                        
         }
         System.out.println(graph);
-        int[] mem = new int[A+1];
+        int[] mem = new int[A+1]; // can just maintain a completed set
         Arrays.fill(mem,-1);
         for(int i=0;i<A;i++) {
             Set<Integer> processing = new HashSet<Integer>();

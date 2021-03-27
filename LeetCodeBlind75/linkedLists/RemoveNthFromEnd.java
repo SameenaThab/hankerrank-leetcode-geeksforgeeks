@@ -1,4 +1,4 @@
-import java.util.*;
+   import java.util.*;
 /* 
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 */
@@ -43,8 +43,8 @@ One pass is optimal
 we have two pointers first and second
 make first traverse n+1 times, 
 Now move both first and second to next nodes normally maitaining gap of n nodes between them
-byt the time first reaches to null, second wil; be at preceeding node of deleting node
-add a dummy node in the beginning , makes it easy to remove nth element form last/0th element from beginning
+byt the time first reaches to null, second will be at preceeding node of deleting node
+add a dummy node in the beginning , makes it easy to remove nth element from last/0th element from beginning
 eg: delete node 2 from last
     dummy(f,s)->1->2->3->4->5
     dummy(s)->1->2->3(f)->4->5

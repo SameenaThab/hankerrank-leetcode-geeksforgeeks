@@ -124,6 +124,8 @@ class ValidTree {
     */
     public boolean validTreeKrushkals(int n, int[][] edges) {
         if (edges.length != n - 1) return false; //because not fully connected or has cycles
+        // Even after checking edges!= -1 , we continue , 
+        // because edges can between repeated nodes creating cycle and one node can be left aside
         int[] parents = new int[n];
         for(int i=0;i<n;i++) {
             parents[i] = i;

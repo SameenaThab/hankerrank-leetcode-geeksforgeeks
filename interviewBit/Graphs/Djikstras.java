@@ -6,7 +6,7 @@ import java.math.*;
 import java.util.regex.*;
 import java.io.*;
 
-/* https://www.interviewbit.com/problems/knight-on-chess-board/
+/* https://www.interviewbit.com/problems/useful-extra-edges/
 
     A = 3
     B = [   [1, 2, 1]

@@ -14,6 +14,9 @@ public class RainWaterTrapped {
         RainWaterTrapped sol = new RainWaterTrapped();
         ArrayList<Integer> A = new ArrayList<Integer>(Arrays.asList(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1));
         System.out.println("Solution: "+sol.trap(A));
+
+        ArrayList<Integer> B = new ArrayList<Integer>(Arrays.asList(3, 2, 1, 4, 6));
+        System.out.println("Solution: "+sol.trap(B));
     }
 
     public int trap(final List<Integer> A) {

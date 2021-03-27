@@ -89,7 +89,7 @@ class MergeKSortedLists {
     }
 
      //time complexity = O(kn) {k lists, n = total no of elements in two list}
-    // time complexity = O(1)
+    // Space complexity = O(1)
     public ListNode mergeKLists(ListNode[] lists) { 
         if(lists.length == 0)
             return null;

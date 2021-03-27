@@ -34,7 +34,7 @@ public class CombinationSum {
             //continue on duplicate elements
             if(i!=list.size()-1 && list.get(i) == list.get(i+1))
                 continue;
-            // optimization no need to continue if remaing becomes < 0 loop ends
+            // optimization - no need to continue if remaing becomes < 0 loop ends
             if(sum-list.get(i) < 0)
                 return;
             subset.add(list.get(i));

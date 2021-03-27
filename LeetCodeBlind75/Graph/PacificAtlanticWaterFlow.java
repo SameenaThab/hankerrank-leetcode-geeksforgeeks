@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 class PacificAtlanticWaterFlow {
     
@@ -14,87 +11,65 @@ We check a cell reaches to both sides if DFS reached to (row0 or col0) && (row n
 At the end we count number of cells with value -2
 */
     public List<List<Integer>> pacificAtlantic(int[][] matrix) {
-        int m = matrix.length;
-        int n = matrix[0].length;
-        int[][] visited = new int[m][n];
-        // for(int[] row:visited) {
-        //     Arrays.fill(row,-1);
-        // }
-        Set<String> reachable = new HashSet<String>();
         List<List<Integer>> result = new ArrayList<List<Integer>>();
+        int m = matrix.length;
+        if(m == 0)
+            return result;
+        int n = matrix[0].length;
+        if(n == 0)
+            return result;
+        int[][] visited1 = new int[m][n];
+        int[][] visited2 = new int[m][n];
+        for(int i=0;i<n;i++) {
+            bfs(matrix,0,i,visited1);
+        }
+        for(int i=0;i<m;i++) {
+            bfs(matrix,i,0,visited1);
+        }
+        for(int i=0;i<n;i++) {
+            bfs(matrix,m-1,i,visited2);
+        }
+        for(int i=0;i<m;i++) {
+            bfs(matrix,i,n-1,visited2);
+        }
         for(int i=0;i<m;i++) {
             for(int j=0;j<n;j++) {
-                if(visited[i][j] == 0)
-                    dfsPacificToAtlantic(i,j,m,n,matrix,visited,reachable);
+                if(visited1[i][j]+visited2[i][j] == 2) {
+                    result.add(new ArrayList<Integer>(Arrays.asList(i,j)));
+                }
             }
-        }
-        for(String cell : reachable) {
-            System.out.println(cell);
-        }
-        System.out.println("visited");
-        for(int[] row : visited) {
-            System.out.println(Arrays.toString(row));
-        }
-        for(String str : reachable) {
-            int i = Integer.parseInt(str.split(",")[0]);
-            int j = Integer.parseInt(str.split(",")[1]);
-            System.out.println("visited");
-            for(int[] row : visited) {
-                System.out.println(Arrays.toString(row));
-            }
-            System.out.println("In cell i: "+i+" j: "+j);
-            if(visited[i][j] == 1 && dfsAtlanticToPacific(i,j,m,n,matrix,visited,result,reachable)) {
-                result.add(new ArrayList<Integer>(Arrays.asList(i,j)));
-            }            
         }
         return result;
     }
 
-    private boolean dfsAtlanticToPacific(int i, int j, int m, int n, int[][] matrix, int[][] visited,
-            List<List<Integer>> result, Set<String> reachable) {
-        System.out.println("i: "+i+" j: "+j);
-        if(i == 0 || j == 0) {
-            return true;
-        }
-
-        visited[i][j]=0;
-        int[] rows = new int[]{-1,0};
-        int[] cols = new int[]{0,-1};
-        for(int k=0;k<2;k++) {
-            int newRow = i+rows[k];
-            int newCol = j+cols[k];
-            if(valid(newRow,newCol,m,n) && visited[newRow][newCol] == 1 && matrix[newRow][newCol] <= matrix[i][j] && dfsAtlanticToPacific(newRow,newCol,m,n,matrix,visited,result,reachable)) {                
-                visited[i][j]=1;
-                return true;
-            } 
-        }
-        visited[i][j]=1;
-        return false;
-    }
-
-    private boolean dfsPacificToAtlantic(int i, int j, int m, int n, int[][] matrix, int[][] visited, Set<String> reachable) {
-        visited[i][j]=1;
-        if(i==m-1 || j == n-1) {
-            reachable.add(i+","+j);
-            return true;
-        }
-        int[] rows = new int[]{1,0};
-        int[] cols = new int[]{0,1};
-        for(int k=0;k<2;k++) {
-            int newRow = i+rows[k];
-            int newCol = j+cols[k];
-            if(valid(newRow,newCol,m,n) && visited[newRow][newCol] == 0 && matrix[newRow][newCol] <= matrix[i][j] && dfsPacificToAtlantic(newRow,newCol,m,n,matrix,visited,reachable)) {
-                reachable.add(i+","+j);
-                return true;
-            } 
-        }
-        return false;
-    }
-
-    private boolean valid(int newRow, int newCol, int m, int n) {
-        return newRow>=0 && newRow<m && newCol >= 0 && newCol < n;
-    }
  
+    private void bfs(int[][] matrix, int row, int col,int[][] visited) {
+        Queue<int[]> queue = new LinkedList<int[]>();
+        queue.add(new int[]{row,col});
+        int[] rows = new int[] {1,-1,0,0};
+        int[] cols = new int[] {0,0,1,-1};
+        int m = matrix.length;
+        int n = matrix[0].length;
+        visited[row][col]=1;
+        while(!queue.isEmpty()) {
+            int[] curr = queue.poll();
+            int currRow = curr[0];
+            int currCol = curr[1];
+            for(int i=0;i<4;i++) {
+                int newRow = currRow+rows[i];
+                int newCol = currCol+cols[i];
+                if(valid(newRow,newCol,m,n) && visited[newRow][newCol] != 1 && matrix[newRow][newCol] >= matrix[currRow][currCol]) {
+                    visited[newRow][newCol]=1;
+                    queue.add(new int[]{newRow,newCol});
+                }
+            }
+        }
+    }
+
+    private boolean valid(int row, int col, int m,int n) {
+        return row>=0&&row<m&&col>=0&&col<n;
+    }
+
     public static void main(String[] args) {
         PacificAtlanticWaterFlow sol = new PacificAtlanticWaterFlow();
         // int[][] matrix = new int[][]{

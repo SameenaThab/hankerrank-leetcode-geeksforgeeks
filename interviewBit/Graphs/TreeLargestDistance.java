@@ -41,6 +41,7 @@ public class TreeLargestDistance {
         TreeLargestDistance sol = new TreeLargestDistance();
         /* 
          A = [-1, 0, 0, 0, 3]
+         index represents node and value represents parent
         */
         
         ArrayList<Integer> arr = new ArrayList<Integer>(Arrays.asList(-1, 0, 0, 0, 3));
@@ -56,7 +57,7 @@ public class TreeLargestDistance {
             node = q.remove();
             ArrayList<Integer> temp = hm.get(node);
             for(int i=0; i<temp.size(); i++) {
-                if(dist[temp.get(i)] == 0) {
+                if(dist[temp.get(i)] == 0) { // unvisited
                     q.add(temp.get(i));
                     dist[temp.get(i)] = dist[node] + 1;
                 }
@@ -76,13 +77,14 @@ public class TreeLargestDistance {
                 root = i;
             }
             else {
+                // adding adjacent node on both ways
                 hm.get(i).add(A.get(i));
                 hm.get(A.get(i)).add(i);
             }
         }
         node = 0;
         bfs(hm, root);
-        return bfs(hm,node) - 1;
+        return bfs(hm,node) - 1; // travel back
     }
 
     // public int solve(ArrayList<Integer> arr) {
