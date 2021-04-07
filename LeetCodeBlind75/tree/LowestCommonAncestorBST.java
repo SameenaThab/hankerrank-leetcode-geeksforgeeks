@@ -12,7 +12,7 @@ p and q < root -> go left
 p and q > root -> go right
 else return root
 */
-class LowestCommonAncestor {
+class LowestCommonAncestorBST {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(p == root || q == root)
             return root;

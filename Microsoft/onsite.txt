@@ -1,0 +1,74 @@
+https://leetcode.com/problems/find-duplicate-file-in-system/
+https://leetcode.com/problems/find-median-from-data-stream/
+the other question was we get 2 strings a and b determine if anagram of b exists in a.
+last question was a graph question that I actually messed up, it was a backtracking. you have a 5x5 grid and you want to go from 0,0 to 4,4 but you cannot pass the same edge twice and everytime you move right you have to pay 2 every time you move left your cost is decreased by 2 everytime you go up it douples the cost and everytime you go down if halves it. go to 4,4 in a way that total cost is 0 at the end.
+you have to solve this for a situation that you are already moved right twice and cost is 4 already
+https://leetcode.com/discuss/interview-question/1081320/Microsoft-virtual-onsite-question
+
+https://leetcode.com/discuss/interview-question/1003642/Microsoft-or-Phone-Screen-or-1-hour-or-Seattle-or-Bay-area-or-Senior-SWE
+
+https://leetcode.com/discuss/interview-question/1125412/Optimizing-this-question-relating-to-parsing-string-to-number
+
+https://leetcode.com/discuss/interview-question/685338/Microsoft-or-Onsite-or-Design-the-T9-predictive-text-algorithm-and-system
+
+how many unique values in an array
+similar to this: https://leetcode.com/problems/search-suggestions-system/ (solved with trie, did not finish it, but interviewer was satisfied with what I did)
+copy list with random pointer (https://leetcode.com/problems/copy-list-with-random-pointer/)
+some problem with binary search, pretty easy but I can't remember exactly;
+
+https://leetcode.com/discuss/interview-question/686189/Microsoft-or-Onsite-or-Minimal-Bus
+
+https://leetcode.com/discuss/interview-question/677321/Microsoft-or-Onsite-or-Coloring-Grid
+
+https://leetcode.com/discuss/interview-question/598634/Microsoft-or-Onsite-or-System-Design-or-SDE-2
+
+https://leetcode.com/problems/maximal-rectangle/
+
+https://leetcode.com/discuss/interview-question/518928/Microsoft-or-Onsite-or-How-would-you-solve-7149
+
+
+Validate BST
+Search in sorted 2D matrix
+Min cost path in graph
+Find common longest substring in an array of strings
+
+https://leetcode.com/discuss/interview-question/487498/Microsoft-or-Onsite-or-High-Concurrency-LRU-Cache
+
+https://www.openmymind.net/High-Concurrency-LRU-Caching/
+
+https://leetcode.com/discuss/interview-experience/487414/Microsoft-L64-Azure-Compute-Reject/
+
+https://leetcode.com/discuss/interview-question/447202/Microsoft-or-Onsite-Event-(non-Azure)
+
+https://leetcode.com/discuss/interview-question/446001/Microsoft-or-SDE-Intern-(Offer)-or-Onsite
+
+https://leetcode.com/discuss/interview-question/446026/Microsoft-or-Onsite-or-Minimum-jumps-with-boosters
+
+https://leetcode.com/discuss/interview-question/438544/Microsoft-or-Onsite-or-Print-Binary-Tree
+
+https://leetcode.com/discuss/interview-question/426770/Microsoft-or-Onsite-or-Transpose-Matrix
+
+https://leetcode.com/discuss/interview-question/416692/Microsoft-or-Onsite-or-Delete-Minimum-Intervals
+
+https://leetcode.com/discuss/interview-question/387124/Microsoft-or-Onsite-or-Maximum-Spliced-Array
+
+https://leetcode.com/discuss/interview-question/354150/Microsoft-or-Onsite-or-Group-Pairs
+
+https://leetcode.com/discuss/interview-question/284331/Microsoft-or-Onsite-or-Two-most-distant-histogram-bins
+
+https://leetcode.com/discuss/interview-question/262818/Microsoft-or-Onsite-or-Paint-House-II
+
+https://leetcode.com/discuss/interview-question/223109/Microsoft-or-Onsite-or-House-Robber-3
+
+https://leetcode.com/discuss/interview-question/1088968/Graph-question-(PLEASE-HELP)-Google-Microsoft-Apple
+
+https://leetcode.com/discuss/interview-question/566978/Micorsoft-onsite.
+
+https://leetcode.com/discuss/interview-question/890535/Onsite-interview-question.
+
+https://leetcode.com/discuss/interview-question/820868/Microsoft-Onsite
+
+https://leetcode.com/discuss/interview-question/742975/minimum-monthly-mobile-bill
+
+https://leetcode.com/discuss/interview-question/692996/Microsoft-System-Design-Please-help
+

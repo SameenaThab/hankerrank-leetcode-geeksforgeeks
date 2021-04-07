@@ -64,7 +64,7 @@ public class WaterTanksInternetSolution {
             if(currIdx+1>=s.length() || s.charAt(currIdx+1) != '-'){
                 cache[currIdx] = -1;
             }
-            else{ // we have HT? situation where we are at house, next is tank and next to next
+            else{ // we have HT? situation where we are at house, next is blank to place a tank and next to next
                   // is something we dont know yet, but its definitely safe, so we can skip checking from it
                 int placeTankAtNext = dfs(currIdx+3, s, cache);
                 

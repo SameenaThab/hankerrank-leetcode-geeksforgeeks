@@ -43,7 +43,7 @@ class InsertA {
             // no of insertions = #(otherCharacter)+1  eg: dog -> 4 insertions possible including front and end
             // 2 A's for each insertion without being 3 consecutive
             // str.length()-countOthers gives no of A in string
-            // need to exclued no of A to avoid 3 consecutive A's
+            // need to exclude no of A to avoid 3 consecutive A's
             return 2*(countOthers+1)-(str.length()-countOthers);
         }
     }
