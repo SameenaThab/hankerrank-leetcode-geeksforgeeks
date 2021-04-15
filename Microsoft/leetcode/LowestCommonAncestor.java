@@ -1,5 +1,40 @@
 import java.util.*;
 class LowestCommonAncestor {
+
+/* 
+Interview Question
+The coding half of this interview was a slightly different take on a popular question. 
+But, instead of a normal binary tree, it was inverted so children only have 1 pointer back to their parent instead of pointers to their children. I actually thought this was pretty straight-forward. My first solution was just to use a HashSet of seen nodes and have the pointers increment upwards back and forth until one node hits a seen node and then you know that's the LCA. Obvioulsy though that's O(N) space. When asked how to do it in O(1) space I gave 2 solutions.
+*/
+class TreeNodeInverse {
+    int val;
+    TreeNodeInverse parent;
+    TreeNodeInverse(int val) {
+       this.val = val;
+    }
+}
+
+public TreeNodeInverse LCAInvertedNode(TreeNodeInverse root,TreeNodeInverse p,TreeNodeInverse q) {
+    // root node has null parent, check if any give node is root, then retunr root
+    if(p.parent == null || q.parent == null)
+        return root;
+    return helper(root,p,q);
+}
+
+public TreeNodeInverse helper(TreeNodeInverse root,TreeNodeInverse p,TreeNodeInverse q) {
+    // root node has null parent, check if any give node is root, then retunr root
+    if(p == null || q == null)
+        return null;
+    TreeNodeInverse temp = p;
+    int pDepth = 0;
+    //this while loop is only possible if both p and q are on same level.
+    // To bring them to same level we can calculate depths and move the lowest node to the diff in depth no of times
+    while(p == q) {
+        p=p.parent;
+        q=q.parent;
+    }
+}
+
 /* 
 create HashMap<Child,Parent>
 Find parents for all nodes until you find parents for both p and q nodes

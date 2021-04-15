@@ -120,7 +120,7 @@ class ValidTree {
     Actually proving this upper bound on the depth is a very advanced proof, which I'd certainly hope you'd never need to do in an interview! If you're interested though, I recommend looking in a good algorithm's text book or paper.
 
     Space Complexity : O(N)
-    The UnionFind data structure requires O(N)O(N) space to the store the arrays it uses.
+    The UnionFind data structure requires O(N) space to the store the arrays it uses.
     */
     public boolean validTreeKrushkals(int n, int[][] edges) {
         if (edges.length != n - 1) return false; //because not fully connected or has cycles

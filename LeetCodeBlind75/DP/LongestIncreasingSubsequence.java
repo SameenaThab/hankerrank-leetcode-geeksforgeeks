@@ -89,23 +89,24 @@ class LongestIncreasingSubsequence {
         // Time = O(n^2), space O(n)
         // eg: 10,9,2,5,3,7,101,18
     public int lengthOfLISDP(int[] nums) {
-        int n = nums.length;
-        if(n==0)
+        if(nums.length == 0)
             return 0;
-        int[] dp = new int[n];
-        int max = 1;
-        dp[0] = 1; // max subseq length for first element is 1
-        for(int i=1;i<n;i++) {
-            int sub = 0;
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        int result = 1;
+        for(int i=1;i<nums.length;i++) {
+            int maxVal = 0;
             for(int j=0;j<i;j++) {
-                if(nums[j]<nums[i]) {
-                    sub = Math.max(sub,dp[j]);
+                if(nums[i]>nums[j]) {
+                    // There is a number less the curr nums[i] so its longestsequence dp[j] should be considered
+                    maxVal = Math.max(maxVal,dp[j]);
                 }
-                dp[i] = sub+1; // because dp[i] includes the ith element
+                // we always take ith element, we is seq less than ith ele, its length will be in maxVal
+                dp[i] = 1+maxVal;
+                result = Math.max(result,dp[i]);
             }
-            max = Math.max(max,dp[i]);
         }
-        return max;
+        return result;
     }
 
 
@@ -154,7 +155,7 @@ Space complexity : O(n). dpdp array of size nn is used.
 
             System.out.println("updated i: "+i);
             dp[i] = num;
-            if (i == len) {
+            if (i == len) { // len is always 1 number greater than last index
                 len++;
             }
         }

@@ -1,5 +1,5 @@
 import java.util.*;
-// https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/submissions/
+// https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 class CountComponents {
     /* 
     Using Krushkals
@@ -18,7 +18,7 @@ class CountComponents {
     Actually proving this upper bound on the depth is a very advanced proof, which I'd certainly hope you'd never need to do in an interview! If you're interested though, I recommend looking in a good algorithm's text book or paper.
 
     Space Complexity : O(N)
-    The UnionFind data structure requires O(N)O(N) space to the store the arrays it uses.
+    The UnionFind data structure requires O(N) space to the store the arrays it uses.
     */
     public int countComponentsKrushkals(int n, int[][] edges) {
         int[] parents = new int[n];

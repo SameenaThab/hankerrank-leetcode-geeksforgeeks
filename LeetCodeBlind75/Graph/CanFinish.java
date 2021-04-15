@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
+//https://leetcode.com/problems/course-schedule/
 class CanFinish {
     enum Status {
         PROCESSING,COMPLETE,UNVISITED

@@ -1,0 +1,8 @@
+* Assignment (~ 20 minutes):
+* (1) Write a type that implements a linked list of strings
+* (2) Provide a function that takes a sentence and returns the words as a linked list. Write tests to verify your code is correct.
+* Note: correctness is more important than optimizing for speed or memory.
+*
+* Follow On:
+* (3) Provide a function that returns the nth from last node in the list
+* (4) Provide a reverse() function

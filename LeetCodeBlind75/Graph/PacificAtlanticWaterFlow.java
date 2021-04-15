@@ -5,10 +5,10 @@ class PacificAtlanticWaterFlow {
     
 /* 
 Since all the elements are postive numbers.
-For Every cell reachable to both sides, we mark them with -2
-else we mark them with -1
+For Every cell reachable to both sides, we mark them with 2
+else we mark them with 1
 We check a cell reaches to both sides if DFS reached to (row0 or col0) && (row n-1 or col n-1)
-At the end we count number of cells with value -2
+At the end we count number of cells with value 2
 */
     public List<List<Integer>> pacificAtlantic(int[][] matrix) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
