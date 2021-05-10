@@ -84,9 +84,6 @@ class ThreeSum {
         For each i , we do twoSum problem using hashMap, with target -nums[i]
         Easy to avoid duplicates since duplicates in sorted are side by side
         Time = O(n^2)(we call sum(O(n)) n times), space = O(n)
-    Approach 3 : using hash set but not sorted
-        For each i , we do twoSum problem using hashMap, with target -nums[i]
-        Easy to avoid duplicates we use DUps hashSet
     */
 
     public List<List<Integer>> threeSumApp2(int[] nums) {
@@ -112,6 +109,12 @@ class ThreeSum {
         }
     }
 
+    /* 
+    Approach 3 : using hash set but not sorted
+    For each i , we do twoSum problem using hashMap, with target -nums[i]
+    Easy to avoid duplicates we use DUps hashSet
+    Time = O(n^2), Space = O(n)
+    */
     public List<List<Integer>> threeSumApp3(int[] nums) {
         Set<List<Integer>> res = new HashSet<List<Integer>>();
         Set<Integer> dups = new HashSet<Integer>();
@@ -120,6 +123,7 @@ class ThreeSum {
             if (!dups.contains(nums[i])) {
                 for (int j = i + 1; j < nums.length; ++j) {
                     int complement = -nums[i] - nums[j];
+                    // we do seen.get(complement) == i bcoz we want ot make sure the target we are considering is -nums[i]
                     if (seen.containsKey(complement) && seen.get(complement) == i) {
                         List<Integer> triplet = Arrays.asList(nums[i], nums[j], complement);
                         Collections.sort(triplet);
