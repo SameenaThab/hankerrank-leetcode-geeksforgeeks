@@ -49,4 +49,70 @@ DP
 	Continuous Subarray Sum
 Two Pointers
 	Interval List Intersections
+
+
+Intrinsic motivations 
+Empathy
+Ability to be proactive; get started
+Perseverance, works past obstacles; finishes
+Able to work in an unstructured environment
+Conflict resolution
+Growth
+Communication skills
+
+I would like to work on facebook Marketing API. How it empowers businesses and reaches the right demographic to sell their products.
+My current company has marketed on facebook adn instagram and got many agents signed up in return.
+I know that facebook is tries out diff permutations of . 
+optimize in real time seamless  reporting and analytics
+Automate Ad Management
+Drive workflow efficiency and build functionality that goes beyond manual ads management.
+Seamlessly create multiple ad templates at once to test different creative, bidding, or tagging strategies using our AdCopy API & Batch API.
+Control over your brand and content
+Leverage Dynamic Creative
+Find the most effective creative for your target audience by automatically creating different permutations. Keep things fresh by implementing creative rotation.
+
+ Easier sharing experience for your users
+
+It also provides good reporting and analytics. So that the client can knaw exact stats and how he is benefitting. 
 	
+	Facebook has been always part of my life.
+ 
+ 
+ 
+When I was in bachelors it helped me connect with my long lost friends from my school! when I was pursing masters, it helped me make new connections with people from my college before and after I landed here. I helped me keep my connection with my family who are not at all tech savvy but know only how to use WhatsApp.
+Apart from that, I use and love Facebook open sourced projects like React, pytorch etc which makes me thing that it has strong engineering culture
+
+
+What are expectations for a rotational engineer?
+show in 4 mnths  for high functional E4 level. Let Manager know that you want to graduate early that will effect the project you receive
+Find people to who can help you with complexity
+
+During evaluation, what are the that I would be evaluated against?
+lines of codes
+no of diffs you commit
+how fast you to write 
+find a E4 engineer and and keep as ur benchmark. in terms of above tp know how you are doing
+
+Is there any other suggestion you have based on your experience?
+select somthing which is not radical diff from what you do
+if no java available , chose someting you can learn easily
+impact does not matter in rotational, 
+less impact teams:
+internal tools - iteration is faster, but less impact - lets you move faster, and graduate
+impact team - not imp but added 
+impact team - more time, more complicated
+
+two imp roles  - manager(makes the report) and mentor(lets ur manger know abt performance)
+mentor - let him know your ideas technical
+manager - whom to ask what non technical
+
+If there is something , I am struggling with in the work. Can I take help and ask doubts?
+bootcamp tells you how to ask questions
+mentor - dont ask too much. if you spending > 2 hrs ask some one your mentor or other team mate
+ask bootcamp people (technical)
+dont hesitate to ask - not getting things done and not asking question is much worse
+
+Hm aisa mujhe 3 years hai visa po
+
+regeret - locked in this 
+You can chose a team .inisit on it

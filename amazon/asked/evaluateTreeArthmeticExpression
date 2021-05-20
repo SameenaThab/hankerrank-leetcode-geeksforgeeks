@@ -1,0 +1,72 @@
+evaluate an arithmetic expression: (4+5)*3 = 27
+
+Given expression in treeform evaluate the expression
+operators we support are: +, *
+operands are integers
+
+            *
+    +            3
+4       5
+
+
+
+
+class TreeNode {
+    String val;
+    TreeNode left;
+    TreeNode right;
+    
+    TreeNode(String val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+} 
+
+//Time : O(n),Space: O(height Of tree)
+Integer evaluate(TreeNode root) {
+    if(root==null)
+        return null;
+    return evaluateHelper(root);
+}
+
+Integer evaluateHelper(TreeNode root) {
+    if(!isOperator(root.val))
+        return Integer.parseInt(root.val);
+    Integer leftVal = evaluateHelper(root.left);
+    Integer rightVal = evaluateHelper(root.right);
+    return evaluate(leftVal,rightVal,root.val);
+} 
+
+Integer evaluate(Integer leftVal,Integer rightVal,String operator) {
+    if(operator.equals("*"))
+        return leftVal*rightVal;
+    else
+        return leftVal+rightVal;
+}
+
+private boolean isOperator(String st) {
+    return st.equalsTo("*") || st.equalsTo("+");
+}
+
+
+@Test
+void unitTest() {
+    assertNull(evaluate(null));
+    
+    //(4+5)*3
+    TreeNode root = new TreeNode("*");
+    TreeNode leftChild = new TreeNode("+");
+    leftChild.left = new Treenode("4");
+    leftChild.right = new Treenode("5");
+    root.left = leftChild;
+    root.right = new Treenode("3");
+    assertEquals("Should evaluate to 27",27,evaluate(root));
+    
+    //input = 5
+    assertEquals("Should evaluate to 5",5,evaluate(new Treenode("5")));
+    
+    //input = leftChild (4+5)
+    assertEquals("Should evaluate to 9",9,evaluate(leftChild));
+    
+}

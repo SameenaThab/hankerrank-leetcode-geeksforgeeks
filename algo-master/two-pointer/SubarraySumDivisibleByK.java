@@ -12,8 +12,8 @@ This problem is very similar to the previous problem subarray sum's follow-up pr
 Instead of saving the prefix_sum, we save the remainder prefix_sum % k.
 
 When we get a non zero reminder for currSum , reminder = currsum%k
-(1) -> we can make the currsum divisible by k, by adding reminder to currsum , or any number whose remainder is the same remainder
-num = 2,divisor=3, remainder = 1, => 2+1 is divisible by 3, 2+7(remainder = 1) = 9, divisible by 3  
+(1) -> we can make the currsum divisible by k, by substracting reminder to currsum , or any number whose remainder is the same remainder
+num = 2,divisor=3, remainder = 2, => 2-2 is divisible by 3, 7(remainder = 2) = 7-1 = 6, divisible by 3  
         or 
 (2) ->we can make the currsum with complement of remainder c, (k-remainder) divisible by k,  by substracting complement c or some number whose complement remainder is same as c
 eg: num = 5,divisor=3, rem=2,comp=1,=> 5-2(rem=2,comp=1) = 3 divisible by 3

@@ -5,6 +5,10 @@ So, we can say that if there is a larger bar at one end (say right), we are assu
 As soon as we find the bar at other end (right) is smaller, we start iterating in opposite direction (from right to left). 
 We must maintain right_max during the iteration, but now we can do it in one iteration using 2 pointers, switching between the two.
 
+you might think there is a max in btw the left and right which greater than both left and right. 
+eg: 5(left).... 6 ...2(right),4
+for the above snapshot, we chose right and righmax at that point is 4 ,so eventhough there is 6 , we know minimum of closest MAX heights is definitely on right
+
 Algorithm:
 Initialize left pointer to 0 and right pointer to size-1
 While left<right, do:

@@ -1,0 +1,22 @@
+Least Common Ancestor,
+Find all the subsets of a set
+Scheduler:
+    Given a MAp adjList, find all runnable tasks
+    1 -> {2,3} // 2 and 3 can be completed only after 1
+    2 -> {4}
+    3 -> {}
+    4 -> {}
+    5 -> {2} // 2 can be complated only after 5
+FindAllRunnableTasks -> {1,5}
+CompleteTask -> 
+SOlution I gave: create a map which stores for Each task make no of parent tasks 
+    eg: 1 - 0
+        2 - 2 depend on[1,5]
+        3 - 1    // depend on 1
+        4 - 1 depend on 2
+        5 - 0
+    find runnable task by finding task with 0 Count
+    completeTask by removing  task from the count map and deducting all 1 from all its children after task1, task2 count becomes from 2 to 1
+Add to binary string
+check if treeNode.value = average of its descendents
+given a sorted array, find the kth missing Number
