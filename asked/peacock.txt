@@ -1,0 +1,7 @@
+kubectl, kuberneter
+self joins to compare column in same table
+learn all response codes 
+AWS learn EC2, S3, RDS
+node js how, it acts as middleware
+unit testing in react
+how to handle error and alert when error happens

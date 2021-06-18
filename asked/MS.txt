@@ -1,0 +1,103 @@
+1. LCA , followup -> how to decrease space usage
+
+2. Link Nodes level wise
+
+			       0
+		         /   \
+	            1     2
+              /      /  \
+             3	    4     5
+                  /          \
+                 6            7
+
+			       0
+		         /  \
+	            1-–->2
+               /    /  \
+             3-–->   4–-->5
+                    /       \
+                   6–——----- >7
+Used BFS
+followup remov use of queue
+made use of parents links to traverse the children
+
+Node{
+    Node left;Node right;
+    Node next; // to connect siblings
+}
+//https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/submissions/
+/Users/sameenathabassum/myCode/hankerrank-leetcode-geeksforgeeks/Microsoft/asked/PopulateNextPointers.java
+
+
+
+3. we have stream of numbers create list of ranges
+    1 -> [[1,1]]
+    2-> [[1,2]]
+    5 -> [[1,2],[5,5]]
+    4 -> [[1,2],[4,5]]
+    3 -> [[1,5]]
+    Used sorted list to maintain the range. Do binary search to insert the element
+package com.codility;
+import java.util.*;
+// you can also use imports, for example:
+// import java.util.*;
+
+public class Solution {
+
+    public static void main(String [] args) {
+        // you can write to stdout for debugging purposes, e.g.
+        System.out.println("This is a debug message");
+    }
+
+
+    List<int[]> ranges;
+    // 3,7,9
+
+    // [1,2],[9,9][4,5] , num =3 -> [1,3],[9,9],[4,5]
+    // [1,2],[4,4] -> [1,3],[4,5] -> [1,5]
+    // [1,2],
+    void insert(int num) {
+        ranges = new SortedList<int[]>();
+        boolean notFound = true;
+        for(int i=0;i<ranges.size()&&notFound;i++) {
+            int[] curr = ranges.get(i);
+            int leftLimit = curr[0]-1;
+            int rightLimit = curr[1]+1;
+            if(num >=leftLimit && num<=rightLimit) {
+                if(leftLimit == num){
+                    curr[0] = num;
+                }
+                else if(rightLimit == num) {
+                    curr[1]=num;
+                }
+                ranges.set(i,curr);
+                notFound=false;
+            } 
+        }
+
+        if(notFound) {
+            ranges.add(new int[]{num,num});
+        }
+
+
+    // [1,2],[4,4] -> [1,3],[4,5] -> [1,5] 
+
+        for(int i=0;i<ranges.size()-1;i++) {
+            int[] curr = ranges.get(i);
+            int[] next = ranges.get(i+1);
+            if(curr[1]+1 == next[0]) {
+                int[] merged = new int[] {curr[0],next[1]};
+                
+                ranges.set(i,merged);
+                ranges.remove(i+1);
+            }
+        }
+}
+}
+
+4 Question LFU -> used LinkedHashSEt not thread safe because the element with minfreq be removed by one thread and accessed by another thread
+To make it thread safe we can synchronize get and put methods
+But even they cause scalability issue as 1000 threads have to wait for one thread to finish
+We can do a conccurent hashMap were cache with cpacaity of 1000 can be divided into 10 , 100 capacity caches, so that sync puts ang gets can increased, that way two thread may end up in different caches with diff keys and dont have to wait for each other
+
+

@@ -1,0 +1,163 @@
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+ /*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+/**/
+//                  +-----+ 
+//  Point value --> |2   G| <-- Card Color
+//                  |     | 
+//         Cost --> |5B   | 
+//.                 |3G   | 
+//.                 +-----+ 
+//. Notation: Red - R, Blue - U, Black - B, Green - G, White - W
+
+class Solution {
+  
+  class Card {
+    char color;
+    int point;
+    Map<Character,Integer> price;
+    Card(char color,int point,Map<Character,Integer> price) {
+      this.color=color;
+      this.point=point;
+      this.price=price;
+    }
+  }
+  
+  public static void main(String[] args) {
+//     ArrayList<String> strings = new ArrayList<String>();
+//     strings.add("Hello, World!");
+//     strings.add("Welcome to CoderPad.");
+//     strings.add("This pad is running Java " + Runtime.version().feature());
+
+//     for (String string : strings) {
+//       System.out.println(string);
+//     }
+      Map<Character,Integer> inputWallet = new HashMap<Character,Integer>();
+    inputWallet.put('R',5);
+    inputWallet.put('B',5);
+    inputWallet.put('G',3);
+//     // inputWallet.put('W',2);
+    inputWallet.put('U',1);
+    Solution sol = new Solution(inputWallet);
+    sol.test();
+    
+//     Map<Character,Integer> inputPrice = new HashMap<Character,Integer>();
+//     inputPrice.put('R',5);
+//     inputPrice.put('G',3);
+//     Card card = new Card('U',0,inputPrice);
+    
+    //5R0G
+//     System.out.println("Should be true: "+sol.canBeBought(inputPrice));
+    
+//     System.out.println("Should be true: "+sol.canBeBought(null));
+    
+//     inputPrice.put('G',0);
+    
+//     inputPrice.put('W',2);
+//     System.out.println("Should be false: "+sol.canBeBought(inputPrice));
+    
+    // sol.purchase(inputPrice);
+    // // inputPrice.put('G',0);
+    // // inputPrice.put('W',2);
+    // sol.purchase(inputPrice);
+    // sol.purchase(null);
+    
+//     sol.purchase(card);
+//     System.out.println("No of blues in discount: "+sol.discountWallet.get('U'));
+//     Map<Character,Integer> inputPrice2 = new HashMap<Character,Integer>();
+//     inputPrice2.put('U',1);
+//     Card card2 = new Card('U',4,inputPrice);
+    
+//     sol.purchase(card2);
+//     System.out.println("No of blues in wallet: "+sol.wallet.get('U'));
+    
+  }
+  
+  Map<Character,Integer> wallet;
+   Map<Character,Integer> discountWallet;
+  
+  Solution(Map<Character,Integer> wallet) {
+    this.wallet = wallet;
+    this.discountWallet = new HashMap<Character,Integer>();
+  }
+  
+  public void test() {
+         Map<Character,Integer> inputWallet = new HashMap<Character,Integer>();
+    inputWallet.put('R',5);
+    inputWallet.put('B',5);
+    inputWallet.put('G',3);
+    // inputWallet.put('W',2);
+    inputWallet.put('U',1);
+    Solution sol = new Solution(inputWallet);
+    
+    
+    Map<Character,Integer> inputPrice = new HashMap<Character,Integer>();
+    inputPrice.put('R',5);
+    inputPrice.put('G',3);
+    Card card = new Card('U',0,inputPrice); 
+        
+    sol.purchase(card);
+    System.out.println("No of blues in discount: "+sol.discountWallet.get('U'));
+    Map<Character,Integer> inputPrice2 = new HashMap<Character,Integer>();
+    inputPrice2.put('U',1);
+    Card card2 = new Card('U',4,inputPrice2);
+    
+    sol.purchase(card2);
+    System.out.println("No of blues in wallet: "+sol.wallet.get('U'));
+    
+  }
+  
+  public boolean canBeBought(Card card) {
+    if(card == null)
+      return true;
+    for(Character color: card.price.keySet()) {
+      if(!wallet.containsKey(color) || card.price.get(color)>wallet.get(color))
+        return false;
+    }
+    return true;
+  }
+  
+  public void purchase(Card card) {
+    if(!canBeBought(card)) {
+      System.out.println("Cannot be Bought");
+      return;
+    }
+    if(card == null) {
+      System.out.println("Card bought");
+      return;
+    }
+      
+    for(Character color: card.price.keySet()) {
+      if(wallet.containsKey(color) && card.price.get(color)<=wallet.get(color)) {
+        
+          int discount = discountWallet.containsKey(card.color)?discountWallet.get(card.color):0;
+          discount = Math.min(card.price.get(color),discount);
+          int rem = wallet.get(color)-card.price.get(color)+discount;
+          wallet.put(color,rem);
+      }
+    }
+    if(card.point == 0)
+      addToDiscount(card);
+    System.out.println("Card bought");
+    
+  }
+  
+  void addToDiscount(Card card) {
+    if(!discountWallet.containsKey(card.color))
+      discountWallet.put(card.color,0);
+    int newValue = discountWallet.get(card.color)+1;
+    discountWallet.put(card.color,newValue);
+  }
+  
+}

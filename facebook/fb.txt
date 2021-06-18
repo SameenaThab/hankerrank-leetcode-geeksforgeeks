@@ -82,7 +82,7 @@ It also provides good reporting and analytics. So that the client can knaw exact
 When I was in bachelors it helped me connect with my long lost friends from my school! when I was pursing masters, it helped me make new connections with people from my college before and after I landed here. I helped me keep my connection with my family who are not at all tech savvy but know only how to use WhatsApp.
 Apart from that, I use and love Facebook open sourced projects like React, pytorch etc which makes me thing that it has strong engineering culture
 
-
+Tommy S
 What are expectations for a rotational engineer?
 show in 4 mnths  for high functional E4 level. Let Manager know that you want to graduate early that will effect the project you receive
 Find people to who can help you with complexity
@@ -99,7 +99,7 @@ if no java available , chose someting you can learn easily
 impact does not matter in rotational, 
 less impact teams:
 internal tools - iteration is faster, but less impact - lets you move faster, and graduate
-impact team - not imp but added 
+impact team - not imp but added chery on top 
 impact team - more time, more complicated
 
 two imp roles  - manager(makes the report) and mentor(lets ur manger know abt performance)

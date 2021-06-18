@@ -1,3 +1,12 @@
+Phone
+delete kth node from last
+
+given an array, find if contiguous sub arry exists thats sums to target
+
+[1,3,1,4,23] target = 8 output= true [3,1,4]
+[1,3,1,4,23] target = 7 output= false
+
+Onsite
 Least Common Ancestor,
 Find all the subsets of a set
 Scheduler:
