@@ -35,6 +35,10 @@ public class ListOfDepths_chap4Prob3 {
         return result;
     }
 
+    /*
+     * Time = o(n)
+     * Space is recursive stack which grows height of tree log n; 
+    */
     public void listOfDepths(TreeNode root,List<List<Integer>> result, int level ) {
         if(root == null)
             return;
@@ -53,6 +57,12 @@ public class ListOfDepths_chap4Prob3 {
             this.level = level;
         }
     }
+
+    /**
+     * Time = O(n) -> although we see a for loop inside while loop, the inside forloop depends on # of elemets in queue
+     * Space = O(1) -> Because it is iterative doesnot require much space(we remove the elements before adding)
+     */
+
 
     public List<List<Integer>> listOfDepthsBFS(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();

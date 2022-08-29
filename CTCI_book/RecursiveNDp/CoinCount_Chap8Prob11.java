@@ -12,10 +12,12 @@ public class  CoinCount_Chap8Prob11 {
     }
     public static void main(String[] args) {
         CoinCount_Chap8Prob11 sol = new CoinCount_Chap8Prob11();
-        int amount = 25;
+        int amount = 100;
         System.out.println(sol.makeChange(amount,0));
         int[][] dp = new int[amount+1][4];
         System.out.println(sol.makeChangeMem(amount,0,dp));
+        int[] coins2 = new int[]{1,5,10,25};
+        System.out.println(sol.countWaysIterative(amount,coins2));
     }
 
 
@@ -61,6 +63,35 @@ public class  CoinCount_Chap8Prob11 {
             dp[amount][index]+=makeChange(remaining,index+1); 
         }
         return dp[amount][index];
+    }
+
+    public int countWaysIterative(int amount, int[] denoms) {
+        int[][] mem = new int[amount+1][denoms.length];
+        for(int d=0;d<mem[0].length;d++) {
+            mem[0][d]=1;
+        }
+        for(int i=1;i<=amount;i++) {
+            for(int j=0;j<mem[0].length;j++) {
+                if(denoms[j]>i) {
+                    mem[i][j]=j==0?0:mem[i][j-1];;
+                } else if(denoms[j]==i) {
+                    mem[i][j]=j==0?1:1+mem[i][j-1];
+                } else {
+                    int ways=0;
+                    int denom = denoms[j];
+                    for(int k=0;k*denom<=i;k++) {
+                        int newRem = i-k*denom;
+                        if(j!=0) 
+                            ways+=mem[newRem][j-1];
+                        if(newRem == 0 && j==0)
+                            ways+=1;
+                        
+                    }
+                    mem[i][j]=ways;
+                }
+            }
+        }
+        return mem[amount][denoms.length-1];
     }
 
 /* 

@@ -67,7 +67,7 @@ case 2: given node is a rightsubtree of its parent p
       }
       if(n.parent == null) // reached root, but be rightmost tree
         return null;
-      return n.parent;
+      return n.parent; // node is a left node , so parent is the successor
     }
   }
 

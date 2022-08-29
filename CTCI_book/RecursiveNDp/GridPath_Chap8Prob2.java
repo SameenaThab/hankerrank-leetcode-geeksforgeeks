@@ -62,6 +62,7 @@ public class  GridPath_Chap8Prob2 {
         return false;        
     }
 
+    // Use matrix itself for memoization
     public boolean findPathBackTrack(int i,int j,LinkedList<Integer[]> path) {
         if(isInvalid(i,j)){
             return false;
