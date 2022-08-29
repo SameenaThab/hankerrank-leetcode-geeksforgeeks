@@ -52,61 +52,42 @@ public class Practise {
 
     public static void main(String[] args) {
         Practise p = new Practise();
-        int[] arr = {0,1,4,4,7,8,9};
-        int[] arr1 = new int[]{20,15,10,5,13,25,23,24};
-        int[] arr2 = new int[]{5,3,1,2,3};
-        int[] arr3 = new int[]{20,15,10,5,13,25,23,24};
-        int[] arr4 = new int[]{5,3,1,2,3};
-        getPeaks(arr);
-        getPeaks(arr1);
-        getPeaks(arr2);
-        getPeaks(arr3);
-        getPeaks(arr4);
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(arr1));
-        System.out.println(Arrays.toString(arr2));
-        System.out.println(Arrays.toString(arr3));
-        System.out.println(Arrays.toString(arr4));
+        String[] arr = new String[] {"","at","","","","ball","","car","","dad","",""};
+        assert find(arr,"ball")==5:"ball at 5";
+        assert find(arr,"dad")==9:"dad at 9";
+        assert find(arr,"at")==1:"at at 1";
     }
 
-    public static void getPeaks(int[] arr){
-        for(int i=1;i<arr.length;i+=2) {
-            int newL = findLargestIndex(arr,i);
-            if(newL != i)
-                swap(arr,i,newL);
+    public static int find(String[] arr,String word) {
+        return find(arr,word,0,arr.length);
+    }
+
+    public static int find(String[] arr,String word,int first,int last) {
+        int mid = (first+last)/2;
+        if(arr[mid]=="") {
+            int left=mid-1;
+            int right=mid+1;
+            while(true) {
+                if(left<first && right>last)
+                    return -1;
+                if(left>=first && !arr[left].isEmpty()) {
+                    mid = left;
+                    break;
+                }
+                if(right<=last && !arr[right].isEmpty()) {
+                    mid=right;
+                    break;
+                }
+                right++;
+                left--;
+            }
         }
-    }
-
-    public static int findLargestIndex(int[] arr,int index) {
-        int curr = arr[index];
-        int prev = index-1 < 0? Integer.MIN_VALUE : arr[index-1];
-        int next = index+1 == arr.length? Integer.MIN_VALUE : arr[index+1];
-        int maxValue = Math.max(curr,Math.max(next, prev));
-        if(maxValue == curr)
-            return index;
-        else if(maxValue == prev)
-            return index-1;
-        else
-            return index+1;
-    }
-
-    private static int maxIndex(int[] arr, int a, int b, int c) {
-        int n = arr.length;
-        int aValue = a>=0 && a<n? arr[a]:Integer.MIN_VALUE;
-        int bValue = b>=0 && b<n? arr[b]:Integer.MIN_VALUE;
-        int cValue = c>=0 && c<n? arr[c]:Integer.MIN_VALUE;
-        int maxValue = Math.max(aValue,Math.max(bValue, cValue));
-        if(maxValue == aValue)
-            return a;
-        else if(maxValue == bValue)
-            return b;
-        else
-            return c;
-    }
-
-    public static void swap(int[] arr,int index,int largeIndex) {
-        int temp = arr[index];
-        arr[index]=arr[largeIndex];
-        arr[largeIndex]=temp;
+        if(word.equals(arr[mid])) {
+            return mid;
+        } else if(word.compareTo(arr[mid])<0) {
+            return find(arr,word,first,mid-1);
+        } else {
+            return find(arr,word,mid+1,last);
+        }
     }
 }
