@@ -74,4 +74,32 @@ class MergeSortedLists {
         }
         return result.next;
     }
+
+    public ListNode mergeTwoListsWithOutNewNode(ListNode list1, ListNode list2) {
+        ListNode result = new ListNode(0);
+        ListNode t3 = result;
+        ListNode t1 = list1;
+        ListNode t2 = list2;
+        while(t1!=null && t2!=null) {
+            if(t1.val<=t2.val) {
+                t3.next = t1;
+                t1=t1.next;
+            } else {
+                t3.next = t2;
+                t2=t2.next;
+            }
+            t3=t3.next;
+        }
+        while(t1!=null) {
+            t3.next=t1;
+            t1=t1.next;
+            t3=t3.next;
+        }
+        while(t2!=null) {
+            t3.next=t2;
+            t2=t2.next;
+            t3=t3.next;
+        }
+        return result.next;
+    }
 }

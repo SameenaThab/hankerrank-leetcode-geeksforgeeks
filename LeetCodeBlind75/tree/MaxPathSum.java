@@ -51,7 +51,7 @@ class MaxPathSum {
     private int maxGain(TreeNode root) {
         if(root == null)
             return 0;
-        int leftPath = Math.max(maxGain(root.left),0);
+        int leftPath = Math.max(maxGain(root.left),0); //negative paths will be eliminated
         int rightPath = Math.max(maxGain(root.right),0);
 
         // max path is sum of root and both left and right, 

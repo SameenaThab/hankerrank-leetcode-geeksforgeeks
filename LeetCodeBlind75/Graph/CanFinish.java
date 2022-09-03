@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,11 +13,19 @@ class CanFinish {
         int val;
         List<GraphNode> neighbors;
         Status status;
+        int dependents;
 
         GraphNode(int val) {
             this.val = val;
             this.neighbors = new ArrayList<GraphNode>();
             this.status = Status.UNVISITED;
+            this.dependents = 0;
+        }
+        void addDependents() {
+            this.dependents++;
+        }
+        void removeDependents() {
+            this.dependents--;
         }
 
         void addEdge(GraphNode node) {
@@ -75,5 +83,44 @@ class CanFinish {
         int[][] prerequisites = new int[][]{{1,0}};
         System.out.println("Can finish: "+sol.canFinish(2, prerequisites));
         System.out.println("Can finish: "+sol.canFinish(2, new int[][]{{1,0},{0,1}}));
+        System.out.println("Can finish: "+sol.canFinishBFS(2, prerequisites));
+        System.out.println("Can finish: "+sol.canFinishBFS(2, new int[][]{{1,0},{0,1}}));
+    }
+
+    public boolean canFinishBFS(int numCourses, int[][] prerequisites) {
+        HashMap<Integer,GraphNode> graph = new HashMap<Integer,GraphNode>();
+        for(int i=0;i<numCourses;i++) {
+            graph.put(i,new GraphNode(i));
+        }
+        for(int[] pre:prerequisites) {
+            GraphNode dependent = graph.get(pre[0]);
+            GraphNode dependency = graph.get(pre[1]);
+            dependent.addEdge(dependency);
+            dependency.addDependents();
+        }
+        return bfs(graph);
+    }
+    
+    public boolean bfs(HashMap<Integer,GraphNode> graph) {
+        Queue<GraphNode> queue = new LinkedList<GraphNode>();
+        int visited = 0;
+        for(int i=0;i<graph.size();i++) {
+            GraphNode node = graph.get(i);
+            if(node.dependents == 0) {
+                queue.add(node);
+            }
+        }
+        
+        while(!queue.isEmpty()) {
+            GraphNode curr = queue.poll();
+            visited++;
+            for(GraphNode dependency:curr.neighbors) {
+                dependency.removeDependents();
+                if(dependency.dependents == 0)
+                    queue.add(dependency);
+            }
+        }
+        
+        return visited == graph.size(); // canFinish if all visited
     }
 }

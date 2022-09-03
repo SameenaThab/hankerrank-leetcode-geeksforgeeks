@@ -1,16 +1,16 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2580
+{\rtf1\ansi\ansicpg1252\cocoartf2639
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Georgia-Bold;
 \f3\fnil\fcharset0 Georgia;\f4\fnil\fcharset0 Menlo-Regular;\f5\fswiss\fcharset0 ArialMT;
 \f6\fswiss\fcharset0 Arial-BoldMT;\f7\fnil\fcharset0 HelveticaNeue-Bold;\f8\fnil\fcharset0 HelveticaNeue;
 }
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red27\green31\blue34;
-\red27\green29\blue31;\red0\green0\blue0;\red27\green31\blue34;\red21\green23\blue26;}
+\red27\green29\blue31;\red0\green0\blue0;\red21\green23\blue26;}
 {\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c14118\c16078\c18039;
-\cssrgb\c14118\c15294\c16078;\csgray\c0\c0;\cssrgb\c14118\c16078\c18039;\cssrgb\c10588\c12157\c13725\c30196;}
+\cssrgb\c14118\c15294\c16078;\csgray\c0\c0;\cssrgb\c10588\c12157\c13725\c30196;}
 \margl1440\margr1440\vieww28600\viewh14860\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs28 \cf0  First mile- puts seed of analytics in company. I started making reports of every newly signed up agent. Before there was small db of individual agents and now we have huge . I recognized the use of analytics here\
+\f0\fs28 \cf0 ` First mile- puts seed of analytics in company. I started making reports of every newly signed up agent. Before there was small db of individual agents and now we have huge . I recognized the use of analytics here\
 \
 Disagreed to reuse a existing method to check if unsubscribed. Since it needs partner param, And it calls all unwanted queries about city unsubscription and all.\
 \
@@ -45,15 +45,30 @@ Good coding practices. Unit tests. Check every possible test case. Pull requests
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f1\b \cf0 Who was your most difficult customer?
-\f0\b0 \
+\f1\b \cf0 Who was your most difficult customer?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 Rental Beast:\
 Our Marketing Team needs some special feature developed time to time on our platform. They are not always certain on their requirements. At times they make a request and change their mind after seeing the end product. We have a feature called apply now which can our users can unsubscribe. They initially wanted at bottom of the email as link. But after creating the whole feature, they changed their mind to make the unsubscription on admin level. From that day my manger was very keen on getting requirements.\
 \
+Facebook:\
+-Interest Based Chats (Broadcast chats, discoverable chats)\
+- Broadcast chats- between creator and all the followers - only created send messages, and followers can just react\
+- Discoverable chats - Both creator and followers can send messages. But only creator can end the chat. Discoverable chats have limit on number of participants (initially 20)\
+- Requirements changes several times it started as end the chat for broadcast chats, then end the chat for discoverable chats.\
+- Then both. Then again only discoverable chats.\
+- At the backend we created API that supports ending of both discoverable and broadcast chats.\
+- We created an interface called enable chats that was implemented by both broadcast and discoverable chats. \
+- We \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f1\b Q1.Give example of when you did not meet clients expectations?\
+\f1\b \cf0 Q1.Give example of when you did not meet clients expectations?\
 Q2.Tell the story of the last time had to apologize.
 \f0\b0 \
 I am mostly a back end engineer but I have been doing full stack work recently . For my very first front end task, I did not create good presentation layer. I took help from my other front end engineer colleagues and learned from them and made the presentation suitable as their needs. Did not use company specific colors and fonts, learned to stick to same UI look as a front end engineer\
+Delivered Magic Words MVP due to Time Crunch, just to create/ edit magic words but not to see the magic word\
 \
 S\
 
@@ -300,14 +315,13 @@ Use of singleton pattern:\
 
 \f6\b Solution
 \f5\b0 : 
-\f8 \cf7 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec7 Refactored listings lookups to not use entity graph for OneToMany relationships except for pictures and for listings_info and listings_extra which are effectively optional OneToOne relationships
-\f6\b \cf2 \cb6 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \
+\f8 \cf4 \cb3 Refactored listings lookups to not use entity graph for OneToMany relationships except for pictures and for listings_info and listings_extra which are effectively optional OneToOne relationships
+\f6\b \cf2 \cb6 \
 \
 Tell about a time when deadline was pushed earlier . An how did you do it on time?\
+\pard\intbl\itap1\pardeftab720\sl480\partightenfactor0
 
-\f5\b0 Ecommision Payment (JWT encoder and decoder)\
+\f5\b0 \cf2 Ecommision Payment (JWT encoder and decoder)\
 
 \f6\b \
 Give an example when you empowered someone and taught someone.\
@@ -336,7 +350,7 @@ Tell me about a time a changes was brought in you system, how you you adapted \
 \f4\b0 \
 \
 \
-\cf8 \cb1 \cell 
+\cf7 \cb1 \cell 
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
 \cf4 \cell \row
 
@@ -352,7 +366,7 @@ Tell me about a time a changes was brought in you system, how you you adapted \
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
-\cf8 \cell 
+\cf7 \cell 
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
 \cf4 \cell \row
 
@@ -360,7 +374,7 @@ Tell me about a time a changes was brought in you system, how you you adapted \
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
-\cf8 \cell 
+\cf7 \cell 
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
 \cf4 \cell \row
 
@@ -368,7 +382,7 @@ Tell me about a time a changes was brought in you system, how you you adapted \
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
-\cf8 \cell 
+\cf7 \cell 
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
 \cf4 \cell \row
 
@@ -376,7 +390,7 @@ Tell me about a time a changes was brought in you system, how you you adapted \
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
-\cf8 \cell 
+\cf7 \cell 
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
 \cf4 \cell \row
 
@@ -384,7 +398,7 @@ Tell me about a time a changes was brought in you system, how you you adapted \
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
-\cf8 \cell 
+\cf7 \cell 
 \pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
 \cf4 \
 \pard\intbl\itap1\pardeftab720\sl400\partightenfactor0

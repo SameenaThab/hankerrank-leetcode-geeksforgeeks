@@ -36,17 +36,17 @@ class BuildTree {
         }
         this.preorder = preorder;
         this.inorder = inorder;
-        return buildTree(0,preorder.length);
+        return buildTree(0,preorder.length); // alternative Step buildTree(0,preorder.lenght-1);
     }
 
     private TreeNode buildTree(int left, int right) {
-        if(left == right)
+        if(left == right) // alternative Step left>right
             return null;
         TreeNode root = new TreeNode(preorder[preIndex]);
         // find root in inorder
         int index = inOrderValueIndexes.get(preorder[preIndex]);
         preIndex++;
-        root.left = buildTree(left, index);
+        root.left = buildTree(left, index); // alternative Step buildTree(0,index-1);
         root.right = buildTree(index+1, right);
         return root;
     }
