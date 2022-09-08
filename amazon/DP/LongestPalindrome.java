@@ -32,6 +32,6 @@ class LongestPalindrome {
             L--;
             R++;
         }
-        return R - L - 1;
+        return R - L - 1; // not +1 but -1 because l , r at the failing palindrome
     }
 }

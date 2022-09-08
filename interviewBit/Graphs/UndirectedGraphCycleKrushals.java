@@ -121,6 +121,34 @@ public class UndirectedGraphCycleKrushals {
         return 0;
     }
 
+    public int solveWithKrushkals(int A, ArrayList<ArrayList<Integer>> B) {
+        this.parents = new int[A];
+        for(int i=0;i<A;i++) {
+            parents[i]=i;
+        }
+        for(ArrayList<Integer> edge:B) {
+            int u = edge.get(0)-1;
+            int v = edge.get(1)-1;
+            int parentU = findParentIterative(u);
+            int parentV = findParentIterative(v);
+            if(parentU == parentV) {
+                return 1;
+            } else {
+                int small = parentU<parentV?parentU:parentV;
+                int large = parentU<parentV?parentV:parentU;
+                parents[large]=small;
+            }
+        }
+        return 0;
+    }
+    
+    int findParentIterative(int u) {
+        while(u != parents[u]) {
+            u=parents[u];
+        }
+        return parents[u];
+    }
+
     int union(int u,int v) {
         int parentU = findParent(u);
         int parentV = findParent(v);
@@ -159,6 +187,5 @@ public class UndirectedGraphCycleKrushals {
             x= parents[x];
         
         return parents[x];
-    }
-      
+    }      
 }

@@ -1,0 +1,255 @@
+First mile- puts seed of analytics in company. I started making reports of every newly signed up agent. Before there was small db of individual agents and now we have huge . I recognized the use of analytics here
+
+Disagreed to reuse a existing method to check if unsubscribed. Since it needs partner param, And it calls all unwanted queries about city unsubscription and all.
+
+Created no response schedule reminder for renter to inform landlord has not responded.
+
+apply_now failed application alert email. Since this is our main source of income. I wanted the every failed apply now to be notified to tech team with reason. We made many changes based on this later on. Automated it so that marketing people does not have to ask us every time it failed
+
+Special case. Could  have dealt with one if clause. But I thought this would be a bandage fix. And in near future more such special case can rise. So I create different api for special case, there by eliminating front end logic. Made it reusable so that any new special cases can come in and tell front their requirements.
+
+Filter impure data coming from syndicated partners, so that we do not lose customers due to failed application. So I filtered leads and let renter know before process proceed and kind of steer the customer towards new agent with same zip code . There by no lose of customer and help agents make money.
+
+Unsubscription through email- disagreed with manager.
+
+Removed unnecessary listing to applications (one to many) relation to improve performance
+
+Used React components so that in future new co branded page can be easily created by reusable code
+
+
+I tried to test the whole workflow time to time. I recognized some renters were being ignored by new landlords. So created a threshold of how long to wait for landlords response.
+
+Good coding practices. Unit tests. Check every possible test case. Pull requests for any NPE.
+
+Optimizing
+Called a API several time in a grid display for each row(Check opt out  API called for external Broker table which is not stored in external brokers table). 100 times per view which was not optimistic. So changed it to call the API only when record/row is opened.
+
+Rental Beast
+
+
+Who was your most difficult customer?
+Rental Beast:
+Our Marketing Team needs some special feature developed time to time on our platform. They are not always certain on their requirements. At times they make a request and change their mind after seeing the end product. We have a feature called apply now which can our users can unsubscribe. They initially wanted at bottom of the email as link. But after creating the whole feature, they changed their mind to make the unsubscription on admin level. From that day my manger was very keen on getting requirements.
+
+Facebook:
+-Interest Based Chats (Broadcast chats, discoverable chats)
+- Broadcast chats- between creator and all the followers - only created send messages, and followers can just react
+- Discoverable chats - Both creator and followers can send messages. But only creator can end the chat. Discoverable chats have limit on number of participants (initially 20)
+- Requirements changes several times it started as end the chat for broadcast chats, then end the chat for discoverable chats.
+- Then both. Then again only discoverable chats.
+- At the backend we created API that supports ending of both discoverable and broadcast chats.
+- We created an interface called enable chats that was implemented by both broadcast and discoverable chats. 
+- We 
+
+
+Q1.Give example of when you did not meet clients expectations?
+Q2.Tell the story of the last time had to apologize.
+I am mostly a back end engineer but I have been doing full stack work recently . For my very first front end task, I did not create good presentation layer. I took help from my other front end engineer colleagues and learned from them and made the presentation suitable as their needs. Did not use company specific colors and fonts, learned to stick to same UI look as a front end engineer
+Delivered Magic Words MVP due to Time Crunch, just to create/ edit magic words but not to see the magic word
+
+S
+Tell us a time when you had to leave a task unfinished?
+1 We are developing a task where LL delegates responsibility of reviewing renter’s application to third person. Initially it was a two confirmation where reviewer will accept the request and then LL will confirm it . But then our stakeholders wanted it be a one way confirmation where reviewer has final say and he gets the authority. It is an easy to implement but I did not finish this change as it they were the was proposed before vacation and I did not want this to be in production without a them understanding the risk of giving the 3rd person so much authority.
+2. Create application without authorization, Denied to do it
+
+Time with unclear responsibilities?
+As part of new partner integration we were creating a new user role on the platform and this used had to be notified and new emails and reminders had to be set so this task was not clear whether I need to create new notifications for the user or change the existing notifications for the other roles. So I made sure during the scrum meetings on meeting them know that I am working on this task so that there is no overlap. Recently we had big partner integration.the tasks not completely fleshed out and also not assigned. We had a  general understanding of what to is the changes to be made. So one of the task was just notifications. So it meant to unschedule.
+Non working pormocode code already exists in the system (user referrer) they wanted to add the promo code used in the first mile email for analytics. Unclear between promo code and user referrals. Prmocode comes form sales force need to be part of payment, where as use referral need not be. Had to convey that to the manager, that there is already userefferels called promo codes. So had to separate them. Took responsibility. 
+
+
+
+Tell me about a time when you gave simple solution to a complex problem./Tell me about a time when you invented something
+Ans 1 There was a scenario where we used third party API called smart move which helps us bringing credit score and rap sheets for the user .TransUnion needs complete landlord information and some time we don’t receive this. Information from our  partners in this scenario the applications were failing .we started filtering a listing with incomplete landlord information and matching interested renters with agents who can find them listings with similar features.
+And 2: Optout summary search. Was not clear on what will be the params for search. So I decided to have just one single param search. Which will use like string sql to search on all string columns.
+This was a very successful because the search work for all columns. So if we type gmail all records with gmail as email will appear.
+Ans 3: No front end sorting and searching required for apply now output summary report. All back end handled and all search params all accepted.
+Ans 4 Used existing time stamps to determine the status of application, to avoid calling smart move(which takes longer)
+
+Tell me about a time when you were wrong.
+Splitting full name into firstname and last name thought split by space. We have a utility which uses a specific column in contact table to do the split through comma. Mistake was to assume there  is no middle name or suffixes like jr etc.,
+
+Tell me about a time when you had to work with incomplete data or information.
+Optout summary search. Was not clear on what will be the params for search. So I decided to have just one single param search. Which will use like string sql to search on all string columns.
+This was a very successful because the search work for all columns. So if we type gmail all records with gmail as email will appear.
+
+Tell me about a time when you influenced a change by only asking questions.
+What happens when landlord does not respond to the email signup invitation.
+
+Tell me about a time when you solved a problem through just superior knowledge or observation.
+Landlord’s no response time limit. And alert renter about landlords no response.
+
+Tell me about a time when you couldn’t meet your own expectations on a project.
+Pop window for a hyperlink did not look consistent with the webpage. I just did not look right for me. So I had to re do it. (Initially used div and spans to make it appear but then Used bootstrap modal later)
+
+Tell me about a time when a team member didn’t meet your expectations on a project.
+Recently for a task, my team members pull request did not look good to me . With out enough unit tests and did not handle NPE’s. I usually like to test the null case scenario.  I feel methods should be stand alone.
+
+Describe a time when you saw some problem and took the initiative to correct it rather than waiting for someone else to do it.
+Saw a listing to applications many to one relationship which was causing delay for the each listing to lazily get all application and add one to it, which is not needed , so removed it.
+Also did a alert email for applications failure so that we don’t have to debug every time for marketing team.
+Case sensitive check for email, was not letting applicants to see their applications , removed all case sensitive check for emails in the code.
+Duplicate listing check
+
+Tell me about a time when you took a calculated risk.
+Special case. Could  have dealt with one if clause. But I thought this would be a bandage fix. And in near future more such special case can rise. So I create different api for special case, there by eliminating front end logic. Made it reusable so that any new special cases can come in and tell front their requirements. Though it was a tight deadline.
+
+Tell me about a time you needed to get information from someone who wasn’t very responsive. What did you do?
+Email content not given by marketing team. Made my own version and shows my manager. Consistent followups.
+
+ What would you do if you found out that your closest friend at work was stealing?
+I will talk to him and then report
+
+ Tell me about a time when you had to tell someone a harsh truth.
+Team mate in datamining not working. Told him to leave for next assignment.
+
+Give me two examples of when you did more than what was required in any job experience.
+One to many listing.
+I always do end to end testing for my tasks before Friday testings.
+One call API,
+Failure alert email for applyNow
+Duplicate Listings check
+Tell me about something that you learnt recently in your role.
+Should not let front end make decisions
+
+Tell me about a time when you did not accept the status quo.
+The time when they wanted to change two way confirmation of reviewers to one way.
+
+Tell me about an unpopular decision of yours.
+Making a alerts for application failures
+
+Tell me about a time when you had to step up and disagree with a team members approach.
+The time when I was told to reuse method for unsubscribe.
+
+If your direct manager was instructing you to do something you disagreed with, how would you handle it?
+Unsubscribe button in the view page not in the grid view.
+
+By providing an example, tell me when you have had to handle a variety of assignments. Describe the results.
+Mentor a new hire, work on my task and overlook scrum.
+
+
+What is the most difficult situation you have ever faced in your life? How did you handle it?
+
+ Give me an example of a time when you went    through a project, and you had to pivot strategy–how were you able to make that into a success story?
+Special case.
+
+Keep it simple
+Using one api to PUT to make update change review status. Instead of approve API and restriction illegal status transition in ENUM
+
+Created extract collection method to get all null collectionValue column for collection type LongBLOB columns
+
+Simple solution
+Machine generated password from front and only receives signup email
+Simple solution , change details page -  value$hash$key
+hash32(value,key) = hash - then machine generated — only machine generated will have sign up emails sha12
+
+found exposed api key in front end code in constants.js file, removed and added in ruby controller. So that ruby calls API directly and react code call ruby apis
+
+
+Sending attachments through Sparkpost
+Used mail merger to substitute dynamic data in docx template file (paymentReceiptTemplate). Converted docx to pdf to send as attachment. Used mail merger because it is a easy tool for marketing staff to create and edit the template without any training.
+
+Mistake. Used fileinptstreams tried to save file in docker, which is meaningless as dockers will be carrying unnecessary files in it. Instead handled everything in bytestreams and did not involve file streams.
+
+Optimazations:
+Remove unnecessary smart move API pulls for unit tests and UI displays that do not require mart move info. Used a flag to toggle pull/not smart move info
+
+Two Predicates Search (Not optimal)
+Instead of using two predicates queries and joining them with a OR clause
+
+Executing two queries using functions and streams (Optimized)
+
+Function<Integer, List<Integer>> findByLeasingAgentUserId = this::findByLeasingAgentUserId;
+Function<Integer, List<Integer>> findByListingAgentUserId = this::findByListingAgentUserId;
+return Stream.of(findByLeasingAgentUserId,findByListingAgentUserId)
+
+				.parallel()
+
+				.flatMap(f -> f.apply(userId).stream())
+
+				.distinct().collect(Collectors.toList());
+
+OneCall API - Consolidate all the front end API (create landlord, create renter and create listings and  check if duplicate listings) into one API call to make it more conventional and improve performance
+
+Eliminate duplicate creation of listing by checking for duplicate address. To speed up the process I used elastic search for address matching.
+
+Create new applications without renter signing in. No Authorization token, conventionally wrong. Did not agree to do it. SO common ground came up with a page model, where password asked if existing user In the application form. At this point no application is created but looks like application.
+
+Get status of application only by using timestamps and not calling smart move. Saved a lot of time
+
+Some methods were comparing email case sensitive , there by returning null objects in rails. working with Null objects threw “ruby - json no implicit conversion of String into Integer (TypeError)”. Searched for  all “===” string comparisons and replaced to casecmp in the project to remove further such problems. (Find source and remove further replications of problem). Also check for null object before processing.
+  # return obj if obj["EmailAddress"].casecmp?(match_to_email)
+
+Use of singleton pattern:
+For mail merge task, I had to create a bytstream for URL(payment template URL). For every call of payment receipt notification, this stream was being created. So I used singleton pattern Class with a map<URL,bryStream> so that only one time we convert URL to stream avoiding duplicate  read/write operations.
+
+Best Use of unit test: Serialization Error in Quartz Scheduler run method.
+[a]. I cannot always wait for the schedule time to come and check what is the error. Or decrease the schedule time locally and invoke run method. So I went thru the error stack trace and found out the serialization code that Quartz scheduler is using and created a unit test for that code. Turns out my object I was passing for job scheduling was locked because it was not out of entity yet.
+[b]. Payment Receipt template changes not being updating in the email because in AWS the template was cached and it takes 24hr to lad to new template to the cache. It is expensive to delete the cache( we have to create a invalidation). So I made unit tests use template from file system until I perfected the template , the way I want. This was a great learning experience as I wasted hours not knowing why my changes are not reflected.
+
+OneToMany relationships of Hibernate Multiple or clauses giving Cartesian product as result, this causing stack overflown error
+To debug, set the log value of hibernate to debug and got the query and ran on sql workbench. Instead of giving 1 result, giving Cartesian product of multiple or clause 100 results.
+Solution: Refactored listings lookups to not use entity graph for OneToMany relationships except for pictures and for listings_info and listings_extra which are effectively optional OneToOne relationships
+
+Tell about a time when deadline was pushed earlier . An how did you do it on time?
+Ecommision Payment (JWT encoder and decoder)
+
+Give an example when you empowered someone and taught someone.
+Taught Nakiba, how to debug
+
+When was the time you impressed the client with your feature
+Automated failure alert for ApplyNow applications
+
+What was the challenging task?
+
+Tell me a time when you solved a problem?
+Smartmove filter status
+
+Tell me about a time a changes was brought in you system, how you you adapted 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

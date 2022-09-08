@@ -5,6 +5,7 @@ import java.security.KeyStore.Entry;
 import java.util.regex.*;
 import java.io.*;
 
+// https://www.interviewbit.com/problems/black-shapes/
 public class CountBlackShapes {
 
     int m,n;

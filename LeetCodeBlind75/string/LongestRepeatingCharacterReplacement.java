@@ -6,10 +6,12 @@ class LongestRepeatingCharacterReplacement {
     maxCount = largest count of a single, unique character in the current window
     The main equation is:end - start + 1 - maxCount gives # of diferent characters
     When end-start+1-maxCount== 0, then then the window is filled with only one character
-    When end-start+1-maxCount> 0, then we have characters in the window that are NOT the character that occurs the most.end-start+1-maxCountis equal to exactly the # of characters that are NOT the character that occurs the most in that window.
-    We are allowed to have at most k replacements in the window, so whenend - start + 1 - maxCount > k, then there are more characters in the window than we can replace, and we need to shrink the window.
+    When end-start+1-maxCount> 0, then we have characters in the window that are NOT the character that occurs the most.
+    end-start+1-maxCount == # of characters that are NOT the character that occurs the most in that window.
+    We are allowed to have at most k replacements in the window, so when end - start + 1 - maxCount > k, then there are more characters in the window than we can replace, and we need to shrink the window.
     maxCount may be invalid at some points, but this doesn't matter,
-    because it was valid earlier in the string, and all that matters is finding the max window that occurred anywhere in the string. Additionally, it will expand _if and only if _enough repeating characters appear in the window to make it expand. So whenever it expands, it's a valid expansion.
+    because it was valid earlier in the string, and all that matters is finding the max window that occurred anywhere in the string. 
+    Additionally, it will expand _if and only if _enough repeating characters appear in the window to make it expand. So whenever it expands, it's a valid expansion.
     */
     //O(n) time, O(k) space
     public int characterReplacement(String s, int k) {
