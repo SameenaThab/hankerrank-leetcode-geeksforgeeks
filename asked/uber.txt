@@ -1,0 +1,15 @@
+Print the path of the of a file or folder from root
+ 
+        folder1
+          /  \
+      Fol2   Fol3
+      /       /  \
+file1      file2  file3
+
+path of file2 = foler1/fol2/file1
+
+path of file3 = folder1/fol3/file3
+
+
+solution used BFS same as finding shortest path from root to destination
+But in queue I push Pair<TreeNode, string with PathTillNow >

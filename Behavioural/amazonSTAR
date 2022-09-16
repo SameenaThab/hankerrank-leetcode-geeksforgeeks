@@ -1,0 +1,140 @@
+# Tell me about a time where you sought out perspectives other than your own to make a product/service/project better?
+    ## Theme Release Management
+        Context: 
+        - Chat themes are gated at facebook. Dogfood -> QE(A/B test) -> public 100% -> retire
+        - I created a Theme Release Management, where product managers, designers,data engineers can independently roll out the themes without engineers interference
+        - dogfood button, Qe button , ship button, retire , (did not take designers opinion here)
+        - But It was hard for product engineers to look at the what theme is present in what phase
+        Action:
+        - I created Release tab wit progress bar, highlighting the phase , Next pahse button. For QE Phase - the link where the experiments result are stored , experiment name etc., Gk name for dogfooding etc.,
+        - Added butterfly rules(notifications) telling engineers to accept diff for theme phase changes
+        - But I sought out Designers and product engineers opinion to what they wanted to see in the interface
+        - They wanted me to link the themeStats tool(which compares each themes performance , daily active users etc.,)
+        - they wanted a themes phase to show up also on theme's listview, other than main center view
+        Result:
+        - So I worked on all those and delivered the interface. This interface was a big hit among our designers 
+
+# Tell me about a time when you had to analyze facts quickly, define key issues, and respond immediately to a situation. What was the outcome?
+    ## Allow Mutation List in SiteVar
+        Context:
+        - We have two types of gating for themes . loadability, selectability. 
+        - loadability GK tells us whether one can load the theme in the chat thread (loadability wouldn't allow loading theme in a group if even one participants is not pass the loadability GK )
+        - Selectability GK tells us whether theme should appear on the themes selection view
+        - Team launched a (Time of the Day) location theme, which was not supported on Desktop or browsers
+        - Since we used the same loadability GK for all themes for deciding whether to apply the mutation to the devices( changes theme_id for thread_id)
+        - Desktop were showing (Time of the Day)location theme- which was unexpected experience as font colors and background colors were not designed for desktop version
+        - So I quickly relized that in future there will be more themes (Our Places theme) that donot have support for desktop, and I created a new gk list called allow_mutation 
+        - So that Instead of repurposing this loadability GK for mutations, we used allow mutation GK’s to check if mutation is compatible for participants using desktop.
+
+
+# Give me an example of a time you used customer feedback to drive improvement or innovation. What was the situation and what action did you take?
+    ## UX survey for Themes Change
+        Context:
+        - We do UX survey at facebook and we found out that users are having hard time to change the theme
+        - Going to chat details page and selecting themes in customization tab
+        - So I had an idea of long press theme picker where users can long press on the chat thread and themes list will appear
+        - In the next UX survey we got good reviews for  long press theme picker
+    ## Feedback about emoji's search terms not showing correct results
+        Context:
+        - Our oncall got several report on emojis search for react panel not showing heart ❤️ , melting face etc.,
+        - I recently worked on emoji skin tones project and I was familiar with the flow of how emoji_search_terms table is populated, so I took up this task
+        - I know the table was outdated, so found out the team who owned the table to update them, When I could not pin down the correct team(as due reorgs and refocus) no team owned the table definitely
+        - So I discussed with my team , as it looks like something we can own since we are a expressions team and they agreed
+        - So I decided to update the emoji_search_terms table, using description in emoji unicode txt files's with better search results.
+    
+# Tell me about a goal that you set that took a long time to achieve or that you are still working
+# towards. How do you keep focused on the goal given the other priorities you have?
+    ## Supporting emoji-skin tones project while workin on location theme
+        - some times projects overlap with each other. Before a feature is delivered 100% public , we take new projects
+        - I had to work on location themes project which was one of our big bets to increase user engagement in messenger
+        - Although My previous project emoji-skin-tones was implementation was over for backend part, client side was still under implementation
+        - So I continue working the locaiton theme project,, but sometimes we ran into issues where app was crashing due to NPE, because modifier_type was null as not all client msys(sql lite) dbs were up to date with the modifier types etc.,
+        - SO whenever there was any bug for emoji-skin tones project, I would jump to it, because supporting my previous project is highest prioirty than the currently developin location theme
+        - Also I was the backend POC for emoji-skin-tone project, so it higher priority for me
+
+    ## Long Standing bug- admin Text shows different theme name
+        Context:
+        - We render a admin message in the chat thread when some changes a theme
+        - For Sender, "you changed the theme to birthday" and reciever - "Sameena changed the theme to birthday"
+        - Sometimes this admin text was showing wrong theme name
+        - This was a high priority bug when it was reported (as any reported bug with SLA). But we noticed this is not happening often and only employees are receiving it
+        - It was also non -reproducible. So I added logs in the code where admin text is created. Set a goal to solve this bug
+        - log showed error with thread_id and theme_id when theme_id in theme_name(Mutation View) was different from the changed value(theme_name fetched from thread Ent). Mutation view cannot be used to get theme_name.
+        - Meanwhile I was workin on different projects of the theme with high priorit like location theme, emoji-skin-tones etc.,
+        - I was tracking the logs everyday  to see any patterns, I saw that these error logs showed in pairs thats when two themes were changed back to back on same thread
+        - I spoke with infra team on how to prove if this is race condition. We can connect devices to sandbox and see the iris queue (delta queue). 
+        - Let's say A and B are both in a thread, and they both try to change thread theme at the same time, and let's assume A tries to change theme to ThemeA while B tries to change theme to ThemeB, the order of the two requests end up in the Queue (thus the order of the actual thread theme being updated to) can be [ThemeA, ThemeB], while the order of the two XMAT being sent could be [ThemeB, ThemeA] since delta insertion and Observer are run async
+        - After proving the race condition, the infra took over to resolve this issue. Suggested using delta processed in batch instead of doing updates async.
+        Result:
+        - I took ownership of the goal and found out the root cause, by dedicating few hours in the week for it.
+
+
+# Tell me about a time when you linked two or more problems together and identified an underlying
+# issue? Were you able to find a solution?
+    ## Location theme does not update on other recipients when locaiton is changed
+    Context:
+        - Location theme is a theme, which changes color based on the time of the location set
+        - While dogfooding we received a bug where location theme is not updated after location change on android
+        - So I checked if it working for IOS, it was not working for IOS either
+        - Then I found the problem only happens when locaiton is set to a new location, If the location is set for first time it works for all devices at reciever end
+        - I checked the flow where theme_change is fanned out to all the recievers
+        - Turns out the thread updates are fanned out only when theme_id changes
+        - So I added new key for theme_Settings(location) in the delta triggers
+        - After this it worked as expected on all devices.
+
+- What three things you are you working on to improve your overall effectiveness?
+    ## Scoping and planning before implementation
+    Context:
+        - FOr Location Theme, we missed making changes in mutation generator(where all receivers recive theme change updates)
+        - So receivers did not see theme change when our time of day location was set.
+        - So Learned that while planning you need to review every flow and make changes to every flow that effects the feature
+        - I also decided to start BE plan reviews where all the BE engineers can check the plan , and see if we are missing something
+
+# Give me an example of when you took an unpopular stance in a meeting with peers and your
+# leader and you were the outlier. What was it, why did you feel strongly about it, and what did you
+# do?
+    ## Create new applications without renter signing in.
+        Context:
+        - After UX surveys, and see the data analysis we saw that many renters are abandoning the application, as sign up page shows up
+        - Renter are one of the source of income for rental beast. When renters fill the applications for houses they are interested in and get approved by the landlord after background checks
+        - So our stakeholders wanted to remove the sign up page.
+        - This is very wrong conventionally as users are giving personal information here and they should be authorized and authenticated before smart move application is created in their name. Did not agree to do it. SO common ground came up with a page model, where password asked if existing user In the application form. At this point no application is created but looks like application.
+
+# Tell me about a time you wouldn’t compromise on achieving a great outcome when others felt
+# something was good enough. What was the situation?
+    ## Magic words only editing not reading
+
+# Tell me about a time you made a hard decision to sacrifice short term gain for a longer term goal.
+    ## Special Case - Chicago cook county should not show criminal reports to landlord
+        - Could  have dealt with one if clause on the front end in a day
+        - But I thought this would be a bandage fix. And in near future more such special case can rise. 
+        - criminal reports were sent as null to front end and the reason for the it was also included the special case field
+        - Front end can easily render this special case reason text for different cases.
+        - Made it reusable so that any new special cases can come in and tell frontend their requirements. Similar with california. 
+
+# How do you drive adoption for your vision/ideas? How do you know how well your idea or vision
+# has been adopted by other teams or partners? Give a specific example highlighting one of your
+# ideas.
+    ## Theme Release MAnagement
+        - Context:
+            - Make Project Doc with all the requirements and problem that led to this new solution
+            - Theme Release Manager makes it easier for designers to send themes to next pahse without engineer innvolement
+            - Other reasonmanual changes cause human error and time taking
+            - Pitch the idea in the tema meeting and approval
+            - After I created the Theme Release Manager tool, I made a post int workplace groups
+            - Also asked did a demo in the team fridays demo meets to show how to use the tool and how is it useful
+            - Taking DEsigners output and feedback and making the desired changes are they are end users of the product
+        
+# Tell me about a time when you realized you needed to have a deeper level of subject matter
+# expertise to do your job well?
+    ## Location theme - delta generator and iris queues
+    - Context:
+        - Location Theme not changing locations on recievers devices
+        - Had to debug deeper for it on the flow .Because location change can be seen in the thread  DB
+        - Checked IRIS queue(FB's messsenger queue) was able to see delta for location change
+        - HAd to learn about IRIS queues and how to connect them to sandbox and check them for my userId and messenger app
+        - THen debug further to find out that delta mutation generator will only push the change to other participants when theme Id is changed.
+        - In this case only theme's location in theme_settings is changed. Also the change trigger was singleKey that means only theme id change will push the change to other participants
+        - Result:
+            Changed the trigger to multikey and made both theme_id and theme_settings change as the change to push mutation to receivers.
+

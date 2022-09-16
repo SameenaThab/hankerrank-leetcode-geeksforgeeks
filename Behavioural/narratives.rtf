@@ -1,0 +1,525 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fswiss\fcharset0 ArialMT;
+\f3\fnil\fcharset0 Georgia-Bold;\f4\fnil\fcharset0 AppleColorEmoji;\f5\fnil\fcharset0 Georgia;
+\f6\fnil\fcharset0 Menlo-Regular;\f7\fswiss\fcharset0 Arial-BoldMT;\f8\fnil\fcharset0 HelveticaNeue-Bold;
+\f9\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red13\green103\blue88;\red0\green0\blue0;\red255\green255\blue255;
+\red27\green31\blue34;\red27\green29\blue31;\red0\green0\blue0;\red21\green23\blue26;}
+{\*\expandedcolortbl;;\cssrgb\c0\c47451\c41961;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c14118\c16078\c18039;\cssrgb\c14118\c15294\c16078;\csgray\c0\c0;\cssrgb\c10588\c12157\c13725\c30196;}
+\margl1440\margr1440\vieww27020\viewh16060\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 First mile- puts seed of analytics in company. I started making reports of every newly signed up agent. Before there was small db of individual agents and now we have huge . I recognized the use of analytics here\
+\
+Disagreed to reuse a existing method to check if unsubscribed. Since it needs partner param, And it calls all unwanted queries about city unsubscription and all.\
+\
+Created no response schedule reminder for renter to inform landlord has not responded.\
+\
+apply_now failed application alert email. Since this is our main source of income. I wanted the every failed apply now to be notified to tech team with reason. We made many changes based on this later on. Automated it so that marketing people does not have to ask us every time it failed\
+\
+Special case. Could  have dealt with one if clause. But I thought this would be a bandage fix. And in near future more such special case can rise. So I create different api for special case, there by eliminating front end logic. Made it reusable so that any new special cases can come in and tell front their requirements.\
+\
+Filter impure data coming from syndicated partners, so that we do not lose customers due to failed application. So I filtered leads and let renter know before process proceed and kind of steer the customer towards new agent with same zip code . There by no lose of customer and help agents make money.\
+\
+Unsubscription through email- disagreed with manager.\
+\
+Removed unnecessary listing to applications (one to many) relation to improve performance\
+\
+Used React components so that in future new co branded page can be easily created by reusable code\
+\
+\
+I tried to test the whole workflow time to time. I recognized some renters were being ignored by new landlords. So created a threshold of how long to wait for landlords response.\
+\
+Good coding practices. Unit tests. Check every possible test case. Pull requests for any NPE.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Optimizing\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 Called a API several time in a grid display for each row(Check opt out  API called for external Broker table which is not stored in external brokers table). 100 times per view which was not optimistic. So changed it to call the API only when record/row is opened.
+\f1\b \
+
+\f0\b0 \
+Rental Beast: Using timestamps to decide if the application has changed instead of calling transamerica API again\
+Facebook:\
+Location Theme: performance regression, 
+\f2\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \'a0store the cache-key, because the client was calling hashProvider API to get the cache key each time the thread was opened to see if the theme_settings(location) changed.\
+By storing the cache-key in the sql-lite table of messenger-ios, client can render the appropriate theme colors . If the theme-setting updates, client\'92s cache -key is updated automatically, so no need to hash provider API
+\f0\fs28 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Who was your most difficult customer?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 Rental Beast:\
+Our Marketing Team needs some special feature developed time to time on our platform. They are not always certain on their requirements. At times they make a request and change their mind after seeing the end product. We have a feature called apply now which can our users can unsubscribe. They initially wanted at bottom of the email as link. But after creating the whole feature, they changed their mind to make the unsubscription on admin level. From that day my manger was very keen on getting requirements.\
+\
+Meta:\
+-Interest Based Chats (Broadcast chats, discoverable chats)\
+- Broadcast chats- between creator and all the followers - only created send messages, and followers can just react\
+- Discoverable chats - Both creator and followers can send messages. But only creator can end the chat. Discoverable chats have limit on number of participants (initially 20)\
+- Requirements changes several times it started as end the chat for broadcast chats, then end the chat for discoverable chats.\
+- Then both. Then again only discoverable chats.\
+- At the backend we created API that supports ending of both discoverable and broadcast chats.\
+- We created an interface called enable chats that was implemented by both broadcast and discoverable chats. \
+- We \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Q1.Give example of when you did not meet clients expectations?\
+Q2.Tell the story of the last time had to apologize.\
+Rental Beast
+\f0\b0 \
+I am mostly a back end engineer but I have been doing full stack work recently . For my very first front end task, I did not create good presentation layer. I took help from my other front end engineer colleagues and learned from them and made the presentation suitable as their needs. Did not use company specific colors and fonts, learned to stick to same UI look as a front end engineer\
+
+\f1\b Meta
+\f0\b0 \
+Delivered Magic Words MVP due to Time Crunch, just to create/ edit magic words but not to see the magic word\
+\
+\
+
+\f1\b Tell us a time when you had to leave a task unfinished?\
+RB
+\f0\b0 \
+1 We are developing a task where LL delegates responsibility of reviewing renter\'92s application to third person. Initially it was a two confirmation where reviewer will accept the request and then LL will confirm it . But then our stakeholders wanted it be a one way confirmation where reviewer has final say and he gets the authority. It is an easy to implement but I did not finish this change as it they were the was proposed before vacation and I did not want this to be in production without a them understanding the risk of giving the 3rd person so much authority.\
+2. Create application without authorization, Denied to do it\
+
+\f1\b Meta
+\f0\b0 \
+- Delivered Magic Words MVP due to Time Crunch, just to create/ edit magic words but not to see the magic word\
+- Migration of themes Gating to Ent Schema \
+	- We have a SV(key- value file) where each theme\'92s key to corresponding to its gating details. We wanted to store in EntDB(Backed sql DB), Worked on it several weeks, but then new project came along, with big bets to messenger , the location theme which we increase the users engagement. \
+	- Completed work , we created all the necessary Ent DB fields, we created APIs to fetch and create the gating details from DB.	- Left to DO: create GUI(at least command line) for engineers to update the gating details, one had to ask backend engineers to do it.\
+	- Also there were themes launching very month, and with out this GUI, it was my responsibility to update the details from SV to ENTDB time to time\
+	- There are two fields in gating that control theme release, loadability, if it actually able to be loaded in the thread, selectability - which controls if you can see the theme in theme selection list\
+	- We we had concentrated on migrating either loadability or  selectability, we would have at least achieved migration of half part of theme release management \
+\
+
+\f1\b Time with unclear responsibilities?
+\f0\b0 \
+As part of new partner integration we were creating a new user role on the platform and this used had to be notified and new emails and reminders had to be set so this task was not clear whether I need to create new notifications for the user or change the existing notifications for the other roles. So I made sure during the scrum meetings on meeting them know that I am working on this task so that there is no overlap. Recently we had big partner integration.the tasks not completely fleshed out and also not assigned. We had a  general understanding of what to is the changes to be made. So one of the task was just notifications. So it meant to unschedule.\
+Non working promocode code already exists in the system (user referrer) they wanted to add the promo code used in the first mile email for analytics. Unclear between promo code and user referrals. Prmocode comes form sales force need to be part of payment, where as use referral need not be. Had to convey that to the manager, that there is already userefferels called promo codes. So had to separate them. Took responsibility. \
+Meta:\
+-Interest Based Chats (Broadcast chats, discoverable chats)\
+\
+\
+
+\f1\b Tell me about a time when you gave simple solution to a complex problem./Tell me about a time when you invented something
+\f0\b0 \
+Ans 1 There was a scenario where we used third party API called smart move which helps us bringing credit score and rap sheets for the user .TransUnion needs complete landlord information and some time we don\'92t receive this. Information from our  partners in this scenario the applications were failing .we started filtering a listing with incomplete landlord information and matching interested renters with agents who can find them listings with similar features.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \cb4 \expnd0\expndtw0\kerning0
+And 2: Optout summary search. Was not clear on what will be the params for search. So I decided to have just one single param search. Which will use like string sql to search on all string columns.\
+This was a very successful because the search work for all columns. So if we type gmail all records with gmail as email will appear.\
+Ans 3: No front end sorting and searching required for apply now Optout summary report. All back end handled and all search params all accepted.\
+Ans 4 Used existing time stamps to determine the status of application, to avoid calling smart move(which takes longer)\cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \cb4 \expnd0\expndtw0\kerning0
+Tell me about a time when you were wrong.
+\f0\b0 \
+- Splitting full name into firstname and last name thought split by space. We have a utility which uses a specific column in contact table to do the split through comma. Mistake was to assume there  is no middle name or suffixes like jr etc.,\
+- Thinking keySet in hack is unordered, like the set in java. But key in hack retains order\
+In order to save gradient colors we wanted ordered set of colors \
+- emoji skin tones projects\
+	- I need to check a emoji\'92s code belongs to a certain range to find out if its base emoji (in order to apply skin tone modifier)\
+	- Existing method checked for hex codes of the emojis and I had decimal code as input\
+	- So I duplicated  the same method with the decimal code ranges which can be error prone because I thought conversion(dec to hex) would be a extra step\
+	- Mistake - But dexcode also works for the hex code method and I did not had to duplicate it.\
+\
+
+\f1\b Tell me about a time when you had to work with incomplete data or information.
+\f0\b0 \
+RB\
+- Optout summary search. Was not clear on what will be the params for search. So I decided to have just one single param search. Which will use like string sql to search on all string columns.\
+ This was a very successful because the search work for all columns. So if we type gmail all records with gmail as email will appear.\
+Meta\
+- Discoverable chats v/s broadcast chats\
+- Asking what message actions to be blocked for ended chats\
+\
+
+\f1\b Tell me about a time when you influenced a change by only asking questions.
+\f0\b0 \
+What happens when landlord does not respond to the email signup invitation.\
+\
+
+\f1\b Tell me about a time when you solved a problem through just superior knowledge or observation.
+\f0\b0 \
+Landlord\'92s no response time limit. And alert renter about landlords no response.\
+\
+
+\f1\b Tell me about a time when you couldn\'92t meet your own expectations on a project.\
+RB
+\f0\b0 \
+Pop window for a hyperlink did not look consistent with the webpage. I just did not look right for me. So I had to re do it. (Initially used div and spans to make it appear but then Used bootstrap modal later)\
+
+\f1\b META
+\f0\b0 \
+Magic words delivered only MVP\
+EntSchema migration theme gating not completed
+\f1\b \
+\
+Tell me about a time when a team member didn\'92t meet your expectations on a project.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf3 Recently for a task, my team members pull request did not look good to me . With out enough unit tests and did not handle NPE\'92s. I usually like to test the null case scenario.  I feel methods should be stand alone.\
+\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\f1\b \cf3 Describe a time when you saw some problem and took the initiative to correct it rather than waiting for someone else to do it.
+\f0\b0 \
+Saw a listing to applications many to one relationship which was causing delay for the each listing to lazily get all application and add one to it, which is not needed , so removed it.\
+Also did a alert email for applications failure so that we don\'92t have to debug every time for marketing team
+\f3\b .\
+
+\f0\b0 Case sensitive check for email, was not letting applicants to see their applications , removed all case sensitive check for emails in the code.
+\f3\b \
+
+\f0\b0 Duplicate listing check\
+
+\f1\b META\
+
+\f0\b0 - One already skin tone applied emojis was in the emoji.txt files, which got classified as base emoji \
+- When skin tone modifier was applied to it, it gave unexpected result , eg:
+\f4 \uc0\u55358 \u56785 \u55356 \u57342 
+\f0  -> applying skin tone gives unexpected result
+\f4  \uc0\u55356 \u57341 \
+
+\f0 	- RaceCondition in admin text for theme changed\
+- Group Image Customization. When group image is removed, groups image falls back to group participant\'92s profile images. This shouldn\'92t be the case for community chats, we wanted a generic fb group icon. Found this in dogfooding and quickly fixed the bug\
+
+\f3\b \
+
+\f1 Tell me about a time when you took a calculated risk.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \cb1 \kerning1\expnd0\expndtw0 Special case. Could  have dealt with one if clause. But I thought this would be a bandage fix. And in near future more such special case can rise. So I create different api for special case, there by eliminating front end logic. Made it reusable so that any new special cases can come in and tell front their requirements. Though it was a tight deadline.\
+- Magic Words implementing just MVP\
+- Leaving theme entDB migration and moving on to Location Theme\
+\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\f1\b \cf3 \cb4 \expnd0\expndtw0\kerning0
+Tell me about a time you needed to get information from someone who wasn\'92t very responsive. What did you do?\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf3 Email content not given by marketing team. Made my own version and showed my manager. Consistent followups.\
+\
+ 
+\f1\b What would you do if you found out that your closest friend at work was stealing?\
+
+\f0\b0 I will talk to him and then report
+\f1\b \
+\
+ Tell me about a time when you had to tell someone a harsh truth.\
+
+\f0\b0 Team mate in datamining not working. Told him to leave for next assignment.
+\f1\b \
+\
+Give me two examples of when you did more than what was required in any job experience.\
+
+\f0\b0 One to many listing.\
+I always do end to end testing for my tasks before Friday testings.\
+One call API,\
+Failure alert email for applyNow\
+Duplicate Listings check\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 Meta
+\f0\b0 \
+Prove Race condition for admin text\
+Filter bad emojis in the emoji.txt file
+\f1\b \cb1 \uc0\u8232 \cb4 \
+Tell me about something that you learnt recently in your role.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf3 Should not let front end make decisions.\
+Constant Status updates, No room for assumptions
+\f1\b \
+\
+Tell me about a time when you did not accept the status quo.
+\f0\b0 \
+The time when they wanted to change two way confirmation of reviewers to one way.
+\f1\b \
+\
+Tell me about an unpopular decision of yours.\
+
+\f0\b0 Making an alerts for application failures.
+\f1\b \
+\
+Tell me about a time when you had to step up and disagree with a team members approach.\
+
+\f0\b0 The time when I was told to reuse method for unsubscribe.
+\f1\b \
+\
+If your direct manager was instructing you to do something you disagreed with, how would you handle it?\
+
+\f0\b0 Unsubscribe button in the view page not in the grid view.
+\f1\b \
+\
+By providing an example, tell me when you have had to handle a variety of assignments. Describe the results.\
+Mentor a new hire, work on my task and overlook scrum.\
+Meta\
+
+\f0\b0 - Emoji skin tones POC\
+- Onboarding new engineer rick
+\f1\b \
+\
+\
+What is the most difficult situation you have ever faced in your life? How did you handle it?\
+\
+ Give me an example of a time when you went    through a project, and you had to pivot strategy\'96how were you able to make that into a success story?\
+
+\f0\b0 Special case.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 Keep it simple
+\f0\b0 \
+Using one api to PUT to make update change review status. Instead of approve API and restriction illegal status transition in ENUM\
+\
+
+\f1\b Created extract collection method to get all null collectionValue column for collection type LongBLOB columns
+\f0\b0 \
+
+\f1\b RB Simple solution\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf3 - Context we wanted to send out signup emails for accounts created by integration with Zillow and other real estate partners.\
+- So for such automated account creation, we set up passwords such as value$hash$key
+\f5  by calling signup email
+\f0 \
+- Machine generated password from frontend only receives signup email\
+- Simple solution , change details page -  value$hash$key
+\f5 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 - (hash32(value,key) == hash) => then machine generated \'97 only machine generated will have sign up emails sha12\
+Meta\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf3 - Desktop messenger and browser messages was getting location theme, which is not meant to happen\
+- This was happening because, loadability of theme and update mutations, both rely on loadability GK. Lodability GK would allow mutation to happen even for desktop / browser messenger. Instead of repurposing this loadability GK for mutations, we used allow mutation GK\'92s to check if mutation is compatible for participants using desktop.
+\f1\b \
+\
+\
+found exposed api key in front end code in constants.js file, removed and added in ruby controller. So that ruby calls API directly and react code call ruby apis\
+\
+\
+Sending attachments through Sparkpost\
+
+\f0\b0 Used mail merger to substitute dynamic data in docx template file (paymentReceiptTemplate). Converted docx to pdf to send as attachment. Used mail merger because it is a easy tool for marketing staff to create and edit the template without any training.
+\f1\b \
+\
+Mistake. 
+\f0\b0 Used fileinptstreams tried to save file in docker, which is meaningless as dockers will be carrying unnecessary files in it. Instead handled everything in bytestreams and did not involve file streams.\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \
+Optimazations:\
+Remove unnecessary smart move API pulls for unit tests and UI displays that do not require smart move info. Used a flag to toggle pull/not smart move info\
+\
+\pard\pardeftab720\partightenfactor0
+\cf3 \cb1 Two Predicates Search (Not optimal)
+\f0\b0 \
+\pard\pardeftab720\partightenfactor0
+\cf3 \cb4 Instead of using two predicates queries and joining them with a OR clause\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \cb1 Executing two queries using functions and streams (Optimized)
+\f0\b0 \
+\
+
+\f1\b Function<Integer, List<Integer>> findByLeasingAgentUserId = this::findByLeasingAgentUserId;\
+Function<Integer, List<Integer>> findByListingAgentUserId = this::findByListingAgentUserId;\
+return Stream.of(findByLeasingAgentUserId,findByListingAgentUserId)\
+\
+				.parallel()\
+\
+				.flatMap(f -> f.apply(userId).stream())\
+\
+				.distinct().collect(Collectors.toList());\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clmgf \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clmrg \clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+
+\f6\b0 \cf5 \
+OneCall API - Consolidate all the front end API (create landlord, create renter and create listings and  check if duplicate listings) into one API call to make it more conventional and improve performance\
+\
+Eliminate duplicate creation of listing by checking for duplicate address. To speed up the process I used elastic search for address matching.\
+\
+Create new applications without renter signing in. No Authorization token, conventionally wrong. Did not agree to do it. SO common ground came up with a page model, where password asked if existing user In the application form. At this point no application is created but looks like application.\
+\
+Get status of application only by using timestamps and not calling smart move. Saved a lot of time\
+\
+Some methods were comparing email case sensitive , there by returning null objects in rails. working with Null objects threw \'93
+\f2 \cf6 \cb4 ruby - json no implicit conversion of String into Integer (TypeError)\'94. Searched for  all \'93===\'94 string comparisons and replaced to casecmp in the project to remove further such problems. (Find source and remove further replications of problem). Also check for null object before processing.
+\f6 \cf5 \cb1 \cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl480\partightenfactor0
+
+\f7\b \cf3 \cb7 \'a0\'a0#\'a0return\'a0obj\'a0if\'a0obj["EmailAddress"].casecmp?(match_to_email)\
+\
+Use of singleton pattern:\
+
+\f2\b0 For mail merge task, I had to create a bytstream for URL(payment template URL). For every call of payment receipt notification, this stream was being created. So I used singleton pattern Class with a map<URL,bryStream> so that only one time we convert URL to stream avoiding duplicate  read/write operations.\
+\
+
+\f7\b Best Use of unit test: Serialization Error in Quartz Scheduler run method.\
+
+\f2\b0 [a]. I cannot always wait for the schedule time to come and check what is the error. Or decrease the schedule time locally and invoke run method. So I went thru the error stack trace and found out the serialization code that Quartz scheduler is using and created a unit test for that code. Turns out my object I was passing for job scheduling was locked because it was not out of entity yet.\
+[b]. Payment Receipt template changes not being updating in the email because in AWS the template was cached and it takes 24hr to lad to new template to the cache. It is expensive to delete the cache( we have to create a invalidation). So I made unit tests use template from file system until I perfected the template , the way I want. This was a great learning experience as I wasted hours not knowing why my changes are not reflected.\
+\
+\pard\intbl\itap1\pardeftab720\sl480\partightenfactor0
+
+\f8\b \cf5 \cb4 OneToMany relationships of 
+\f7 \cf3 \cb7 Hibernate Multiple or clauses giving Cartesian product as result, this causing stack overflown error\
+\pard\intbl\itap1\pardeftab720\sl480\partightenfactor0
+
+\f2\b0 \cf3 To debug, set the log value of hibernate to debug and got the query and ran on sql workbench. Instead of giving 1 result, giving Cartesian product of multiple or clause 100 results.\
+
+\f7\b Solution
+\f2\b0 : 
+\f9 \cf5 \cb4 Refactored listings lookups to not use entity graph for OneToMany relationships except for pictures and for listings_info and listings_extra which are effectively optional OneToOne relationships
+\f7\b \cf3 \cb7 \
+\
+Tell about a time when deadline was pushed earlier . An how did you do it on time?\
+
+\f2\b0 Ecommision Payment (JWT encoder and decoder)\
+
+\f7\b \
+Give an example when you empowered someone and taught someone.\
+
+\f2\b0 Taught Nakiba, how to debug\
+
+\f7\b \
+When was the time you impressed the client with your feature\
+
+\f2\b0 Automated failure alert for ApplyNow applications\
+\
+
+\f7\b What was the challenging task?
+\f2\b0 \
+
+\f7\b \
+Tell me a time when you solved a problem?\
+
+\f2\b0 Smartmove filter status\
+\
+Tell me about a time a changes was brought in you system, how you you adapted \
+\
+
+\f7\b \
+\pard\intbl\itap1\pardeftab720\sl480\partightenfactor0
+
+\f6\b0 \cf3 \
+\
+\
+\cf8 \cb1 \cell 
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+\cf5 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\partightenfactor0
+\cf5 \cell 
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+\cf5 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
+\cf8 \cell 
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+\cf5 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
+\cf8 \cell 
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+\cf5 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
+\cf8 \cell 
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+\cf5 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
+\cf8 \cell 
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+\cf5 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat4 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clminw1000 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth15860\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl200 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\qr\partightenfactor0
+\cf8 \cell 
+\pard\intbl\itap1\tx5011\pardeftab720\sl400\partightenfactor0
+\cf5 \
+\pard\intbl\itap1\pardeftab720\sl400\partightenfactor0
+\cf5 \
+\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \cb4 \
+\
+\
+\
+\
+\
+\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\f3 \cf3 \
+\
+\
+\
+
+\f1 \
+\pard\pardeftab720\partightenfactor0
+\cf3 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f5\b0 \cf3 \
+\
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+}

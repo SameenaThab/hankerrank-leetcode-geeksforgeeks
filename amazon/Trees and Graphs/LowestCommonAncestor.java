@@ -1,6 +1,25 @@
+import java.util.*;
+
 class LowestCommonAncestor {
 
     //https://leetcode.com/explore/interview/card/amazon/78/trees-and-graphs/2984/
+
+    public TreeNode LCS(TreeNode root,TreeNode p, TreeNode q) {
+        if(root == null)
+            return null;
+        if(p == root || q == root) {
+            return root;
+        }
+        TreeNode leftResult = LCS(root.left,p,q);
+        TreeNode rightResult = LCS(root.right,p,q);
+        if(leftResult != null && rightResult != null) {
+            return root;
+        } else if(leftResult == null && rightResult == null) {
+            return null;
+        } else {
+            return leftResult!=null? leftResult:rightResult;
+        }   
+    }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 

@@ -1,0 +1,60 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\froman\fcharset0 Times-Bold;\f4\fswiss\fcharset0 ArialMT;\f5\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red27\green31\blue34;\red30\green30\blue31;\red255\green255\blue255;
+\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c14118\c16078\c18039;\cssrgb\c15686\c15686\c16078;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww28600\viewh14860\viewkind0
+\deftab720
+\pard\tx5011\pardeftab720\sl400\partightenfactor0
+
+\f0\fs28 \cf2 \expnd0\expndtw0\kerning0
+Consolidate all the front end API (create landlord, create renter and create listings and  check if duplicate listings) into one API call to make it more conventional and improve performance\
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 Filter impure data coming from syndicated partners, so that we do not lose customers due to failed application. So I filtered leads and let renter know before process proceed and kind of steer the customer towards new agent with same zip code . There by no lose of customer and help agents make money.\
+\
+Removed unnecessary listing to applications (one to many) relation to improve performance\
+\
+\
+ApplyNow is one of the main money generating feature in our system. What it does is, it lets rentals apply for listings on cross platforms. Example we can partnered with home finder and homes.com .\
+So when a renter likes a listings on those site they can click apply now and apply for listing. In the process they  fill a smart move application which generates criminal records, and credit score , which landlord can see and make informed decision.\
+\
+So I recognized many discrepancies in the process\
+1.	Problem: If some information like landlord phone number is missing , smart move fails the application. \
+	Sol: So I vetted the information coming from the homes and HF.com\
+2.  	Problem: listing creation and user creation are done at front end and then application creation is called. This was too much decision making fro front end. So consolidated API where backend takes care of decision making\
+3.	Prob: Many duplicate listings are created. Different renters clicking on same listings, creates new listing .THis is not desirable.\
+	Sol: Inorder to find listings with duplicate addresses , we can\'92t use sql bcoz address search is string based \'93like\'94 operator and not efficient.\
+	Why I chose Elastic search? I wanted a key word based search for address search because address is a unstructured content\
+	
+\f2\fs30 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Elasticsearch, on the other hand, provides capability to store, index, search and analyze data in real-time which lets you extract value from the data. This data could be stored directly in Elasticsearch 	cluster or collected from various other data sources, including MongoDB.\
+\pard\pardeftab720\partightenfactor0
+\cf3 ElasticSearch is keyword based search engine using Lucene indexer. Lucene indexes documents in a way that it creates inverted index for specified fields of the document. When you use ElasticSearch, you provide a query which undergoes tokenization, stemming etc. The tokenized keywords in your query are matched with the inverted index to retrieve documents where those keywords occur most frequently (Lucene is tf/idf - term frequency - inverse document frequency based search indexing). There can be more sophisticated search indexing / relevance mechanisms for improving the matching / relevance than just based on term frequency as well as for the way of processing query (tokenization / query expansion / stop words / stemming / Ngrams etc.)\
+\
+{\field{\*\fldinst{HYPERLINK "https://www.quora.com/What-are-the-main-differences-between-ElasticSearch-and-NoSQL-DBs-like-MongoDB-Do-you-think-these-two-technologies-products-would-have-more-similarities-than-differences-in-the-near-future"}}{\fldrslt https://www.quora.com/What-are-the-main-differences-between-ElasticSearch-and-NoSQL-DBs-like-MongoDB-Do-you-think-these-two-technologies-products-would-have-more-similarities-than-differences-in-the-near-future}}\
+
+\f3\b\fs36 \cf5 \cb1 \strokec5 \
+\pard\pardeftab720\sl404\partightenfactor0
+
+\f4\b0\fs29\fsmilli14667 \cf5 Index = database
+\f5\fs24 \
+
+\f4\fs29\fsmilli14667 Type /mapping = table
+\f5\fs24 \
+
+\f4\fs29\fsmilli14667 Document = record
+\f5\fs24 \
+
+\f4\fs29\fsmilli14667 Property = column\
+\
+I have worked for quite a few startups which are growing much at slower pace, I wanted to work for a growth company, Flex port seems to be growing at nearly 25% per month until recently. It is also working in an industry that I have never worked before which is also interesting.  
+\f5\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs28 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+}
