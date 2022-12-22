@@ -38,10 +38,11 @@ public class Chap2Prob2 {
 		Node slow = head;
 		Node fast = head;
 		int i=0;
+		// move fast to k nodes to have gap of k nodes
 		for(i=0;i<k&&fast!=null;i++) {
 			fast = fast.next;
 		}
-		if(i!=k){
+		if(i!=k){ 
 			return new Node(-1);
 		}
 		while(fast!=null){

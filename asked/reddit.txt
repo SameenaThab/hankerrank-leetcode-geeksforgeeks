@@ -1,0 +1,16 @@
+Given intervals unmerged and unsorted
+Implement method lookup(int k), such that lookup return true if k exists within any  given intervals
+
+Solution
+- Sort the intervals via start time
+- Then merge the oerlapping intervals
+[1,4] , [2, 3] -> [1,4] 
+if(interval1_end>interval2_start)
+    merge interval with end_time = Max(interval1_end,interval2_end)
+
+Lookup method
+Once the intervals are sorted, do binary serach on interval
+mid = (left+right)/2
+if k belongs to mid_interval return true
+else if k<mid_interval_start , right = mid-1
+else left = mid+1 (k>mid_interval_end)

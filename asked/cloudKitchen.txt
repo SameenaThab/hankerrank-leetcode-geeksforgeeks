@@ -50,3 +50,36 @@ Caesar Salad
 3
 
 null
+
+2nd Round
+Feedback
+Help needed to coding part
+
+3 hr heads done coding challenge
+Deep Dive. Of code review
+Computer fundamentals -> ds , heaps, maps etc.,
+ - no need of fully compilable code
+- pseudo code is good enough
+Architecture
+- System design or architecture
+- white boarding tool
+
+
+Prompt with Product requirements prompt will received at the day of interview
+Eg:s
+Dispatch problem
+Pick up orders
+Simulation problem
+
+Eng will be only first 15 minutes to clarify question
+90 minutes
+Valid runnable code
+Minimal bugs
+good use of DS
+concurrency
+Unit Test and integration -> at least a single line empty test should be there
+
+
+Tell if you have done something differently with more time
+
+

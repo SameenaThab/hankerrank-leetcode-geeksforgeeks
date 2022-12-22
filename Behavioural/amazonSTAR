@@ -24,7 +24,20 @@
         - Since we used the same loadability GK for all themes for deciding whether to apply the mutation to the devices( changes theme_id for thread_id)
         - Desktop were showing (Time of the Day)location theme- which was unexpected experience as font colors and background colors were not designed for desktop version
         - So I quickly relized that in future there will be more themes (Our Places theme) that donot have support for desktop, and I created a new gk list called allow_mutation 
-        - So that Instead of repurposing this loadability GK for mutations, we used allow mutation GK’s to check if mutation is compatible for participants using desktop.
+        - So that Instead of repurposing this loadability GK for mutations, we used allow mutation GK’s to check if mutation is compatible at participants device. 
+        - Mutation will fail for the app id messenger desktop and fallback to default theme, but it will not stop the sender from not setting the theme.
+    ## Location Theme not changing for theme on receiver end when only location changed.
+        - Location theme was the first dynamic theme of our team, that changed colors, depending on time of day
+        - In the next Iteration we allowed users to set location explicitly
+        - For this iteraton we had bug where theme change is not reflected on reciever end for android user
+        Action
+        - On furthter inspection, the bug happened on both ios and android devices
+        - It happened only when explicitly location was changed
+        - It did not happened when first time location theme was set, that means theme change trigger is working correclty
+        - but not theme setting(location) change 
+        Action
+        - Found that the mutation trigger was set to single key mutation i.e., is theme chnage
+        - fixed the bug by adding multiple key mutation trigger.
 
 
 # Give me an example of a time you used customer feedback to drive improvement or innovation. What was the situation and what action did you take?
@@ -41,6 +54,7 @@
         - I know the table was outdated, so found out the team who owned the table to update them, When I could not pin down the correct team(as due reorgs and refocus) no team owned the table definitely
         - So I discussed with my team , as it looks like something we can own since we are a expressions team and they agreed
         - So I decided to update the emoji_search_terms table, using description in emoji unicode txt files's with better search results.
+        - That why everytime emoji's are updated search terms are also updated
     
 # Tell me about a goal that you set that took a long time to achieve or that you are still working
 # towards. How do you keep focused on the goal given the other priorities you have?
@@ -81,9 +95,18 @@
         - Turns out the thread updates are fanned out only when theme_id changes
         - So I added new key for theme_Settings(location) in the delta triggers
         - After this it worked as expected on all devices.
+    ## Incomplete landlord data from homes.com and homefinder.com failed the applynow application
+    Context:
+        - We had integrated with external sites homes.com dn homefinder.com where users can click applynow(RB hosted) button on those sites and land on our application
+        - So we started getting apply now failures 
+        - On inspection, there were due to missing landlords email / phone numbers and invalid email/phone numbers
+        - Upon further inspection they only happned for apply now from homes. and homefinder
+        Action
+        - So homes and homefinder were sending incomplete data /invalid data like 888 phone numbers
+        - I added new vetting process for these datas to fix the bug.
 
 - What three things you are you working on to improve your overall effectiveness?
-    ## Scoping and planning before implementation
+    ## Scoping and planning before implementation and MVP
     Context:
         - FOr Location Theme, we missed making changes in mutation generator(where all receivers recive theme change updates)
         - So receivers did not see theme change when our time of day location was set.
@@ -102,7 +125,17 @@
 
 # Tell me about a time you wouldn’t compromise on achieving a great outcome when others felt
 # something was good enough. What was the situation?
-    ## Magic words only editing not reading
+    ## Magic words only editing not reading 
+    ## Consolidate all the front end API 
+        Context:
+            - When a new listing was entered by a landlord/listing agent in the system. Front End was calling create landlord, create renter and create listings and  check if duplicate listings separately
+            - Entering this info will create a application for the renter and listing and agent/landlord can manage the application
+            - It was handling each API error separately and running each api asynchronously which was not needed.
+            - For eg, call create landlord , if account already exists error occurs, then fetch the landlord with email id and repeat the same for renter.
+            - I consolidated this one API call to make it more conventional and improve performance
+            - create landlord and create renter can be done concurrently 
+            - Made create listings API to check for duplicate listings, with out calling a separate API
+
 
 # Tell me about a time you made a hard decision to sacrifice short term gain for a longer term goal.
     ## Special Case - Chicago cook county should not show criminal reports to landlord
@@ -115,6 +148,11 @@
 # How do you drive adoption for your vision/ideas? How do you know how well your idea or vision
 # has been adopted by other teams or partners? Give a specific example highlighting one of your
 # ideas.
+    Find the pain point in a process
+    Relay the painpoint  and solution to the team
+    Tell issues painpoint is causing and how solution will fix
+    Make a prototype doc like for theme release management
+
     ## Theme Release MAnagement
         - Context:
             - Make Project Doc with all the requirements and problem that led to this new solution
@@ -137,4 +175,6 @@
         - In this case only theme's location in theme_settings is changed. Also the change trigger was singleKey that means only theme id change will push the change to other participants
         - Result:
             Changed the trigger to multikey and made both theme_id and theme_settings change as the change to push mutation to receivers.
+
+
 

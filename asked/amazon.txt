@@ -1,2 +1,22 @@
 Phone Interview:
     Find length of the island in the matrix problem
+
+Final Interview
+# Coding
+- Find LongestCommonSubsequence for list of string
+eg: [ABCDE, XYBCDY](can be more than 2) , output: BCD 
+- Closest Common Ancestor in a tree
+Object Oriented Program
+- Pizza restuarant, calculate  total of each item
+Drink, Pizza both have prices associated with sizes
+Pizza has Topping 
+
+Item {itemType{Drink, Pizza}, map<size,prices> sizeprice, method totalPrice}
+
+Pizza price should also depend on toppings prices
+
+pizza extends Item { map<toppings, prices>}
+Drink extends Item
+
+System Design
+Design Toll Booth System 
